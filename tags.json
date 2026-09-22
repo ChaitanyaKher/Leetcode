@@ -1,122 +1,482 @@
 {
-  "01-matrix": "Array, Dynamic Programming, Breadth-First Search, Matrix",
-  "3sum": "Array, Two Pointers, Sorting",
-  "add-binary": "Math, String, Bit Manipulation, Simulation",
-  "add-two-numbers": "Linked List, Math, Recursion",
-  "assign-cookies": "Array, Two Pointers, Greedy, Sorting, Quicksort",
-  "backspace-string-compare": "Two Pointers, String, Stack, Simulation",
-  "balance-a-binary-search-tree": "Divide and Conquer, Greedy, Tree, Depth-First Search, Binary Search Tree, Binary Tree",
-  "baseball-game": "Array, Stack, Simulation",
-  "best-time-to-buy-and-sell-stock": "Array, Dynamic Programming",
-  "best-time-to-buy-and-sell-stock-ii": "Array, Dynamic Programming, Greedy",
-  "binary-search": "Array, Binary Search",
-  "binary-tree-inorder-traversal": "Stack, Tree, Depth-First Search, Binary Tree",
-  "binary-tree-maximum-path-sum": "Dynamic Programming, Tree, Depth-First Search, Binary Tree, DP on Trees",
-  "binary-tree-postorder-traversal": "Stack, Tree, Depth-First Search, Binary Tree",
-  "binary-tree-preorder-traversal": "Stack, Tree, Depth-First Search, Binary Tree",
-  "check-if-array-is-sorted-and-rotated": "Array",
-  "check-if-n-and-its-double-exist": "Array, Hash Table, Two Pointers, Binary Search, Sorting",
-  "check-if-there-is-a-valid-partition-for-the-array": "Array, Dynamic Programming",
-  "coin-change-ii": "Array, Dynamic Programming, Knapsack Problem, Complete Knapsack",
-  "concatenation-of-array": "Array, Simulation",
-  "consecutive-characters": "String",
-  "container-with-most-water": "Array, Two Pointers, Greedy",
-  "contains-duplicate": "Array, Hash Table, Sorting",
-  "convert-an-array-into-a-2d-array-with-conditions": "Array, Hash Table",
-  "count-collisions-on-a-road": "String, Stack, Simulation",
-  "count-subarrays-with-majority-element-i": "Array, Hash Table, Divide and Conquer, Segment Tree, Merge Sort, Counting, Prefix Sum",
-  "design-hashmap": "Array, Hash Table, Linked List, Design, Hash Function",
-  "design-hashset": "Array, Hash Table, Linked List, Design, Hash Function",
-  "duplicate-zeros": "Array, Two Pointers",
-  "evaluate-reverse-polish-notation": "Array, Math, Stack",
-  "find-first-and-last-position-of-element-in-sorted-array": "Array, Binary Search",
-  "find-greatest-common-divisor-of-array": "Array, Math, Number Theory, Euclidean Algorithm, Greatest Common Divisor",
-  "find-numbers-with-even-number-of-digits": "Array, Math",
-  "find-pivot-index": "Array, Prefix Sum",
-  "find-the-maximum-length-of-valid-subsequence-ii": "Array, Dynamic Programming",
-  "find-the-safest-path-in-a-grid": "Array, Binary Search, Breadth-First Search, Union-Find, Heap (Priority Queue), Matrix",
-  "first-bad-version": "Binary Search, Interactive",
-  "group-anagrams": "Array, Hash Table, String, Sorting",
-  "house-robber": "Array, Dynamic Programming",
-  "implement-queue-using-stacks": "Stack, Design, Queue",
-  "implement-stack-using-queues": "Stack, Design, Queue",
-  "k-diff-pairs-in-an-array": "Array, Hash Table, Two Pointers, Binary Search, Sorting",
-  "keep-multiplying-found-values-by-two": "Array, Hash Table, Sorting, Simulation",
-  "kth-largest-element-in-an-array": "Array, Divide and Conquer, Sorting, Heap (Priority Queue), Quickselect",
-  "lemonade-change": "Array, Greedy",
-  "length-of-last-word": "String",
-  "letter-combinations-of-a-phone-number": "Hash Table, String, Backtracking",
-  "linked-list-cycle": "Hash Table, Linked List, Two Pointers, Floyd's Cycle Finding Algorithm",
-  "longest-balanced-subarray-i": "Array, Hash Table, Divide and Conquer, Segment Tree, Prefix Sum",
-  "longest-common-prefix": "Array, String, Trie",
-  "longest-consecutive-sequence": "Array, Hash Table, Union-Find",
-  "longest-substring-without-repeating-characters": "Hash Table, String, Sliding Window",
-  "lowest-common-ancestor-of-a-binary-tree": "Tree, Depth-First Search, Binary Tree, Binary Lifting, Lowest Common Ancestor",
-  "lru-cache": "Hash Table, Linked List, Design, Doubly-Linked List",
-  "max-consecutive-ones": "Array",
-  "maximal-network-rank": "Graph Theory",
-  "maximize-happiness-of-selected-children": "Array, Greedy, Sorting",
-  "maximum-average-subarray-i": "Array, Sliding Window",
-  "maximum-number-of-vowels-in-a-substring-of-given-length": "String, Sliding Window",
-  "maximum-product-of-two-elements-in-an-array": "Array, Sorting, Heap (Priority Queue)",
-  "maximum-product-subarray": "Array, Dynamic Programming",
-  "maximum-subarray": "Array, Divide and Conquer, Dynamic Programming",
-  "merge-intervals": "Array, Sorting, Quicksort",
-  "merge-sorted-array": "Array, Two Pointers, Sorting",
-  "merge-two-sorted-lists": "Linked List, Recursion",
-  "middle-of-the-linked-list": "Linked List, Two Pointers",
-  "minimize-the-maximum-difference-of-pairs": "Array, Binary Search, Dynamic Programming, Greedy, Sorting",
-  "minimum-absolute-distance-between-mirror-pairs": "Array, Hash Table, Math",
-  "minimum-number-of-operations-to-make-array-empty": "Array, Hash Table, Greedy, Counting",
-  "minimum-number-of-pushes-to-type-word-i": "Math, String, Greedy",
-  "minimum-window-substring": "Hash Table, String, Sliding Window",
-  "move-zeroes": "Array, Two Pointers",
-  "naming-a-company": "Array, Hash Table, String, Bit Manipulation, Enumeration",
-  "next-greater-element-i": "Array, Hash Table, Stack, Monotonic Stack",
-  "number-of-laser-beams-in-a-bank": "Array, Math, String, Matrix",
-  "odd-even-linked-list": "Linked List",
-  "palindrome-number": "Math",
-  "partition-list": "Linked List, Two Pointers",
-  "plus-one": "Array, Math",
-  "process-string-with-special-operations-i": "String, Simulation",
-  "product-of-array-except-self": "Array, Prefix Sum",
-  "rank-transform-of-an-array": "Array, Hash Table, Sorting",
-  "ransom-note": "Hash Table, String, Counting",
-  "redistribute-characters-to-make-all-strings-equal": "Hash Table, String, Counting",
-  "relative-ranks": "Array, Sorting, Heap (Priority Queue)",
-  "remove-all-adjacent-duplicates-in-string-ii": "String, Stack",
-  "remove-covered-intervals": "Array, Sorting",
-  "remove-duplicates-from-sorted-array-ii": "Array, Two Pointers",
-  "remove-element": "Array, Two Pointers",
-  "repeated-substring-pattern": "String, String Matching, Z Algorithm, Knuth\u2013Morris\u2013Pratt Algorithm",
-  "reshape-the-matrix": "Array, Matrix, Simulation",
-  "restore-ip-addresses": "String, Backtracking",
-  "reverse-linked-list": "Linked List, Recursion",
-  "reverse-string": "Two Pointers, String",
-  "reverse-vowels-of-a-string": "Two Pointers, String",
-  "roman-to-integer": "Hash Table, Math, String",
-  "rotate-array": "Array, Math, Two Pointers",
-  "rotate-string": "String, String Matching",
-  "same-tree": "Tree, Depth-First Search, Breadth-First Search, Binary Tree",
-  "search-in-rotated-sorted-array": "Array, Binary Search",
-  "search-in-rotated-sorted-array-ii": "Array, Binary Search",
-  "search-insert-position": "Array, Binary Search",
-  "sequential-digits": "Enumeration",
-  "shortest-distance-to-target-string-in-a-circular-array": "Array, String",
-  "single-number": "Array, Bit Manipulation",
-  "sliding-window-maximum": "Array, Queue, Sliding Window, Heap (Priority Queue), Monotonic Queue, Range Minimum/Maximum Query",
-  "smallest-palindromic-rearrangement-i": "String, Sorting, Counting Sort",
-  "sort-colors": "Array, Two Pointers, Sorting, Quicksort, Bubble Sort",
-  "special-array-with-x-elements-greater-than-or-equal-x": "Array, Binary Search, Sorting",
-  "spiral-matrix": "Array, Matrix, Simulation",
-  "squares-of-a-sorted-array": "Array, Two Pointers, Sorting",
-  "top-k-frequent-elements": "Array, Hash Table, Divide and Conquer, Sorting, Heap (Priority Queue), Bucket Sort, Counting, Quickselect",
-  "transpose-matrix": "Array, Matrix, Simulation",
-  "trionic-array-i": "Array",
-  "two-sum": "Array, Hash Table",
-  "two-sum-ii-input-array-is-sorted": "Array, Two Pointers, Binary Search",
-  "unique-paths-ii": "Array, Dynamic Programming, Matrix",
-  "valid-anagram": "Hash Table, String, Sorting",
-  "valid-parentheses": "String, Stack, Bracket Sequences",
-  "valid-word": "String"
+  "01-matrix": {
+    "tags": "Array, Dynamic Programming, Breadth-First Search, Matrix",
+    "difficulty": "Medium"
+  },
+  "3sum": {
+    "tags": "Array, Two Pointers, Sorting",
+    "difficulty": "Medium"
+  },
+  "add-binary": {
+    "tags": "Math, String, Bit Manipulation, Simulation",
+    "difficulty": "Easy"
+  },
+  "add-two-numbers": {
+    "tags": "Linked List, Math, Recursion",
+    "difficulty": "Medium"
+  },
+  "assign-cookies": {
+    "tags": "Array, Two Pointers, Greedy, Sorting, Quicksort",
+    "difficulty": "Easy"
+  },
+  "backspace-string-compare": {
+    "tags": "Two Pointers, String, Stack, Simulation",
+    "difficulty": "Easy"
+  },
+  "balance-a-binary-search-tree": {
+    "tags": "Divide and Conquer, Greedy, Tree, Depth-First Search, Binary Search Tree, Binary Tree",
+    "difficulty": "Medium"
+  },
+  "baseball-game": {
+    "tags": "Array, Stack, Simulation",
+    "difficulty": "Easy"
+  },
+  "best-time-to-buy-and-sell-stock": {
+    "tags": "Array, Dynamic Programming",
+    "difficulty": "Easy"
+  },
+  "best-time-to-buy-and-sell-stock-ii": {
+    "tags": "Array, Dynamic Programming, Greedy",
+    "difficulty": "Medium"
+  },
+  "binary-search": {
+    "tags": "Array, Binary Search",
+    "difficulty": "Easy"
+  },
+  "binary-tree-inorder-traversal": {
+    "tags": "Stack, Tree, Depth-First Search, Binary Tree",
+    "difficulty": "Easy"
+  },
+  "binary-tree-maximum-path-sum": {
+    "tags": "Dynamic Programming, Tree, Depth-First Search, Binary Tree, DP on Trees",
+    "difficulty": "Hard"
+  },
+  "binary-tree-postorder-traversal": {
+    "tags": "Stack, Tree, Depth-First Search, Binary Tree",
+    "difficulty": "Easy"
+  },
+  "binary-tree-preorder-traversal": {
+    "tags": "Stack, Tree, Depth-First Search, Binary Tree",
+    "difficulty": "Easy"
+  },
+  "check-if-array-is-sorted-and-rotated": {
+    "tags": "Array",
+    "difficulty": "Easy"
+  },
+  "check-if-n-and-its-double-exist": {
+    "tags": "Array, Hash Table, Two Pointers, Binary Search, Sorting",
+    "difficulty": "Easy"
+  },
+  "check-if-there-is-a-valid-partition-for-the-array": {
+    "tags": "Array, Dynamic Programming",
+    "difficulty": "Medium"
+  },
+  "coin-change-ii": {
+    "tags": "Array, Dynamic Programming, Knapsack Problem, Complete Knapsack",
+    "difficulty": "Medium"
+  },
+  "concatenation-of-array": {
+    "tags": "Array, Simulation",
+    "difficulty": "Easy"
+  },
+  "consecutive-characters": {
+    "tags": "String",
+    "difficulty": "Easy"
+  },
+  "container-with-most-water": {
+    "tags": "Array, Two Pointers, Greedy",
+    "difficulty": "Medium"
+  },
+  "contains-duplicate": {
+    "tags": "Array, Hash Table, Sorting",
+    "difficulty": "Easy"
+  },
+  "convert-an-array-into-a-2d-array-with-conditions": {
+    "tags": "Array, Hash Table",
+    "difficulty": "Medium"
+  },
+  "count-collisions-on-a-road": {
+    "tags": "String, Stack, Simulation",
+    "difficulty": "Medium"
+  },
+  "count-subarrays-with-majority-element-i": {
+    "tags": "Array, Hash Table, Divide and Conquer, Segment Tree, Merge Sort, Counting, Prefix Sum",
+    "difficulty": "Medium"
+  },
+  "design-hashmap": {
+    "tags": "Array, Hash Table, Linked List, Design, Hash Function",
+    "difficulty": "Easy"
+  },
+  "design-hashset": {
+    "tags": "Array, Hash Table, Linked List, Design, Hash Function",
+    "difficulty": "Easy"
+  },
+  "duplicate-zeros": {
+    "tags": "Array, Two Pointers",
+    "difficulty": "Easy"
+  },
+  "evaluate-reverse-polish-notation": {
+    "tags": "Array, Math, Stack",
+    "difficulty": "Medium"
+  },
+  "find-first-and-last-position-of-element-in-sorted-array": {
+    "tags": "Array, Binary Search",
+    "difficulty": "Medium"
+  },
+  "find-greatest-common-divisor-of-array": {
+    "tags": "Array, Math, Number Theory, Euclidean Algorithm, Greatest Common Divisor",
+    "difficulty": "Easy"
+  },
+  "find-numbers-with-even-number-of-digits": {
+    "tags": "Array, Math",
+    "difficulty": "Easy"
+  },
+  "find-pivot-index": {
+    "tags": "Array, Prefix Sum",
+    "difficulty": "Easy"
+  },
+  "find-the-maximum-length-of-valid-subsequence-ii": {
+    "tags": "Array, Dynamic Programming",
+    "difficulty": "Medium"
+  },
+  "find-the-safest-path-in-a-grid": {
+    "tags": "Array, Binary Search, Breadth-First Search, Union-Find, Heap (Priority Queue), Matrix",
+    "difficulty": "Medium"
+  },
+  "first-bad-version": {
+    "tags": "Binary Search, Interactive",
+    "difficulty": "Easy"
+  },
+  "group-anagrams": {
+    "tags": "Array, Hash Table, String, Sorting",
+    "difficulty": "Medium"
+  },
+  "house-robber": {
+    "tags": "Array, Dynamic Programming",
+    "difficulty": "Medium"
+  },
+  "implement-queue-using-stacks": {
+    "tags": "Stack, Design, Queue",
+    "difficulty": "Easy"
+  },
+  "implement-stack-using-queues": {
+    "tags": "Stack, Design, Queue",
+    "difficulty": "Easy"
+  },
+  "k-diff-pairs-in-an-array": {
+    "tags": "Array, Hash Table, Two Pointers, Binary Search, Sorting",
+    "difficulty": "Medium"
+  },
+  "keep-multiplying-found-values-by-two": {
+    "tags": "Array, Hash Table, Sorting, Simulation",
+    "difficulty": "Easy"
+  },
+  "kth-largest-element-in-an-array": {
+    "tags": "Array, Divide and Conquer, Sorting, Heap (Priority Queue), Quickselect",
+    "difficulty": "Medium"
+  },
+  "lemonade-change": {
+    "tags": "Array, Greedy",
+    "difficulty": "Easy"
+  },
+  "length-of-last-word": {
+    "tags": "String",
+    "difficulty": "Easy"
+  },
+  "letter-combinations-of-a-phone-number": {
+    "tags": "Hash Table, String, Backtracking",
+    "difficulty": "Medium"
+  },
+  "linked-list-cycle": {
+    "tags": "Hash Table, Linked List, Two Pointers, Floyd's Cycle Finding Algorithm",
+    "difficulty": "Easy"
+  },
+  "longest-balanced-subarray-i": {
+    "tags": "Array, Hash Table, Divide and Conquer, Segment Tree, Prefix Sum",
+    "difficulty": "Medium"
+  },
+  "longest-common-prefix": {
+    "tags": "Array, String, Trie",
+    "difficulty": "Easy"
+  },
+  "longest-consecutive-sequence": {
+    "tags": "Array, Hash Table, Union-Find",
+    "difficulty": "Medium"
+  },
+  "longest-substring-without-repeating-characters": {
+    "tags": "Hash Table, String, Sliding Window",
+    "difficulty": "Medium"
+  },
+  "lowest-common-ancestor-of-a-binary-tree": {
+    "tags": "Tree, Depth-First Search, Binary Tree, Binary Lifting, Lowest Common Ancestor",
+    "difficulty": "Medium"
+  },
+  "lru-cache": {
+    "tags": "Hash Table, Linked List, Design, Doubly-Linked List",
+    "difficulty": "Medium"
+  },
+  "max-consecutive-ones": {
+    "tags": "Array",
+    "difficulty": "Easy"
+  },
+  "maximal-network-rank": {
+    "tags": "Graph Theory",
+    "difficulty": "Medium"
+  },
+  "maximize-happiness-of-selected-children": {
+    "tags": "Array, Greedy, Sorting",
+    "difficulty": "Medium"
+  },
+  "maximum-average-subarray-i": {
+    "tags": "Array, Sliding Window",
+    "difficulty": "Easy"
+  },
+  "maximum-number-of-vowels-in-a-substring-of-given-length": {
+    "tags": "String, Sliding Window",
+    "difficulty": "Medium"
+  },
+  "maximum-product-of-two-elements-in-an-array": {
+    "tags": "Array, Sorting, Heap (Priority Queue)",
+    "difficulty": "Easy"
+  },
+  "maximum-product-subarray": {
+    "tags": "Array, Dynamic Programming",
+    "difficulty": "Medium"
+  },
+  "maximum-subarray": {
+    "tags": "Array, Divide and Conquer, Dynamic Programming",
+    "difficulty": "Medium"
+  },
+  "merge-intervals": {
+    "tags": "Array, Sorting, Quicksort",
+    "difficulty": "Medium"
+  },
+  "merge-sorted-array": {
+    "tags": "Array, Two Pointers, Sorting",
+    "difficulty": "Easy"
+  },
+  "merge-two-sorted-lists": {
+    "tags": "Linked List, Recursion",
+    "difficulty": "Easy"
+  },
+  "middle-of-the-linked-list": {
+    "tags": "Linked List, Two Pointers",
+    "difficulty": "Easy"
+  },
+  "minimize-the-maximum-difference-of-pairs": {
+    "tags": "Array, Binary Search, Dynamic Programming, Greedy, Sorting",
+    "difficulty": "Medium"
+  },
+  "minimum-absolute-distance-between-mirror-pairs": {
+    "tags": "Array, Hash Table, Math",
+    "difficulty": "Medium"
+  },
+  "minimum-number-of-operations-to-make-array-empty": {
+    "tags": "Array, Hash Table, Greedy, Counting",
+    "difficulty": "Medium"
+  },
+  "minimum-number-of-pushes-to-type-word-i": {
+    "tags": "Math, String, Greedy",
+    "difficulty": "Easy"
+  },
+  "minimum-window-substring": {
+    "tags": "Hash Table, String, Sliding Window",
+    "difficulty": "Hard"
+  },
+  "move-zeroes": {
+    "tags": "Array, Two Pointers",
+    "difficulty": "Easy"
+  },
+  "naming-a-company": {
+    "tags": "Array, Hash Table, String, Bit Manipulation, Enumeration",
+    "difficulty": "Hard"
+  },
+  "next-greater-element-i": {
+    "tags": "Array, Hash Table, Stack, Monotonic Stack",
+    "difficulty": "Easy"
+  },
+  "number-of-laser-beams-in-a-bank": {
+    "tags": "Array, Math, String, Matrix",
+    "difficulty": "Medium"
+  },
+  "odd-even-linked-list": {
+    "tags": "Linked List",
+    "difficulty": "Medium"
+  },
+  "palindrome-number": {
+    "tags": "Math",
+    "difficulty": "Easy"
+  },
+  "partition-list": {
+    "tags": "Linked List, Two Pointers",
+    "difficulty": "Medium"
+  },
+  "plus-one": {
+    "tags": "Array, Math",
+    "difficulty": "Easy"
+  },
+  "process-string-with-special-operations-i": {
+    "tags": "String, Simulation",
+    "difficulty": "Medium"
+  },
+  "product-of-array-except-self": {
+    "tags": "Array, Prefix Sum",
+    "difficulty": "Medium"
+  },
+  "rank-transform-of-an-array": {
+    "tags": "Array, Hash Table, Sorting",
+    "difficulty": "Easy"
+  },
+  "ransom-note": {
+    "tags": "Hash Table, String, Counting",
+    "difficulty": "Easy"
+  },
+  "redistribute-characters-to-make-all-strings-equal": {
+    "tags": "Hash Table, String, Counting",
+    "difficulty": "Easy"
+  },
+  "relative-ranks": {
+    "tags": "Array, Sorting, Heap (Priority Queue)",
+    "difficulty": "Easy"
+  },
+  "remove-all-adjacent-duplicates-in-string-ii": {
+    "tags": "String, Stack",
+    "difficulty": "Medium"
+  },
+  "remove-covered-intervals": {
+    "tags": "Array, Sorting",
+    "difficulty": "Medium"
+  },
+  "remove-duplicates-from-sorted-array-ii": {
+    "tags": "Array, Two Pointers",
+    "difficulty": "Medium"
+  },
+  "remove-element": {
+    "tags": "Array, Two Pointers",
+    "difficulty": "Easy"
+  },
+  "repeated-substring-pattern": {
+    "tags": "String, String Matching, Z Algorithm, Knuth\u2013Morris\u2013Pratt Algorithm",
+    "difficulty": "Easy"
+  },
+  "reshape-the-matrix": {
+    "tags": "Array, Matrix, Simulation",
+    "difficulty": "Easy"
+  },
+  "restore-ip-addresses": {
+    "tags": "String, Backtracking",
+    "difficulty": "Medium"
+  },
+  "reverse-linked-list": {
+    "tags": "Linked List, Recursion",
+    "difficulty": "Easy"
+  },
+  "reverse-string": {
+    "tags": "Two Pointers, String",
+    "difficulty": "Easy"
+  },
+  "reverse-vowels-of-a-string": {
+    "tags": "Two Pointers, String",
+    "difficulty": "Easy"
+  },
+  "roman-to-integer": {
+    "tags": "Hash Table, Math, String",
+    "difficulty": "Easy"
+  },
+  "rotate-array": {
+    "tags": "Array, Math, Two Pointers",
+    "difficulty": "Medium"
+  },
+  "rotate-string": {
+    "tags": "String, String Matching",
+    "difficulty": "Easy"
+  },
+  "same-tree": {
+    "tags": "Tree, Depth-First Search, Breadth-First Search, Binary Tree",
+    "difficulty": "Easy"
+  },
+  "search-in-rotated-sorted-array": {
+    "tags": "Array, Binary Search",
+    "difficulty": "Medium"
+  },
+  "search-in-rotated-sorted-array-ii": {
+    "tags": "Array, Binary Search",
+    "difficulty": "Medium"
+  },
+  "search-insert-position": {
+    "tags": "Array, Binary Search",
+    "difficulty": "Easy"
+  },
+  "sequential-digits": {
+    "tags": "Enumeration",
+    "difficulty": "Medium"
+  },
+  "shortest-distance-to-target-string-in-a-circular-array": {
+    "tags": "Array, String",
+    "difficulty": "Easy"
+  },
+  "single-number": {
+    "tags": "Array, Bit Manipulation",
+    "difficulty": "Easy"
+  },
+  "sliding-window-maximum": {
+    "tags": "Array, Queue, Sliding Window, Heap (Priority Queue), Monotonic Queue, Range Minimum/Maximum Query",
+    "difficulty": "Hard"
+  },
+  "smallest-palindromic-rearrangement-i": {
+    "tags": "String, Sorting, Counting Sort",
+    "difficulty": "Medium"
+  },
+  "sort-colors": {
+    "tags": "Array, Two Pointers, Sorting, Quicksort, Bubble Sort",
+    "difficulty": "Medium"
+  },
+  "special-array-with-x-elements-greater-than-or-equal-x": {
+    "tags": "Array, Binary Search, Sorting",
+    "difficulty": "Easy"
+  },
+  "spiral-matrix": {
+    "tags": "Array, Matrix, Simulation",
+    "difficulty": "Medium"
+  },
+  "squares-of-a-sorted-array": {
+    "tags": "Array, Two Pointers, Sorting",
+    "difficulty": "Easy"
+  },
+  "top-k-frequent-elements": {
+    "tags": "Array, Hash Table, Divide and Conquer, Sorting, Heap (Priority Queue), Bucket Sort, Counting, Quickselect",
+    "difficulty": "Medium"
+  },
+  "transpose-matrix": {
+    "tags": "Array, Matrix, Simulation",
+    "difficulty": "Easy"
+  },
+  "trionic-array-i": {
+    "tags": "Array",
+    "difficulty": "Easy"
+  },
+  "two-sum": {
+    "tags": "Array, Hash Table",
+    "difficulty": "Easy"
+  },
+  "two-sum-ii-input-array-is-sorted": {
+    "tags": "Array, Two Pointers, Binary Search",
+    "difficulty": "Medium"
+  },
+  "unique-paths-ii": {
+    "tags": "Array, Dynamic Programming, Matrix",
+    "difficulty": "Medium"
+  },
+  "valid-anagram": {
+    "tags": "Hash Table, String, Sorting",
+    "difficulty": "Easy"
+  },
+  "valid-parentheses": {
+    "tags": "String, Stack, Bracket Sequences",
+    "difficulty": "Easy"
+  },
+  "valid-word": {
+    "tags": "String",
+    "difficulty": "Easy"
+  }
 }
