@@ -36,3 +36,4 @@ Total solved: 29
 | 3761 | Minimum Absolute Distance Between Mirror Pairs | [3701-3800/3761-minimum-absolute-distance-between-mirror-pairs.java](3701-3800/3761-minimum-absolute-distance-between-mirror-pairs.java) |
 <!-- SOLUTIONS-TABLE-END -->
 
+
