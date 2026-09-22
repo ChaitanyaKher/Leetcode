@@ -13,11 +13,12 @@ def get_slugs():
                     slugs.add(m.group(1))
     return slugs
 
-def fetch_tags(slug):
+def fetch_meta(slug):
     query = {
         "query": """
-            query questionTopicTags($titleSlug: String!) {
+            query questionMeta($titleSlug: String!) {
               question(titleSlug: $titleSlug) {
+                difficulty
                 topicTags { name }
               }
             }""",
@@ -34,8 +35,9 @@ def fetch_tags(slug):
     if question is None:
         raise ValueError("No question data returned (bad slug or removed problem)")
 
-    tags = question.get("topicTags") or []
-    return ", ".join(t["name"] for t in tags)
+    tags = ", ".join(t["name"] for t in (question.get("topicTags") or []))
+    difficulty = question.get("difficulty", "")
+    return {"tags": tags, "difficulty": difficulty}
 
 def save(tags_db):
     with open(TAGS_FILE, "w", encoding="utf-8") as f:
@@ -50,17 +52,19 @@ def main():
     slugs = get_slugs()
     new_count, error_count = 0, 0
     for slug in sorted(slugs):
-        if slug in tags_db:
+        existing = tags_db.get(slug)
+        # Skip only if already in the new dict format (upgrades old string-format entries)
+        if isinstance(existing, dict):
             continue
         try:
-            tags = fetch_tags(slug)
-            tags_db[slug] = tags
-            print(f"{slug}: {tags}")
+            meta = fetch_meta(slug)
+            tags_db[slug] = meta
+            print(f"{slug}: {meta['difficulty']} | {meta['tags']}")
             new_count += 1
         except Exception as e:
             print(f"SKIPPED {slug}: {e}")
             error_count += 1
-        save(tags_db)  # save after every attempt, not just at the end
+        save(tags_db)
         time.sleep(0.5)
 
     print(f"\nDone. Fetched {new_count} new, {error_count} skipped, {len(tags_db)} total cached.")

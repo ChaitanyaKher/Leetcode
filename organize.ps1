@@ -103,3 +103,88 @@ if (-not (Test-Path "README.md")) {
 
     $readme | Set-Content "README.md"
 }
+
+$trackerHtml = @"
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>LeetCode Tracker</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:sans-serif;margin:1.5rem;background:#0d1117;color:#c9d1d9}
+h1{font-size:1.4rem}
+.controls{display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:1rem}
+input,select{padding:.6rem;background:#161b22;color:#c9d1d9;border:1px solid #30363d;border-radius:4px;font-size:1rem;flex:1;min-width:140px}
+table{width:100%;border-collapse:collapse}
+th,td{padding:.5rem;text-align:left;border-bottom:1px solid #30363d}
+th{cursor:pointer;user-select:none;white-space:nowrap}
+a{color:#58a6ff}
+.Easy{color:#3fb950}.Medium{color:#d29922}.Hard{color:#f85149}
+#count{margin-bottom:1rem;color:#8b949e}
+
+@media (max-width: 640px) {
+  body{margin:1rem}
+  .controls{flex-direction:column}
+  input,select{width:100%}
+  thead{display:none}
+  table, tbody, tr, td{display:block;width:100%}
+  tr{border:1px solid #30363d;border-radius:6px;margin-bottom:.75rem;padding:.5rem;background:#161b22}
+  td{border:none;padding:.3rem .2rem;display:flex;justify-content:space-between;gap:1rem}
+  td::before{content:attr(data-label);font-weight:600;color:#8b949e}
+}
+</style></head>
+<body>
+<h1>LeetCode Tracker</h1>
+<div id="count"></div>
+<div class="controls">
+<input id="search" placeholder="Search title or tag...">
+<select id="diffFilter"><option value="">All Difficulties</option><option>Easy</option><option>Medium</option><option>Hard</option></select>
+<select id="tagFilter"><option value="">All Tags</option></select>
+</div>
+<table id="tbl"><thead><tr>
+<th data-key="num">#</th><th data-key="title">Problem</th><th data-key="difficulty">Difficulty</th><th data-key="tags">Tags</th><th>Solution</th>
+</tr></thead><tbody id="body"></tbody></table>
+<script>
+const data = $dataJson;
+let sortKey = "num", sortAsc = true;
+const tagSet = new Set();
+data.forEach(d => (d.tags||"").split(",").map(t=>t.trim()).filter(Boolean).forEach(t=>tagSet.add(t)));
+const tagFilter = document.getElementById("tagFilter");
+[...tagSet].sort().forEach(t => { const o=document.createElement("option"); o.textContent=t; tagFilter.appendChild(o); });
+
+function render() {
+  const q = document.getElementById("search").value.toLowerCase();
+  const diff = document.getElementById("diffFilter").value;
+  const tag = tagFilter.value;
+  let rows = data.filter(d =>
+    (d.title.toLowerCase().includes(q) || (d.tags||"").toLowerCase().includes(q)) &&
+    (!diff || d.difficulty === diff) &&
+    (!tag || (d.tags||"").split(",").map(t=>t.trim()).includes(tag))
+  );
+  rows.sort((a,b) => {
+    const v = a[sortKey] > b[sortKey] ? 1 : -1;
+    return sortAsc ? v : -v;
+  });
+  document.getElementById("count").textContent = rows.length + " problems";
+  document.getElementById("body").innerHTML = rows.map(d =>
+    `<tr>`+
+    `<td data-label="#">`+d.num+`</td>`+
+    `<td data-label="Problem">`+d.title+`</td>`+
+    `<td data-label="Difficulty" class="`+d.difficulty+`">`+d.difficulty+`</td>`+
+    `<td data-label="Tags">`+(d.tags||"")+`</td>`+
+    `<td data-label="Solution"><a href="`+d.path+`">view</a></td>`+
+    `</tr>`
+  ).join("");
+}
+document.getElementById("search").addEventListener("input", render);
+document.getElementById("diffFilter").addEventListener("change", render);
+tagFilter.addEventListener("change", render);
+document.querySelectorAll("th[data-key]").forEach(th => th.addEventListener("click", () => {
+  const key = th.dataset.key;
+  if (sortKey === key) sortAsc = !sortAsc; else { sortKey = key; sortAsc = true; }
+  render();
+}));
+render();
+</script>
+</body></html>
+"@
+
+$trackerHtml | Set-Content "tracker.html"
