@@ -1,4 +1,4 @@
-<!-- TOTAL-SOLVED -->129 problems solved<!-- /TOTAL-SOLVED -->
+<!-- TOTAL-SOLVED -->130 problems solved<!-- /TOTAL-SOLVED -->
 
 # LeetCode Solutions
 
@@ -405,15 +405,17 @@ Total solved: 29
 </details>
 
 <details>
-<summary>4001-4100 (2 solved)</summary>
+<summary>4001-4100 (3 solved)</summary>
 
 | # | Problem | Tags | Solution |
 |---|---------|------|----------|
 | 4045 | Longest Balanced Subarray I | @{tags=Array, Hash Table, Divide and Conquer, Segment Tree, Prefix Sum; difficulty=Medium} | [4001-4100/4045-longest-balanced-subarray-i/4045-longest-balanced-subarray-i.java](4001-4100/4045-longest-balanced-subarray-i/4045-longest-balanced-subarray-i.java) |
+| 4056 | Number Of Intersecting Interval Pairs I | @{tags=; difficulty=Easy} | [4001-4100/4056-number-of-intersecting-interval-pairs-i/4056-number-of-intersecting-interval-pairs-i.java](4001-4100/4056-number-of-intersecting-interval-pairs-i/4056-number-of-intersecting-interval-pairs-i.java) |
 | 4074 | Count Subarrays With Majority Element I | @{tags=Array, Hash Table, Divide and Conquer, Segment Tree, Merge Sort, Counting, Prefix Sum; difficulty=Medium} | [4001-4100/4074-count-subarrays-with-majority-element-i/4074-count-subarrays-with-majority-element-i.java](4001-4100/4074-count-subarrays-with-majority-element-i/4074-count-subarrays-with-majority-element-i.java) |
 
 </details>
 <!-- SOLUTIONS-TABLE-END -->
+
 
 
 
