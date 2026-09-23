@@ -104,6 +104,46 @@ if (-not (Test-Path "README.md")) {
     $readme | Set-Content "README.md"
 }
 
+# 4. Build solve-date map from git history (first-commit date per file, proxy for solve date)
+$dateMap = @{}
+$currentDate = $null
+git log --reverse --diff-filter=A --name-only --pretty=format:"%x01%aI" | ForEach-Object {
+    if ($_ -match '^\x01(.+)$') {
+        $currentDate = ([datetime]$matches[1]).ToString('yyyy-MM-dd')
+    } elseif ($_ -and $currentDate) {
+        if (-not $dateMap.ContainsKey($_)) {
+            $dateMap[$_] = $currentDate
+        }
+    }
+}
+
+# 5. Build tracker data for index.html
+$trackerData = @()
+foreach ($s in $allFiles) {
+    $meta = $tagsMap[$s.Slug]
+    $tags = ""
+    $difficulty = ""
+    if ($meta -ne $null) {
+        if ($meta.PSObject.Properties.Name -contains "tags") {
+            $tags = $meta.tags
+            $difficulty = $meta.difficulty
+        } elseif ($meta -is [string]) {
+            $tags = $meta
+        }
+    }
+    $solvedDate = if ($dateMap.ContainsKey($s.Path)) { $dateMap[$s.Path] } else { "" }
+    $trackerData += [PSCustomObject]@{
+        num = $s.Num
+        title = (Get-Culture).TextInfo.ToTitleCase($s.Title)
+        tags = $tags
+        difficulty = $difficulty
+        path = $s.Path
+        date = $solvedDate
+    }
+}
+
+$dataJson = if ($trackerData.Count -gt 0) { @($trackerData | Sort-Object num) | ConvertTo-Json -Compress } else { "[]" }
+
 $easyCount = ($trackerData | Where-Object { $_.difficulty -eq "Easy" }).Count
 $medCount = ($trackerData | Where-Object { $_.difficulty -eq "Medium" }).Count
 $hardCount = ($trackerData | Where-Object { $_.difficulty -eq "Hard" }).Count
@@ -124,9 +164,9 @@ body{
   font-family:'Inter',system-ui,sans-serif; margin:0; padding:2.5rem 1.5rem;
   background:var(--bg); color:var(--text); line-height:1.5;
 }
-.wrap{max-width:920px;margin:0 auto}
+.wrap{max-width:1400px;margin:0 auto}
 .mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
-header{margin-bottom:1.75rem}
+header{margin-bottom:1.5rem}
 .count{font-size:2.25rem;font-weight:600;letter-spacing:-0.02em}
 .count span{font-size:1rem;font-weight:400;color:var(--muted);margin-left:.5rem}
 .breakdown{display:flex;gap:1.25rem;margin-top:.5rem;font-size:.85rem}
@@ -134,7 +174,21 @@ header{margin-bottom:1.75rem}
 .breakdown b{font-weight:500}
 .dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:.4rem;vertical-align:middle}
 
-.controls{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.5rem 0 1rem}
+.heatmap{display:flex;gap:3px;overflow-x:auto;padding:.5rem 0 1rem}
+.week{display:flex;flex-direction:column;gap:3px}
+.day{width:10px;height:10px;border-radius:2px;background:var(--panel);border:1px solid var(--border)}
+.day[data-level="1"]{background:#3a3020;border-color:#3a3020}
+.day[data-level="2"]{background:#6b5528;border-color:#6b5528}
+.day[data-level="3"]{background:#a5822f;border-color:#a5822f}
+.day[data-level="4"]{background:var(--accent);border-color:var(--accent)}
+
+.summary{display:flex;flex-wrap:wrap;gap:1.75rem;margin:0 0 1.5rem;padding:1rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.summary-block h3{font-size:.75rem;color:var(--muted);font-weight:500;margin:0 0 .4rem;text-transform:none}
+.summary-block .val{font-size:1.1rem}
+.tag-list{display:flex;flex-wrap:wrap;gap:.4rem;max-width:none}
+.tag-pill{background:var(--panel);border:1px solid var(--border);border-radius:3px;padding:.15rem .55rem;font-size:.78rem;color:var(--muted)}
+
+.controls{display:flex;flex-wrap:wrap;gap:.6rem;margin:0 0 1rem}
 input,select{
   font-family:inherit;font-size:.9rem;padding:.55rem .7rem;
   background:var(--panel);color:var(--text);border:1px solid var(--border);
@@ -163,6 +217,7 @@ a:hover{color:var(--accent);border-color:var(--accent)}
 @media (max-width:640px){
   body{padding:1.5rem 1rem}
   .controls{flex-direction:column}
+  .summary{gap:1.25rem}
   thead{display:none}
   table,tbody,tr,td{display:block;width:100%}
   tr{border:1px solid var(--border);border-radius:4px;margin-bottom:.6rem;padding:.4rem .6rem}
@@ -180,6 +235,15 @@ a:hover{color:var(--accent);border-color:var(--accent)}
     <span><span class="dot" style="background:var(--hard)"></span><b>$hardCount</b> hard</span>
   </div>
 </header>
+
+<div class="heatmap" id="heatmap"></div>
+
+<div class="summary">
+  <div class="summary-block"><h3>Current streak</h3><div class="val mono" id="current-streak">—</div></div>
+  <div class="summary-block"><h3>Longest streak</h3><div class="val mono" id="longest-streak">—</div></div>
+  <div class="summary-block"><h3>Best day</h3><div class="val mono" id="best-day">—</div></div>
+  <div class="summary-block" style="flex:1;min-width:220px"><h3>Top tags</h3><div class="tag-list" id="top-tags"></div></div>
+</div>
 
 <div class="controls">
   <input id="search" placeholder="Search title or tag">
@@ -200,17 +264,66 @@ a:hover{color:var(--accent);border-color:var(--accent)}
 <script>
 const data = $dataJson;
 let sortKey = "num", sortAsc = true;
+
+// Heatmap + summary
+const dayCounts = {};
+data.forEach(d => { if (d.date) dayCounts[d.date] = (dayCounts[d.date]||0)+1; });
+
+function fmt(d){ return d.toISOString().slice(0,10); }
+const today = new Date(); today.setHours(0,0,0,0);
+const start = new Date(today); start.setDate(start.getDate() - 370);
+while (start.getDay() !== 0) start.setDate(start.getDate()-1);
+
+let cur = new Date(start), weeksHtml = "";
+while (cur <= today) {
+  let colHtml = "<div class='week'>";
+  for (let i=0;i<7;i++){
+    const key = fmt(cur);
+    const count = dayCounts[key]||0;
+    let level = 0;
+    if (count>=1) level=1; if(count>=3) level=2; if(count>=6) level=3; if(count>=10) level=4;
+    colHtml += `<div class="day" data-level="${level}" title="${key}: ${count} solved"></div>`;
+    cur.setDate(cur.getDate()+1);
+  }
+  weeksHtml += colHtml + "</div>";
+}
+document.getElementById("heatmap").innerHTML = weeksHtml;
+
+const sortedDates = Object.keys(dayCounts).sort();
+let longest=0, streak=0, prevDate=null;
+sortedDates.forEach(ds=>{
+  const d=new Date(ds);
+  streak = (prevDate && (d-prevDate)/86400000===1) ? streak+1 : 1;
+  longest = Math.max(longest, streak);
+  prevDate = d;
+});
+let currentStreak = 0;
+if (sortedDates.length) {
+  currentStreak = 1;
+  for (let i=sortedDates.length-1;i>0;i--){
+    const d1=new Date(sortedDates[i]), d0=new Date(sortedDates[i-1]);
+    if ((d1-d0)/86400000===1) currentStreak++; else break;
+  }
+}
+const bestDay = Object.entries(dayCounts).sort((a,b)=>b[1]-a[1])[0];
+document.getElementById("longest-streak").textContent = longest + (longest===1?" day":" days");
+document.getElementById("current-streak").textContent = currentStreak + (currentStreak===1?" day":" days");
+document.getElementById("best-day").textContent = bestDay ? bestDay[1] + " on " + bestDay[0] : "—";
+
+const tagCounts = {};
+data.forEach(d=>(d.tags||"").split(",").map(t=>t.trim()).filter(Boolean).forEach(t=>tagCounts[t]=(tagCounts[t]||0)+1));
+document.getElementById("top-tags").innerHTML = Object.entries(tagCounts).sort((a,b)=>b[1]-a[1]).slice(0,8)
+  .map(([t,c])=>`<span class="tag-pill">${t} · ${c}</span>`).join("");
+
+// Table
 const tagSet = new Set();
 data.forEach(d => (d.tags||"").split(",").map(t=>t.trim()).filter(Boolean).forEach(t=>tagSet.add(t)));
 const tagFilter = document.getElementById("tagFilter");
 [...tagSet].sort().forEach(t => { const o=document.createElement("option"); o.textContent=t; tagFilter.appendChild(o); });
 
 function updateHeaderState() {
-  document.querySelectorAll("th[data-key]").forEach(th => {
-    th.classList.toggle("active", th.dataset.key === sortKey);
-  });
+  document.querySelectorAll("th[data-key]").forEach(th => th.classList.toggle("active", th.dataset.key === sortKey));
 }
-
 function render() {
   const q = document.getElementById("search").value.toLowerCase();
   const diff = document.getElementById("diffFilter").value;
@@ -220,10 +333,7 @@ function render() {
     (!diff || d.difficulty === diff) &&
     (!tag || (d.tags||"").split(",").map(t=>t.trim()).includes(tag))
   );
-  rows.sort((a,b) => {
-    const v = a[sortKey] > b[sortKey] ? 1 : -1;
-    return sortAsc ? v : -v;
-  });
+  rows.sort((a,b) => { const v = a[sortKey] > b[sortKey] ? 1 : -1; return sortAsc ? v : -v; });
   document.getElementById("count-line").textContent = rows.length + " of " + data.length;
   document.getElementById("body").innerHTML = rows.map(d =>
     `<tr>`+
@@ -236,7 +346,6 @@ function render() {
   ).join("");
   updateHeaderState();
 }
-
 document.getElementById("search").addEventListener("input", render);
 document.getElementById("diffFilter").addEventListener("change", render);
 tagFilter.addEventListener("change", render);
