@@ -16,6 +16,12 @@ Get-ChildItem -Path . -Directory | Where-Object { $_.Name -match '^\d{4}-\d{4}$'
 }
 
 # 2. Rename + bucket any new top-level files into range/problem subfolder
+$datesDb = @{}
+if (Test-Path "solve_dates.json") {
+    $datesJson = Get-Content "solve_dates.json" -Raw | ConvertFrom-Json
+    $datesJson.PSObject.Properties | ForEach-Object { $datesDb[$_.Name] = $_.Value }
+}
+
 Get-ChildItem -Path . -Filter "*.java" -File | ForEach-Object {
     if ($_.Name -match '^(\d+)\.(.+)\.java$') {
         $problemNum = [int]$matches[1]
@@ -34,8 +40,14 @@ Get-ChildItem -Path . -Filter "*.java" -File | ForEach-Object {
         }
 
         Move-Item -Path $_.FullName -Destination (Join-Path $destDir $newName) -Force
+
+        if (-not $datesDb.ContainsKey($slug)) {
+            $datesDb[$slug] = (Get-Date).ToString('yyyy-MM-dd')
+        }
     }
 }
+
+$datesDb | ConvertTo-Json | Set-Content "solve_dates.json"
 
 # 3. Rebuild the solutions table in README.md, paginated by range folder, with tags
 $tagsMap = @{}
@@ -104,20 +116,8 @@ if (-not (Test-Path "README.md")) {
     $readme | Set-Content "README.md"
 }
 
-# 4. Build solve-date map from git history (first-commit date per file, proxy for solve date)
-$dateMap = @{}
-$currentDate = $null
-git log --reverse --diff-filter=A --name-only --pretty=format:"%x01%aI" | ForEach-Object {
-    if ($_ -match '^\x01(.+)$') {
-        $currentDate = ([datetime]$matches[1]).ToString('yyyy-MM-dd')
-    } elseif ($_ -and $currentDate) {
-        if (-not $dateMap.ContainsKey($_)) {
-            $dateMap[$_] = $currentDate
-        }
-    }
-}
 
-# 5. Build tracker data for index.html
+# 4. Build tracker data for index.html
 $trackerData = @()
 foreach ($s in $allFiles) {
     $meta = $tagsMap[$s.Slug]
@@ -131,7 +131,7 @@ foreach ($s in $allFiles) {
             $tags = $meta
         }
     }
-    $solvedDate = if ($dateMap.ContainsKey($s.Path)) { $dateMap[$s.Path] } else { "" }
+    $solvedDate = if ($datesDb.ContainsKey($s.Slug)) { $datesDb[$s.Slug] } else { "" }
     $trackerData += [PSCustomObject]@{
         num = $s.Num
         title = (Get-Culture).TextInfo.ToTitleCase($s.Title)
@@ -257,6 +257,7 @@ a:hover{color:var(--accent);border-color:var(--accent)}
 <th data-key="title" tabindex="0">Problem</th>
 <th data-key="difficulty" tabindex="0">Difficulty</th>
 <th data-key="tags" tabindex="0">Tags</th>
+<th data-key="date" tabindex="0">Last Solved</th>
 <th>Solution</th>
 </tr></thead><tbody id="body"></tbody></table>
 </div>
@@ -339,6 +340,7 @@ function render() {
       "<td data-label='Problem'>" + d.title + "</td>" +
       "<td data-label='Difficulty' class='diff " + d.difficulty + "'>" + d.difficulty + "</td>" +
       "<td data-label='Tags' class='tags mono'>" + (d.tags||"") + "</td>" +
+      "<td data-label='Last Solved' class='mono'>" + (d.date||"-") + "</td>" +
       "<td data-label='Solution'><a href='" + d.path + "'>open</a></td>" +
       "</tr>";
   }).join("");

@@ -1,4 +1,8 @@
-import requests, os, time
+import requests, os, time, json
+from datetime import datetime
+
+ROOT = os.path.dirname(os.path.abspath(__file__))
+DATES_FILE = os.path.join(ROOT, "solve_dates.json")
 
 LEETCODE_SESSION = os.environ.get("LEETCODE_SESSION")
 CSRF_TOKEN = os.environ.get("LEETCODE_CSRF_TOKEN")
@@ -22,7 +26,7 @@ def get_accepted_java_submissions():
         for s in subs:
             if s.get("status_display") == "Accepted" and s.get("lang") == "java":
                 slug = s["title_slug"]
-                if slug not in submissions:  # keep newest (first seen)
+                if slug not in submissions:
                     submissions[slug] = s
         if not data.get("has_next"):
             break
@@ -34,6 +38,11 @@ def main():
     print("Fetching accepted Java submissions...")
     subs = get_accepted_java_submissions()
     print(f"Found {len(subs)} unique accepted Java problems.")
+
+    dates_db = {}
+    if os.path.exists(DATES_FILE):
+        with open(DATES_FILE, "r", encoding="utf-8") as f:
+            dates_db = json.load(f)
 
     added, skipped = 0, 0
     for slug, s in subs.items():
@@ -50,13 +59,19 @@ def main():
         os.makedirs(dest_dir, exist_ok=True)
         dest_path = os.path.join(dest_dir, file_name)
 
+        solve_date = datetime.fromtimestamp(int(s["timestamp"])).strftime("%Y-%m-%d")
+        dates_db[slug] = solve_date  # always keep the most recent accepted date
+
         if not os.path.exists(dest_path):
             with open(dest_path, "w", encoding="utf-8") as f:
                 f.write(code)
-            print(f"Added {file_name}")
+            print(f"Added {file_name} ({solve_date})")
             added += 1
         else:
             skipped += 1
+
+    with open(DATES_FILE, "w", encoding="utf-8") as f:
+        json.dump(dates_db, f, indent=2)
 
     print(f"\nDone. Added {added}, skipped {skipped} already-existing files.")
 

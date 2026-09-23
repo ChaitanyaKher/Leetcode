@@ -39,7 +39,7 @@ foreach ($line in $changes) {
     git commit -m $message
 }
 
-$readmeTagsFiles = @("README.md", "tags.json", "index.html") | Where-Object { Test-Path $_ }
+$readmeTagsFiles = @("README.md", "tags.json", "index.html", "solve_dates.json") | Where-Object { Test-Path $_ }
 if (($readmeChanged -or $tagsChanged) -and $readmeTagsFiles) {
     git add $readmeTagsFiles
     git commit -m "Update solutions table and tags"
