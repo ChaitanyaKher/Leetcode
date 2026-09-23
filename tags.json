@@ -482,5 +482,9 @@
   "set-matrix-zeroes": {
     "tags": "Array, Hash Table, Matrix",
     "difficulty": "Medium"
+  },
+  "number-of-intersecting-interval-pairs-i": {
+    "tags": "",
+    "difficulty": "Easy"
   }
 }
