@@ -265,9 +265,8 @@ a:hover{color:var(--accent);border-color:var(--accent)}
 const data = $dataJson;
 let sortKey = "num", sortAsc = true;
 
-// Heatmap + summary
 const dayCounts = {};
-data.forEach(d => { if (d.date) dayCounts[d.date] = (dayCounts[d.date]||0)+1; });
+data.forEach(function(d){ if (d.date) dayCounts[d.date] = (dayCounts[d.date]||0)+1; });
 
 function fmt(d){ return d.toISOString().slice(0,10); }
 const today = new Date(); today.setHours(0,0,0,0);
@@ -282,7 +281,7 @@ while (cur <= today) {
     const count = dayCounts[key]||0;
     let level = 0;
     if (count>=1) level=1; if(count>=3) level=2; if(count>=6) level=3; if(count>=10) level=4;
-    colHtml += `<div class="day" data-level="${level}" title="${key}: ${count} solved"></div>`;
+    colHtml += "<div class='day' data-level='" + level + "' title='" + key + ": " + count + " solved'></div>";
     cur.setDate(cur.getDate()+1);
   }
   weeksHtml += colHtml + "</div>";
@@ -291,7 +290,7 @@ document.getElementById("heatmap").innerHTML = weeksHtml;
 
 const sortedDates = Object.keys(dayCounts).sort();
 let longest=0, streak=0, prevDate=null;
-sortedDates.forEach(ds=>{
+sortedDates.forEach(function(ds){
   const d=new Date(ds);
   streak = (prevDate && (d-prevDate)/86400000===1) ? streak+1 : 1;
   longest = Math.max(longest, streak);
@@ -305,57 +304,56 @@ if (sortedDates.length) {
     if ((d1-d0)/86400000===1) currentStreak++; else break;
   }
 }
-const bestDay = Object.entries(dayCounts).sort((a,b)=>b[1]-a[1])[0];
+const bestDay = Object.entries(dayCounts).sort(function(a,b){return b[1]-a[1];})[0];
 document.getElementById("longest-streak").textContent = longest + (longest===1?" day":" days");
 document.getElementById("current-streak").textContent = currentStreak + (currentStreak===1?" day":" days");
-document.getElementById("best-day").textContent = bestDay ? bestDay[1] + " on " + bestDay[0] : "—";
+document.getElementById("best-day").textContent = bestDay ? bestDay[1] + " on " + bestDay[0] : "-";
 
 const tagCounts = {};
-data.forEach(d=>(d.tags||"").split(",").map(t=>t.trim()).filter(Boolean).forEach(t=>tagCounts[t]=(tagCounts[t]||0)+1));
-document.getElementById("top-tags").innerHTML = Object.entries(tagCounts).sort((a,b)=>b[1]-a[1]).slice(0,8)
-  .map(([t,c])=>`<span class="tag-pill">${t} · ${c}</span>`).join("");
+data.forEach(function(d){ (d.tags||"").split(",").map(function(t){return t.trim();}).filter(Boolean).forEach(function(t){ tagCounts[t]=(tagCounts[t]||0)+1; }); });
+document.getElementById("top-tags").innerHTML = Object.entries(tagCounts).sort(function(a,b){return b[1]-a[1];}).slice(0,8)
+  .map(function(p){ return "<span class='tag-pill'>" + p[0] + " . " + p[1] + "</span>"; }).join("");
 
-// Table
 const tagSet = new Set();
-data.forEach(d => (d.tags||"").split(",").map(t=>t.trim()).filter(Boolean).forEach(t=>tagSet.add(t)));
+data.forEach(function(d){ (d.tags||"").split(",").map(function(t){return t.trim();}).filter(Boolean).forEach(function(t){ tagSet.add(t); }); });
 const tagFilter = document.getElementById("tagFilter");
-[...tagSet].sort().forEach(t => { const o=document.createElement("option"); o.textContent=t; tagFilter.appendChild(o); });
+Array.from(tagSet).sort().forEach(function(t){ const o=document.createElement("option"); o.textContent=t; tagFilter.appendChild(o); });
 
 function updateHeaderState() {
-  document.querySelectorAll("th[data-key]").forEach(th => th.classList.toggle("active", th.dataset.key === sortKey));
+  document.querySelectorAll("th[data-key]").forEach(function(th){ th.classList.toggle("active", th.dataset.key === sortKey); });
 }
 function render() {
   const q = document.getElementById("search").value.toLowerCase();
   const diff = document.getElementById("diffFilter").value;
   const tag = tagFilter.value;
-  let rows = data.filter(d =>
-    (d.title.toLowerCase().includes(q) || (d.tags||"").toLowerCase().includes(q)) &&
+  let rows = data.filter(function(d){
+    return (d.title.toLowerCase().includes(q) || (d.tags||"").toLowerCase().includes(q)) &&
     (!diff || d.difficulty === diff) &&
-    (!tag || (d.tags||"").split(",").map(t=>t.trim()).includes(tag))
-  );
-  rows.sort((a,b) => { const v = a[sortKey] > b[sortKey] ? 1 : -1; return sortAsc ? v : -v; });
+    (!tag || (d.tags||"").split(",").map(function(t){return t.trim();}).includes(tag));
+  });
+  rows.sort(function(a,b){ const v = a[sortKey] > b[sortKey] ? 1 : -1; return sortAsc ? v : -v; });
   document.getElementById("count-line").textContent = rows.length + " of " + data.length;
-  document.getElementById("body").innerHTML = rows.map(d =>
-    `<tr>`+
-    `<td data-label="#" class="num mono">`+d.num+`</td>`+
-    `<td data-label="Problem">`+d.title+`</td>`+
-    `<td data-label="Difficulty" class="diff `+d.difficulty+`">`+d.difficulty+`</td>`+
-    `<td data-label="Tags" class="tags mono">`+(d.tags||"")+`</td>`+
-    `<td data-label="Solution"><a href="`+d.path+`">open</a></td>`+
-    `</tr>`
-  ).join("");
+  document.getElementById("body").innerHTML = rows.map(function(d){
+    return "<tr>" +
+      "<td data-label='#' class='num mono'>" + d.num + "</td>" +
+      "<td data-label='Problem'>" + d.title + "</td>" +
+      "<td data-label='Difficulty' class='diff " + d.difficulty + "'>" + d.difficulty + "</td>" +
+      "<td data-label='Tags' class='tags mono'>" + (d.tags||"") + "</td>" +
+      "<td data-label='Solution'><a href='" + d.path + "'>open</a></td>" +
+      "</tr>";
+  }).join("");
   updateHeaderState();
 }
 document.getElementById("search").addEventListener("input", render);
 document.getElementById("diffFilter").addEventListener("change", render);
 tagFilter.addEventListener("change", render);
-document.querySelectorAll("th[data-key]").forEach(th => {
-  const activate = () => {
+document.querySelectorAll("th[data-key]").forEach(function(th){
+  const activate = function(){
     if (sortKey === th.dataset.key) sortAsc = !sortAsc; else { sortKey = th.dataset.key; sortAsc = true; }
     render();
   };
   th.addEventListener("click", activate);
-  th.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); activate(); } });
+  th.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); activate(); } });
 });
 render();
 </script>
