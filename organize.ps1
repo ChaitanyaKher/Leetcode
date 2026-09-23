@@ -23,7 +23,7 @@ if (Test-Path "solve_dates.json") {
 }
 
 Get-ChildItem -Path . -Filter "*.java" -File | ForEach-Object {
-    if ($_.Name -match '^(\d+)\.(.+)\.java$') {
+    if ($_.Name -match '^(\d+)[.\-](.+)\.java$') {
         $problemNum = [int]$matches[1]
         $slug = ($matches[2].ToLower() -replace '[^a-z0-9]+', '-').Trim('-')
         $paddedNum = $problemNum.ToString('0000')
