@@ -478,5 +478,9 @@
   "valid-word": {
     "tags": "String",
     "difficulty": "Easy"
+  },
+  "set-matrix-zeroes": {
+    "tags": "Array, Hash Table, Matrix",
+    "difficulty": "Medium"
   }
 }
