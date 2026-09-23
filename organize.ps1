@@ -104,44 +104,99 @@ if (-not (Test-Path "README.md")) {
     $readme | Set-Content "README.md"
 }
 
+$easyCount = ($trackerData | Where-Object { $_.difficulty -eq "Easy" }).Count
+$medCount = ($trackerData | Where-Object { $_.difficulty -eq "Medium" }).Count
+$hardCount = ($trackerData | Where-Object { $_.difficulty -eq "Hard" }).Count
+
 $trackerHtml = @"
 <!DOCTYPE html>
 <html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>LeetCode Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+:root{
+  --bg:#111417; --panel:#181c20; --border:#2a2f35;
+  --text:#e7e9ec; --muted:#8b9199; --accent:#e3b341;
+  --easy:#6fb98f; --medium:#d8a94f; --hard:#d9765f;
+}
 *{box-sizing:border-box}
-body{font-family:sans-serif;margin:1.5rem;background:#0d1117;color:#c9d1d9}
-h1{font-size:1.4rem}
-.controls{display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:1rem}
-input,select{padding:.6rem;background:#161b22;color:#c9d1d9;border:1px solid #30363d;border-radius:4px;font-size:1rem;flex:1;min-width:140px}
-table{width:100%;border-collapse:collapse}
-th,td{padding:.5rem;text-align:left;border-bottom:1px solid #30363d}
-th{cursor:pointer;user-select:none;white-space:nowrap}
-a{color:#58a6ff}
-.Easy{color:#3fb950}.Medium{color:#d29922}.Hard{color:#f85149}
-#count{margin-bottom:1rem;color:#8b949e}
+body{
+  font-family:'Inter',system-ui,sans-serif; margin:0; padding:2.5rem 1.5rem;
+  background:var(--bg); color:var(--text); line-height:1.5;
+}
+.wrap{max-width:920px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+header{margin-bottom:1.75rem}
+.count{font-size:2.25rem;font-weight:600;letter-spacing:-0.02em}
+.count span{font-size:1rem;font-weight:400;color:var(--muted);margin-left:.5rem}
+.breakdown{display:flex;gap:1.25rem;margin-top:.5rem;font-size:.85rem}
+.breakdown span{color:var(--muted)}
+.breakdown b{font-weight:500}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:.4rem;vertical-align:middle}
 
-@media (max-width: 640px) {
-  body{margin:1rem}
+.controls{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.5rem 0 1rem}
+input,select{
+  font-family:inherit;font-size:.9rem;padding:.55rem .7rem;
+  background:var(--panel);color:var(--text);border:1px solid var(--border);
+  border-radius:3px;flex:1;min-width:130px;
+}
+input:focus,select:focus,a:focus,th:focus{outline:2px solid var(--accent);outline-offset:1px}
+#count-line{color:var(--muted);font-size:.85rem;margin-bottom:.75rem}
+
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{
+  text-align:left;font-weight:500;color:var(--muted);font-size:.8rem;
+  padding:.5rem .6rem;border-bottom:1px solid var(--border);cursor:pointer;
+  white-space:nowrap;
+}
+th.active{color:var(--accent)}
+td{padding:.6rem;border-bottom:1px solid var(--border);vertical-align:middle}
+tr:hover td{background:rgba(227,179,65,0.04)}
+.num,.tags{color:var(--muted)}
+a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--border)}
+a:hover{color:var(--accent);border-color:var(--accent)}
+.diff{font-size:.85rem}
+.Easy{color:var(--easy)}.Medium{color:var(--medium)}.Hard{color:var(--hard)}
+
+@media (prefers-reduced-motion:no-preference){tr td{transition:background .1s ease}}
+
+@media (max-width:640px){
+  body{padding:1.5rem 1rem}
   .controls{flex-direction:column}
-  input,select{width:100%}
   thead{display:none}
-  table, tbody, tr, td{display:block;width:100%}
-  tr{border:1px solid #30363d;border-radius:6px;margin-bottom:.75rem;padding:.5rem;background:#161b22}
-  td{border:none;padding:.3rem .2rem;display:flex;justify-content:space-between;gap:1rem}
-  td::before{content:attr(data-label);font-weight:600;color:#8b949e}
+  table,tbody,tr,td{display:block;width:100%}
+  tr{border:1px solid var(--border);border-radius:4px;margin-bottom:.6rem;padding:.4rem .6rem}
+  td{border:none;padding:.3rem 0;display:flex;justify-content:space-between;gap:1rem}
+  td::before{content:attr(data-label);color:var(--muted);font-size:.8rem}
 }
 </style></head>
 <body>
-<h1>LeetCode Tracker</h1>
-<div id="count"></div>
+<div class="wrap">
+<header>
+  <div class="count mono">$($trackerData.Count)<span>solved</span></div>
+  <div class="breakdown">
+    <span><span class="dot" style="background:var(--easy)"></span><b>$easyCount</b> easy</span>
+    <span><span class="dot" style="background:var(--medium)"></span><b>$medCount</b> medium</span>
+    <span><span class="dot" style="background:var(--hard)"></span><b>$hardCount</b> hard</span>
+  </div>
+</header>
+
 <div class="controls">
-<input id="search" placeholder="Search title or tag...">
-<select id="diffFilter"><option value="">All Difficulties</option><option>Easy</option><option>Medium</option><option>Hard</option></select>
-<select id="tagFilter"><option value="">All Tags</option></select>
+  <input id="search" placeholder="Search title or tag">
+  <select id="diffFilter"><option value="">All difficulties</option><option>Easy</option><option>Medium</option><option>Hard</option></select>
+  <select id="tagFilter"><option value="">All tags</option></select>
 </div>
+<div id="count-line"></div>
+
 <table id="tbl"><thead><tr>
-<th data-key="num">#</th><th data-key="title">Problem</th><th data-key="difficulty">Difficulty</th><th data-key="tags">Tags</th><th>Solution</th>
+<th data-key="num" tabindex="0">#</th>
+<th data-key="title" tabindex="0">Problem</th>
+<th data-key="difficulty" tabindex="0">Difficulty</th>
+<th data-key="tags" tabindex="0">Tags</th>
+<th>Solution</th>
 </tr></thead><tbody id="body"></tbody></table>
+</div>
+
 <script>
 const data = $dataJson;
 let sortKey = "num", sortAsc = true;
@@ -149,6 +204,12 @@ const tagSet = new Set();
 data.forEach(d => (d.tags||"").split(",").map(t=>t.trim()).filter(Boolean).forEach(t=>tagSet.add(t)));
 const tagFilter = document.getElementById("tagFilter");
 [...tagSet].sort().forEach(t => { const o=document.createElement("option"); o.textContent=t; tagFilter.appendChild(o); });
+
+function updateHeaderState() {
+  document.querySelectorAll("th[data-key]").forEach(th => {
+    th.classList.toggle("active", th.dataset.key === sortKey);
+  });
+}
 
 function render() {
   const q = document.getElementById("search").value.toLowerCase();
@@ -163,25 +224,30 @@ function render() {
     const v = a[sortKey] > b[sortKey] ? 1 : -1;
     return sortAsc ? v : -v;
   });
-  document.getElementById("count").textContent = rows.length + " problems";
+  document.getElementById("count-line").textContent = rows.length + " of " + data.length;
   document.getElementById("body").innerHTML = rows.map(d =>
     `<tr>`+
-    `<td data-label="#">`+d.num+`</td>`+
+    `<td data-label="#" class="num mono">`+d.num+`</td>`+
     `<td data-label="Problem">`+d.title+`</td>`+
-    `<td data-label="Difficulty" class="`+d.difficulty+`">`+d.difficulty+`</td>`+
-    `<td data-label="Tags">`+(d.tags||"")+`</td>`+
-    `<td data-label="Solution"><a href="`+d.path+`">view</a></td>`+
+    `<td data-label="Difficulty" class="diff `+d.difficulty+`">`+d.difficulty+`</td>`+
+    `<td data-label="Tags" class="tags mono">`+(d.tags||"")+`</td>`+
+    `<td data-label="Solution"><a href="`+d.path+`">open</a></td>`+
     `</tr>`
   ).join("");
+  updateHeaderState();
 }
+
 document.getElementById("search").addEventListener("input", render);
 document.getElementById("diffFilter").addEventListener("change", render);
 tagFilter.addEventListener("change", render);
-document.querySelectorAll("th[data-key]").forEach(th => th.addEventListener("click", () => {
-  const key = th.dataset.key;
-  if (sortKey === key) sortAsc = !sortAsc; else { sortKey = key; sortAsc = true; }
-  render();
-}));
+document.querySelectorAll("th[data-key]").forEach(th => {
+  const activate = () => {
+    if (sortKey === th.dataset.key) sortAsc = !sortAsc; else { sortKey = th.dataset.key; sortAsc = true; }
+    render();
+  };
+  th.addEventListener("click", activate);
+  th.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); activate(); } });
+});
 render();
 </script>
 </body></html>
