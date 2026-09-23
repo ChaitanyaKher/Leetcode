@@ -253,4 +253,4 @@ render();
 </body></html>
 "@
 
-$trackerHtml | Set-Content "tracker.html"
+$trackerHtml | Set-Content "index.html"
