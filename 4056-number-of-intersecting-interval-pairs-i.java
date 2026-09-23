@@ -1,4 +1,4 @@
-public class Solution {
+class Solution {
   public int countIntersectingIntervals(int[][] intervals) {
     int cnt = 0;
         int n = intervals.length;
