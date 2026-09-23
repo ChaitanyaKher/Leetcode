@@ -1,4 +1,4 @@
-<!-- TOTAL-SOLVED -->128 problems solved<!-- /TOTAL-SOLVED -->
+<!-- TOTAL-SOLVED -->129 problems solved<!-- /TOTAL-SOLVED -->
 
 # LeetCode Solutions
 
@@ -6,7 +6,7 @@ Total solved: 29
 
 <!-- SOLUTIONS-TABLE-START -->
 <details>
-<summary>0001-0100 (32 solved)</summary>
+<summary>0001-0100 (33 solved)</summary>
 
 | # | Problem | Tags | Solution |
 |---|---------|------|----------|
@@ -33,6 +33,7 @@ Total solved: 29
 | 63 | Unique Paths Ii | @{tags=Array, Dynamic Programming, Matrix; difficulty=Medium} | [0001-0100/0063-unique-paths-ii/0063-unique-paths-ii.java](0001-0100/0063-unique-paths-ii/0063-unique-paths-ii.java) |
 | 66 | Plus One | @{tags=Array, Math; difficulty=Easy} | [0001-0100/0066-plus-one/0066-plus-one.java](0001-0100/0066-plus-one/0066-plus-one.java) |
 | 67 | Add Binary | @{tags=Math, String, Bit Manipulation, Simulation; difficulty=Easy} | [0001-0100/0067-add-binary/0067-add-binary.java](0001-0100/0067-add-binary/0067-add-binary.java) |
+| 73 | Set Matrix Zeroes |  | [0001-0100/0073-set-matrix-zeroes/0073-set-matrix-zeroes.java](0001-0100/0073-set-matrix-zeroes/0073-set-matrix-zeroes.java) |
 | 75 | Sort Colors | @{tags=Array, Two Pointers, Sorting, Quicksort, Bubble Sort; difficulty=Medium} | [0001-0100/0075-sort-colors/0075-sort-colors.java](0001-0100/0075-sort-colors/0075-sort-colors.java) |
 | 76 | Minimum Window Substring | @{tags=Hash Table, String, Sliding Window; difficulty=Hard} | [0001-0100/0076-minimum-window-substring/0076-minimum-window-substring.java](0001-0100/0076-minimum-window-substring/0076-minimum-window-substring.java) |
 | 80 | Remove Duplicates From Sorted Array Ii | @{tags=Array, Two Pointers; difficulty=Medium} | [0001-0100/0080-remove-duplicates-from-sorted-array-ii/0080-remove-duplicates-from-sorted-array-ii.java](0001-0100/0080-remove-duplicates-from-sorted-array-ii/0080-remove-duplicates-from-sorted-array-ii.java) |
@@ -413,6 +414,7 @@ Total solved: 29
 
 </details>
 <!-- SOLUTIONS-TABLE-END -->
+
 
 
 
