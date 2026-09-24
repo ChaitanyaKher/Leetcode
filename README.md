@@ -74,7 +74,7 @@ Total solved: 29
 | # | Problem | Tags | Solution |
 |---|---------|------|----------|
 | 206 | Reverse Linked List | Linked List, Recursion | [0201-0300/0206-reverse-linked-list/0206-reverse-linked-list.java](0201-0300/0206-reverse-linked-list/0206-reverse-linked-list.java) |
-| 213 | House Robber Ii |  | [0201-0300/0213-house-robber-ii/0213-house-robber-ii.java](0201-0300/0213-house-robber-ii/0213-house-robber-ii.java) |
+| 213 | House Robber Ii | Array, Dynamic Programming | [0201-0300/0213-house-robber-ii/0213-house-robber-ii.java](0201-0300/0213-house-robber-ii/0213-house-robber-ii.java) |
 | 215 | Kth Largest Element In An Array | Array, Divide and Conquer, Sorting, Heap (Priority Queue), Quickselect | [0201-0300/0215-kth-largest-element-in-an-array/0215-kth-largest-element-in-an-array.java](0201-0300/0215-kth-largest-element-in-an-array/0215-kth-largest-element-in-an-array.java) |
 | 217 | Contains Duplicate | Array, Hash Table, Sorting | [0201-0300/0217-contains-duplicate/0217-contains-duplicate.java](0201-0300/0217-contains-duplicate/0217-contains-duplicate.java) |
 | 225 | Implement Stack Using Queues | Stack, Design, Queue | [0201-0300/0225-implement-stack-using-queues/0225-implement-stack-using-queues.java](0201-0300/0225-implement-stack-using-queues/0225-implement-stack-using-queues.java) |
@@ -97,7 +97,7 @@ Total solved: 29
 | 344 | Reverse String | Two Pointers, String | [0301-0400/0344-reverse-string/0344-reverse-string.java](0301-0400/0344-reverse-string/0344-reverse-string.java) |
 | 345 | Reverse Vowels Of A String | Two Pointers, String | [0301-0400/0345-reverse-vowels-of-a-string/0345-reverse-vowels-of-a-string.java](0301-0400/0345-reverse-vowels-of-a-string/0345-reverse-vowels-of-a-string.java) |
 | 347 | Top K Frequent Elements | Array, Hash Table, Divide and Conquer, Sorting, Heap (Priority Queue), Bucket Sort, Counting, Quickselect | [0301-0400/0347-top-k-frequent-elements/0347-top-k-frequent-elements.java](0301-0400/0347-top-k-frequent-elements/0347-top-k-frequent-elements.java) |
-| 373 | Find K Pairs With Smallest Sums |  | [0301-0400/0373-find-k-pairs-with-smallest-sums/0373-find-k-pairs-with-smallest-sums.java](0301-0400/0373-find-k-pairs-with-smallest-sums/0373-find-k-pairs-with-smallest-sums.java) |
+| 373 | Find K Pairs With Smallest Sums | Array, Heap (Priority Queue) | [0301-0400/0373-find-k-pairs-with-smallest-sums/0373-find-k-pairs-with-smallest-sums.java](0301-0400/0373-find-k-pairs-with-smallest-sums/0373-find-k-pairs-with-smallest-sums.java) |
 | 383 | Ransom Note | Hash Table, String, Counting | [0301-0400/0383-ransom-note/0383-ransom-note.java](0301-0400/0383-ransom-note/0383-ransom-note.java) |
 
 </details>
@@ -417,6 +417,7 @@ Total solved: 29
 
 </details>
 <!-- SOLUTIONS-TABLE-END -->
+
 
 
 

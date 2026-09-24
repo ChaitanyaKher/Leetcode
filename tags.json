@@ -486,5 +486,13 @@
   "number-of-intersecting-interval-pairs-i": {
     "tags": "",
     "difficulty": "Easy"
+  },
+  "find-k-pairs-with-smallest-sums": {
+    "tags": "Array, Heap (Priority Queue)",
+    "difficulty": "Medium"
+  },
+  "house-robber-ii": {
+    "tags": "Array, Dynamic Programming",
+    "difficulty": "Medium"
   }
 }
