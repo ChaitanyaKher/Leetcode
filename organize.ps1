@@ -19,7 +19,9 @@ Get-ChildItem -Path . -Directory | Where-Object { $_.Name -match '^\d{4}-\d{4}$'
 $datesDb = @{}
 if (Test-Path "solve_dates.json") {
     $datesJson = Get-Content "solve_dates.json" -Raw | ConvertFrom-Json
-    $datesJson.PSObject.Properties | ForEach-Object { $datesDb[$_.Name] = $_.Value }
+    $datesJson.PSObject.Properties | ForEach-Object {
+        $datesDb[$_.Name] = @($_.Value)
+    }
 }
 
 Get-ChildItem -Path . -Filter "*.java" -File | ForEach-Object {
@@ -139,14 +141,17 @@ foreach ($s in $allFiles) {
             $tags = $meta
         }
     }
-    $solvedDate = if ($datesDb.ContainsKey($s.Slug)) { $datesDb[$s.Slug] } else { "" }
+    $history = if ($datesDb.ContainsKey($s.Slug)) { @($datesDb[$s.Slug] | Sort-Object) } else { @() }
+    $latestDate = if ($history.Count -gt 0) { $history[-1] } else { "" }
     $trackerData += [PSCustomObject]@{
         num = $s.Num
         title = (Get-Culture).TextInfo.ToTitleCase($s.Title)
         tags = $tags
         difficulty = $difficulty
         path = $s.Path
-        date = $solvedDate
+        date = $latestDate
+        timesSolved = $history.Count
+        history = $history
     }
 }
 
@@ -295,7 +300,7 @@ a:hover{color:var(--accent);border-color:var(--accent)}
 <th data-key="num" tabindex="0">#</th>
 <th data-key="title" tabindex="0">Problem</th>
 <th data-key="difficulty" tabindex="0">Difficulty</th>
-<th data-key="tags" tabindex="0">Tags</th>
+<th data-key="timesSolved" tabindex="0">Times</th>
 <th data-key="date" tabindex="0">Last Solved</th>
 <th>Solution</th>
 </tr></thead><tbody id="body"></tbody></table>
@@ -403,7 +408,8 @@ function render() {
       "<td data-label='Problem'>" + d.title + "</td>" +
       "<td data-label='Difficulty' class='diff " + d.difficulty + "'>" + d.difficulty + "</td>" +
       "<td data-label='Tags' class='tags mono'>" + (d.tags||"") + "</td>" +
-      "<td data-label='Last Solved' class='mono'>" + (d.date||"-") + "</td>" +
+      "<td data-label='Times' class='mono'>" + d.timesSolved + "</td>" +
+      "<td data-label='Last Solved' class='mono' title='" + (d.history||[]).join(', ') + "'>" + (d.date||"-") + "</td>" +
       "<td data-label='Solution'><a href='" + d.path + "'>open</a></td>" +
       "</tr>";
   }).join("");
