@@ -52,7 +52,12 @@ Get-ChildItem -Path . -Filter "*.java" -File | ForEach-Object {
     Move-Item -Path $_.FullName -Destination $destPath -Force
 
     if ($isGenuineChange) {
-      $datesDb[$slug] = (Get-Date).ToString('yyyy-MM-dd')
+    $today = (Get-Date).ToString('yyyy-MM-dd')
+    if (-not $datesDb.ContainsKey($slug)) {
+        $datesDb[$slug] = @($today)
+    } elseif ($datesDb[$slug] -notcontains $today) {
+        $datesDb[$slug] = @($datesDb[$slug]) + $today
+      }
     }
   }
 }
@@ -149,7 +154,7 @@ foreach ($s in $allFiles) {
     $history = @()
     if ($rawHistory -ne $null) {
         if ($rawHistory -is [System.Array]) {
-            $history = @($rawHistory) | Sort-Object
+            $history = @($rawHistory | Sort-Object)
         } else {
             $history = @($rawHistory.ToString())
         }
