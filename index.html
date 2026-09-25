@@ -149,7 +149,12 @@ let selectedDate = null;
 const dayCounts = {};
 data.forEach(function(d){ if (d.date) dayCounts[d.date] = (dayCounts[d.date]||0)+1; });
 
-function fmt(d){ return d.toISOString().slice(0,10); }
+function fmt(d){
+  const y = d.getFullYear();
+  const m = String(d.getMonth()+1).padStart(2,'0');
+  const day = String(d.getDate()).padStart(2,'0');
+  return y + '-' + m + '-' + day;
+}
 const today = new Date(); today.setHours(0,0,0,0);
 const start = new Date(today); start.setDate(start.getDate() - 370);
 while (start.getDay() !== 0) start.setDate(start.getDate()-1);
