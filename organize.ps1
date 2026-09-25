@@ -133,34 +133,46 @@ else {
 # 4. Build tracker data for index.html
 $trackerData = @()
 foreach ($s in $allFiles) {
-  $meta = $tagsMap[$s.Slug]
-  $tags = ""
-  $difficulty = ""
-  if ($meta -ne $null) {
-    if ($meta.PSObject.Properties.Name -contains "tags") {
-      $tags = $meta.tags
-      $difficulty = $meta.difficulty
+    $meta = $tagsMap[$s.Slug]
+    $tags = ""
+    $difficulty = ""
+    if ($meta -ne $null) {
+        if ($meta.PSObject.Properties.Name -contains "tags") {
+            $tags = $meta.tags
+            $difficulty = $meta.difficulty
+        } elseif ($meta -is [string]) {
+            $tags = $meta
+        }
     }
-    elseif ($meta -is [string]) {
-      $tags = $meta
+
+    $rawHistory = $datesDb[$s.Slug]
+    $history = @()
+    if ($rawHistory -ne $null) {
+        if ($rawHistory -is [System.Array]) {
+            $history = @($rawHistory) | Sort-Object
+        } else {
+            $history = @($rawHistory.ToString())
+        }
     }
-  }
-  $history = if ($datesDb.ContainsKey($s.Slug)) { @($datesDb[$s.Slug] | Sort-Object) } else { @() }
-  $latestDate = if ($history.Count -gt 0) { $history[-1] } else { "" }
-  $trackerData += [PSCustomObject]@{
-    num         = $s.Num
-    title       = (Get-Culture).TextInfo.ToTitleCase($s.Title)
-    tags        = $tags
-    difficulty  = $difficulty
-    path        = $s.Path
-    date        = $latestDate
-    timesSolved = $history.Count
-    history     = , $history
-  }
+
+    $latestDate = ""
+    if ($history.Count -gt 0) {
+        $latestDate = $history[$history.Count - 1]
+    }
+
+    $trackerData += [PSCustomObject]@{
+        num = $s.Num
+        title = (Get-Culture).TextInfo.ToTitleCase($s.Title)
+        tags = $tags
+        difficulty = $difficulty
+        path = $s.Path
+        date = $latestDate
+        timesSolved = $history.Count
+        history = ,$history
+    }
 }
 
 $dataJson = if ($trackerData.Count -gt 0) { @($trackerData | Sort-Object num) | ConvertTo-Json -Compress } else { "[]" }
-
 $easyCount = ($trackerData | Where-Object { $_.difficulty -eq "Easy" }).Count
 $medCount = ($trackerData | Where-Object { $_.difficulty -eq "Medium" }).Count
 $hardCount = ($trackerData | Where-Object { $_.difficulty -eq "Hard" }).Count
