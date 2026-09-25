@@ -2,59 +2,59 @@ Set-Location "$PSScriptRoot"
 
 # 1. Migrate already-bucketed flat files into their own problem subfolder
 Get-ChildItem -Path . -Directory | Where-Object { $_.Name -match '^\d{4}-\d{4}$' } | ForEach-Object {
-    $rangeDir = $_.FullName
-    Get-ChildItem -Path $rangeDir -Filter "*.java" -File | ForEach-Object {
-        if ($_.Name -match '^(\d{4})-(.+)\.java$') {
-            $problemFolder = "$($matches[1])-$($matches[2])"
-            $destDir = Join-Path $rangeDir $problemFolder
-            if (-not (Test-Path $destDir)) {
-                New-Item -ItemType Directory -Path $destDir -Force | Out-Null
-            }
-            Move-Item -Path $_.FullName -Destination (Join-Path $destDir $_.Name) -Force
-        }
+  $rangeDir = $_.FullName
+  Get-ChildItem -Path $rangeDir -Filter "*.java" -File | ForEach-Object {
+    if ($_.Name -match '^(\d{4})-(.+)\.java$') {
+      $problemFolder = "$($matches[1])-$($matches[2])"
+      $destDir = Join-Path $rangeDir $problemFolder
+      if (-not (Test-Path $destDir)) {
+        New-Item -ItemType Directory -Path $destDir -Force | Out-Null
+      }
+      Move-Item -Path $_.FullName -Destination (Join-Path $destDir $_.Name) -Force
     }
+  }
 }
 
 # 2. Rename + bucket any new top-level files into range/problem subfolder, record solve dates
 $datesDb = @{}
 if (Test-Path "solve_dates.json") {
-    $datesJson = Get-Content "solve_dates.json" -Raw | ConvertFrom-Json
-    $datesJson.PSObject.Properties | ForEach-Object {
-        $datesDb[$_.Name] = @($_.Value)
-    }
+  $datesJson = Get-Content "solve_dates.json" -Raw | ConvertFrom-Json
+  $datesJson.PSObject.Properties | ForEach-Object {
+    $datesDb[$_.Name] = @($_.Value)
+  }
 }
 
 Get-ChildItem -Path . -Filter "*.java" -File | ForEach-Object {
-    if ($_.Name -match '^(\d+)[.\-](.+)\.java$') {
-        $problemNum = [int]$matches[1]
-        $slug = ($matches[2].ToLower() -replace '[^a-z0-9]+', '-').Trim('-')
-        $paddedNum = $problemNum.ToString('0000')
-        $newName = "$paddedNum-$slug.java"
+  if ($_.Name -match '^(\d+)[.\-](.+)\.java$') {
+    $problemNum = [int]$matches[1]
+    $slug = ($matches[2].ToLower() -replace '[^a-z0-9]+', '-').Trim('-')
+    $paddedNum = $problemNum.ToString('0000')
+    $newName = "$paddedNum-$slug.java"
 
-        $rangeStart = [math]::Floor(($problemNum - 1) / 100) * 100 + 1
-        $rangeEnd = $rangeStart + 99
-        $rangeFolder = "{0:0000}-{1:0000}" -f $rangeStart, $rangeEnd
-        $problemFolder = "$paddedNum-$slug"
-        $destDir = Join-Path $rangeFolder $problemFolder
-        $destPath = Join-Path $destDir $newName
+    $rangeStart = [math]::Floor(($problemNum - 1) / 100) * 100 + 1
+    $rangeEnd = $rangeStart + 99
+    $rangeFolder = "{0:0000}-{1:0000}" -f $rangeStart, $rangeEnd
+    $problemFolder = "$paddedNum-$slug"
+    $destDir = Join-Path $rangeFolder $problemFolder
+    $destPath = Join-Path $destDir $newName
 
-        if (-not (Test-Path $destDir)) {
-            New-Item -ItemType Directory -Path $destDir -Force | Out-Null
-        }
-
-        $isGenuineChange = $true
-        if (Test-Path $destPath) {
-            $oldHash = (Get-FileHash -Path $destPath -Algorithm SHA256).Hash
-            $newHash = (Get-FileHash -Path $_.FullName -Algorithm SHA256).Hash
-            $isGenuineChange = ($oldHash -ne $newHash)
-        }
-
-        Move-Item -Path $_.FullName -Destination $destPath -Force
-
-        if ($isGenuineChange) {
-            $datesDb[$slug] = (Get-Date).ToString('yyyy-MM-dd')
-        }
+    if (-not (Test-Path $destDir)) {
+      New-Item -ItemType Directory -Path $destDir -Force | Out-Null
     }
+
+    $isGenuineChange = $true
+    if (Test-Path $destPath) {
+      $oldHash = (Get-FileHash -Path $destPath -Algorithm SHA256).Hash
+      $newHash = (Get-FileHash -Path $_.FullName -Algorithm SHA256).Hash
+      $isGenuineChange = ($oldHash -ne $newHash)
+    }
+
+    Move-Item -Path $_.FullName -Destination $destPath -Force
+
+    if ($isGenuineChange) {
+      $datesDb[$slug] = (Get-Date).ToString('yyyy-MM-dd')
+    }
+  }
 }
 
 $datesDb | ConvertTo-Json | Set-Content "solve_dates.json"
@@ -62,97 +62,101 @@ $datesDb | ConvertTo-Json | Set-Content "solve_dates.json"
 # 3. Rebuild the solutions table in README.md, paginated by range folder, with tags
 $tagsMap = @{}
 if (Test-Path "tags.json") {
-    $tagsJson = Get-Content "tags.json" -Raw | ConvertFrom-Json
-    $tagsJson.PSObject.Properties | ForEach-Object { $tagsMap[$_.Name] = $_.Value }
+  $tagsJson = Get-Content "tags.json" -Raw | ConvertFrom-Json
+  $tagsJson.PSObject.Properties | ForEach-Object { $tagsMap[$_.Name] = $_.Value }
 }
 
 $allFiles = Get-ChildItem -Path . -Recurse -Filter "*.java" -File |
-    Where-Object { $_.Directory.Parent.Name -match '^\d{4}-\d{4}$' } |
-    ForEach-Object {
-        if ($_.Name -match '^(\d{4})-(.+)\.java$') {
-            [PSCustomObject]@{
-                Num   = [int]$matches[1]
-                Slug  = $matches[2]
-                Title = ($matches[2] -replace '-', ' ')
-                Range = $_.Directory.Parent.Name
-                Path  = "$($_.Directory.Parent.Name)/$($_.Directory.Name)/$($_.Name)"
-            }
-        }
+Where-Object { $_.Directory.Parent.Name -match '^\d{4}-\d{4}$' } |
+ForEach-Object {
+  if ($_.Name -match '^(\d{4})-(.+)\.java$') {
+    [PSCustomObject]@{
+      Num   = [int]$matches[1]
+      Slug  = $matches[2]
+      Title = ($matches[2] -replace '-', ' ')
+      Range = $_.Directory.Parent.Name
+      Path  = "$($_.Directory.Parent.Name)/$($_.Directory.Name)/$($_.Name)"
     }
+  }
+}
 
 $rangeGroups = $allFiles | Group-Object Range | Sort-Object { [int]($_.Name -split '-')[0] }
 
 $sections = @()
 foreach ($group in $rangeGroups) {
-    $rows = $group.Group | Sort-Object Num
-    $lines = @("| # | Problem | Tags | Solution |", "|---|---------|------|----------|")
-    foreach ($s in $rows) {
-        $titleCased = (Get-Culture).TextInfo.ToTitleCase($s.Title)
-        $meta = $tagsMap[$s.Slug]
-        $tags = if ($meta -ne $null -and $meta.PSObject.Properties.Name -contains "tags") { $meta.tags } elseif ($meta -is [string]) { $meta } else { "" }
-        $lines += "| $($s.Num) | $titleCased | $tags | [$($s.Path)]($($s.Path)) |"
-    }
-    $sections += "<details>`n<summary>$($group.Name) ($($rows.Count) solved)</summary>`n`n$($lines -join "`n")`n`n</details>"
+  $rows = $group.Group | Sort-Object Num
+  $lines = @("| # | Problem | Tags | Solution |", "|---|---------|------|----------|")
+  foreach ($s in $rows) {
+    $titleCased = (Get-Culture).TextInfo.ToTitleCase($s.Title)
+    $meta = $tagsMap[$s.Slug]
+    $tags = if ($meta -ne $null -and $meta.PSObject.Properties.Name -contains "tags") { $meta.tags } elseif ($meta -is [string]) { $meta } else { "" }
+    $lines += "| $($s.Num) | $titleCased | $tags | [$($s.Path)]($($s.Path)) |"
+  }
+  $sections += "<details>`n<summary>$($group.Name) ($($rows.Count) solved)</summary>`n`n$($lines -join "`n")`n`n</details>"
 }
 
 $startMarker = "<!-- SOLUTIONS-TABLE-START -->"
-$endMarker   = "<!-- SOLUTIONS-TABLE-END -->"
-$newBlock    = "$startMarker`n$($sections -join "`n`n")`n$endMarker"
+$endMarker = "<!-- SOLUTIONS-TABLE-END -->"
+$newBlock = "$startMarker`n$($sections -join "`n`n")`n$endMarker"
 
 $totalStart = "<!-- TOTAL-SOLVED -->"
-$totalEnd   = "<!-- /TOTAL-SOLVED -->"
-$totalLine  = "$totalStart$($allFiles.Count) problems solved$totalEnd"
+$totalEnd = "<!-- /TOTAL-SOLVED -->"
+$totalLine = "$totalStart$($allFiles.Count) problems solved$totalEnd"
 
 if (-not (Test-Path "README.md")) {
-    "# LeetCode Solutions`n`n$totalLine`n`n$newBlock" | Set-Content "README.md"
-} else {
-    $readme = Get-Content "README.md" -Raw
+  "# LeetCode Solutions`n`n$totalLine`n`n$newBlock" | Set-Content "README.md"
+}
+else {
+  $readme = Get-Content "README.md" -Raw
 
-    $tStart = $readme.IndexOf($totalStart)
-    $tEnd = $readme.IndexOf($totalEnd)
-    if ($tStart -ge 0 -and $tEnd -ge 0) {
-        $readme = $readme.Substring(0, $tStart) + $totalLine + $readme.Substring($tEnd + $totalEnd.Length)
-    } else {
-        $readme = "$totalLine`n`n$readme"
-    }
+  $tStart = $readme.IndexOf($totalStart)
+  $tEnd = $readme.IndexOf($totalEnd)
+  if ($tStart -ge 0 -and $tEnd -ge 0) {
+    $readme = $readme.Substring(0, $tStart) + $totalLine + $readme.Substring($tEnd + $totalEnd.Length)
+  }
+  else {
+    $readme = "$totalLine`n`n$readme"
+  }
 
-    $sStart = $readme.IndexOf($startMarker)
-    $sEnd = $readme.IndexOf($endMarker)
-    if ($sStart -ge 0 -and $sEnd -ge 0) {
-        $readme = $readme.Substring(0, $sStart) + $newBlock + $readme.Substring($sEnd + $endMarker.Length)
-    } else {
-        $readme += "`n`n$newBlock"
-    }
+  $sStart = $readme.IndexOf($startMarker)
+  $sEnd = $readme.IndexOf($endMarker)
+  if ($sStart -ge 0 -and $sEnd -ge 0) {
+    $readme = $readme.Substring(0, $sStart) + $newBlock + $readme.Substring($sEnd + $endMarker.Length)
+  }
+  else {
+    $readme += "`n`n$newBlock"
+  }
 
-    $readme | Set-Content "README.md"
+  $readme | Set-Content "README.md"
 }
 
 # 4. Build tracker data for index.html
 $trackerData = @()
 foreach ($s in $allFiles) {
-    $meta = $tagsMap[$s.Slug]
-    $tags = ""
-    $difficulty = ""
-    if ($meta -ne $null) {
-        if ($meta.PSObject.Properties.Name -contains "tags") {
-            $tags = $meta.tags
-            $difficulty = $meta.difficulty
-        } elseif ($meta -is [string]) {
-            $tags = $meta
-        }
+  $meta = $tagsMap[$s.Slug]
+  $tags = ""
+  $difficulty = ""
+  if ($meta -ne $null) {
+    if ($meta.PSObject.Properties.Name -contains "tags") {
+      $tags = $meta.tags
+      $difficulty = $meta.difficulty
     }
-    $history = if ($datesDb.ContainsKey($s.Slug)) { @($datesDb[$s.Slug] | Sort-Object) } else { @() }
-    $latestDate = if ($history.Count -gt 0) { $history[-1] } else { "" }
-    $trackerData += [PSCustomObject]@{
-        num = $s.Num
-        title = (Get-Culture).TextInfo.ToTitleCase($s.Title)
-        tags = $tags
-        difficulty = $difficulty
-        path = $s.Path
-        date = $latestDate
-        timesSolved = $history.Count
-        history = ,$history
+    elseif ($meta -is [string]) {
+      $tags = $meta
     }
+  }
+  $history = if ($datesDb.ContainsKey($s.Slug)) { @($datesDb[$s.Slug] | Sort-Object) } else { @() }
+  $latestDate = if ($history.Count -gt 0) { $history[-1] } else { "" }
+  $trackerData += [PSCustomObject]@{
+    num         = $s.Num
+    title       = (Get-Culture).TextInfo.ToTitleCase($s.Title)
+    tags        = $tags
+    difficulty  = $difficulty
+    path        = $s.Path
+    date        = $latestDate
+    timesSolved = $history.Count
+    history     = , $history
+  }
 }
 
 $dataJson = if ($trackerData.Count -gt 0) { @($trackerData | Sort-Object num) | ConvertTo-Json -Compress } else { "[]" }
@@ -300,10 +304,10 @@ a:hover{color:var(--accent);border-color:var(--accent)}
 <th data-key="num" tabindex="0">#</th>
 <th data-key="title" tabindex="0">Problem</th>
 <th data-key="difficulty" tabindex="0">Difficulty</th>
+<th data-key="tags" tabindex="0">Tags</th>
 <th data-key="timesSolved" tabindex="0">Times</th>
 <th data-key="date" tabindex="0">Last Solved</th>
-<th>Solution</th>
-</tr></thead><tbody id="body"></tbody></table>
+<th>Solution</th></thead><tbody id="body"></tbody></table>
 </div>
 
 <script>
