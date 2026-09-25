@@ -151,7 +151,7 @@ foreach ($s in $allFiles) {
         path = $s.Path
         date = $latestDate
         timesSolved = $history.Count
-        history = $history
+        history = ,$history
     }
 }
 
