@@ -34,14 +34,24 @@ Get-ChildItem -Path . -Filter "*.java" -File | ForEach-Object {
         $rangeFolder = "{0:0000}-{1:0000}" -f $rangeStart, $rangeEnd
         $problemFolder = "$paddedNum-$slug"
         $destDir = Join-Path $rangeFolder $problemFolder
+        $destPath = Join-Path $destDir $newName
 
         if (-not (Test-Path $destDir)) {
             New-Item -ItemType Directory -Path $destDir -Force | Out-Null
         }
 
-        Move-Item -Path $_.FullName -Destination (Join-Path $destDir $newName) -Force
+        $isGenuineChange = $true
+        if (Test-Path $destPath) {
+            $oldHash = (Get-FileHash -Path $destPath -Algorithm SHA256).Hash
+            $newHash = (Get-FileHash -Path $_.FullName -Algorithm SHA256).Hash
+            $isGenuineChange = ($oldHash -ne $newHash)
+        }
 
-        $datesDb[$slug] = (Get-Date).ToString('yyyy-MM-dd')
+        Move-Item -Path $_.FullName -Destination $destPath -Force
+
+        if ($isGenuineChange) {
+            $datesDb[$slug] = (Get-Date).ToString('yyyy-MM-dd')
+        }
     }
 }
 
