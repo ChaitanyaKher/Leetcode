@@ -41,9 +41,7 @@ Get-ChildItem -Path . -Filter "*.java" -File | ForEach-Object {
 
         Move-Item -Path $_.FullName -Destination (Join-Path $destDir $newName) -Force
 
-        if (-not $datesDb.ContainsKey($slug)) {
-            $datesDb[$slug] = (Get-Date).ToString('yyyy-MM-dd')
-        }
+        $datesDb[$slug] = (Get-Date).ToString('yyyy-MM-dd')
     }
 }
 
@@ -325,11 +323,15 @@ while (cur <= today) {
 
   let colHtml = "<div class='week'>";
   for (let i=0;i<7;i++){
-    const key = fmt(cur);
-    const count = dayCounts[key]||0;
-    let level = 0;
-    if (count>=1) level=1; if(count>=3) level=2; if(count>=6) level=3; if(count>=10) level=4;
-    colHtml += "<div class='day' data-level='" + level + "' data-date='" + key + "' title='" + key + ": " + count + " solved'></div>";
+    if (cur > today) {
+      colHtml += "<div class='day' style='visibility:hidden'></div>";
+    } else {
+      const key = fmt(cur);
+      const count = dayCounts[key]||0;
+      let level = 0;
+      if (count>=1) level=1; if(count>=3) level=2; if(count>=6) level=3; if(count>=10) level=4;
+      colHtml += "<div class='day' data-level='" + level + "' data-date='" + key + "' title='" + key + ": " + count + " solved'></div>";
+    }
     cur.setDate(cur.getDate()+1);
   }
   weeksHtml += colHtml + "</div>";
