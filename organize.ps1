@@ -25,41 +25,32 @@ if (Test-Path "solve_dates.json") {
 }
 
 Get-ChildItem -Path . -Filter "*.java" -File | ForEach-Object {
-  if ($_.Name -match '^(\d+)[.\-](.+)\.java$') {
-    $problemNum = [int]$matches[1]
-    $slug = ($matches[2].ToLower() -replace '[^a-z0-9]+', '-').Trim('-')
-    $paddedNum = $problemNum.ToString('0000')
-    $newName = "$paddedNum-$slug.java"
+    if ($_.Name -match '^(\d+)[.\-](.+)\.java$') {
+        $problemNum = [int]$matches[1]
+        $slug = ($matches[2].ToLower() -replace '[^a-z0-9]+', '-').Trim('-')
+        $paddedNum = $problemNum.ToString('0000')
+        $newName = "$paddedNum-$slug.java"
 
-    $rangeStart = [math]::Floor(($problemNum - 1) / 100) * 100 + 1
-    $rangeEnd = $rangeStart + 99
-    $rangeFolder = "{0:0000}-{1:0000}" -f $rangeStart, $rangeEnd
-    $problemFolder = "$paddedNum-$slug"
-    $destDir = Join-Path $rangeFolder $problemFolder
-    $destPath = Join-Path $destDir $newName
+        $rangeStart = [math]::Floor(($problemNum - 1) / 100) * 100 + 1
+        $rangeEnd = $rangeStart + 99
+        $rangeFolder = "{0:0000}-{1:0000}" -f $rangeStart, $rangeEnd
+        $problemFolder = "$paddedNum-$slug"
+        $destDir = Join-Path $rangeFolder $problemFolder
+        $destPath = Join-Path $destDir $newName
 
-    if (-not (Test-Path $destDir)) {
-      New-Item -ItemType Directory -Path $destDir -Force | Out-Null
+        if (-not (Test-Path $destDir)) {
+            New-Item -ItemType Directory -Path $destDir -Force | Out-Null
+        }
+
+        Move-Item -Path $_.FullName -Destination $destPath -Force
+
+        $today = (Get-Date).ToString('yyyy-MM-dd')
+        if (-not $datesDb.ContainsKey($slug)) {
+            $datesDb[$slug] = @($today)
+        } elseif ($datesDb[$slug] -notcontains $today) {
+            $datesDb[$slug] = @($datesDb[$slug]) + $today
+        }
     }
-
-    $isGenuineChange = $true
-    if (Test-Path $destPath) {
-      $oldHash = (Get-FileHash -Path $destPath -Algorithm SHA256).Hash
-      $newHash = (Get-FileHash -Path $_.FullName -Algorithm SHA256).Hash
-      $isGenuineChange = ($oldHash -ne $newHash)
-    }
-
-    Move-Item -Path $_.FullName -Destination $destPath -Force
-
-    if ($isGenuineChange) {
-    $today = (Get-Date).ToString('yyyy-MM-dd')
-    if (-not $datesDb.ContainsKey($slug)) {
-        $datesDb[$slug] = @($today)
-    } elseif ($datesDb[$slug] -notcontains $today) {
-        $datesDb[$slug] = @($datesDb[$slug]) + $today
-      }
-    }
-  }
 }
 
 $datesDb | ConvertTo-Json | Set-Content "solve_dates.json"
