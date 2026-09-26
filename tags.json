@@ -494,5 +494,9 @@
   "house-robber-ii": {
     "tags": "Array, Dynamic Programming",
     "difficulty": "Medium"
+  },
+  "remove-duplicates-from-sorted-array": {
+    "tags": "Array, Two Pointers",
+    "difficulty": "Easy"
   }
 }

@@ -21,7 +21,7 @@ Total solved: 29
 | 17 | Letter Combinations Of A Phone Number | Hash Table, String, Backtracking | [0001-0100/0017-letter-combinations-of-a-phone-number/0017-letter-combinations-of-a-phone-number.java](0001-0100/0017-letter-combinations-of-a-phone-number/0017-letter-combinations-of-a-phone-number.java) |
 | 20 | Valid Parentheses | String, Stack, Bracket Sequences | [0001-0100/0020-valid-parentheses/0020-valid-parentheses.java](0001-0100/0020-valid-parentheses/0020-valid-parentheses.java) |
 | 21 | Merge Two Sorted Lists | Linked List, Recursion | [0001-0100/0021-merge-two-sorted-lists/0021-merge-two-sorted-lists.java](0001-0100/0021-merge-two-sorted-lists/0021-merge-two-sorted-lists.java) |
-| 26 | Remove Duplicates From Sorted Array |  | [0001-0100/0026-remove-duplicates-from-sorted-array/0026-remove-duplicates-from-sorted-array.java](0001-0100/0026-remove-duplicates-from-sorted-array/0026-remove-duplicates-from-sorted-array.java) |
+| 26 | Remove Duplicates From Sorted Array | Array, Two Pointers | [0001-0100/0026-remove-duplicates-from-sorted-array/0026-remove-duplicates-from-sorted-array.java](0001-0100/0026-remove-duplicates-from-sorted-array/0026-remove-duplicates-from-sorted-array.java) |
 | 27 | Remove Element | Array, Two Pointers | [0001-0100/0027-remove-element/0027-remove-element.java](0001-0100/0027-remove-element/0027-remove-element.java) |
 | 33 | Search In Rotated Sorted Array | Array, Binary Search | [0001-0100/0033-search-in-rotated-sorted-array/0033-search-in-rotated-sorted-array.java](0001-0100/0033-search-in-rotated-sorted-array/0033-search-in-rotated-sorted-array.java) |
 | 34 | Find First And Last Position Of Element In Sorted Array | Array, Binary Search | [0001-0100/0034-find-first-and-last-position-of-element-in-sorted-array/0034-find-first-and-last-position-of-element-in-sorted-array.java](0001-0100/0034-find-first-and-last-position-of-element-in-sorted-array/0034-find-first-and-last-position-of-element-in-sorted-array.java) |
@@ -418,6 +418,7 @@ Total solved: 29
 
 </details>
 <!-- SOLUTIONS-TABLE-END -->
+
 
 
 
