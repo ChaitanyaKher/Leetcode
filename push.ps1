@@ -23,14 +23,45 @@ if (-not $changes -and -not $readmeChanged -and -not $tagsChanged) {
     exit 0
 }
 
+# Load fresh solve history and tags (organize.ps1 already updated these this run)
+$datesLookup = @{}
+if (Test-Path "solve_dates.json") {
+    $datesJson = Get-Content "solve_dates.json" -Raw | ConvertFrom-Json
+    $datesJson.PSObject.Properties | ForEach-Object { $datesLookup[$_.Name] = @($_.Value) }
+}
+
+$tagsLookup = @{}
+if (Test-Path "tags.json") {
+    $tagsJson = Get-Content "tags.json" -Raw | ConvertFrom-Json
+    $tagsJson.PSObject.Properties | ForEach-Object { $tagsLookup[$_.Name] = $_.Value }
+}
+
 foreach ($line in $changes) {
     $filePath = $line.Substring(3).Trim().Trim('"')
     $fileName = Split-Path $filePath -Leaf
 
     if ($fileName -match '^(\d{4})-(.+)\.java$') {
         $num = $matches[1]
-        $title = (Get-Culture).TextInfo.ToTitleCase(($matches[2] -replace '-', ' '))
-        $message = "Solved $num`: $title"
+        $slug = $matches[2]
+        $title = (Get-Culture).TextInfo.ToTitleCase(($slug -replace '-', ' '))
+
+        $timesSolved = 0
+        if ($datesLookup.ContainsKey($slug)) {
+            $timesSolved = @($datesLookup[$slug]).Count
+        }
+
+        $difficulty = ""
+        $meta = $tagsLookup[$slug]
+        if ($meta -ne $null -and $meta.PSObject.Properties.Name -contains "difficulty") {
+            $difficulty = $meta.difficulty
+        }
+        $diffSuffix = if ($difficulty) { " ($difficulty)" } else { "" }
+
+        if ($timesSolved -le 1) {
+            $message = "Solved $num`: $title$diffSuffix"
+        } else {
+            $message = "Re-solved $num`: $title$diffSuffix - attempt $timesSolved"
+        }
     } else {
         $message = "Update $fileName"
     }
