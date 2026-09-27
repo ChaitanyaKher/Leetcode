@@ -430,7 +430,7 @@ function render() {
     return (d.title.toLowerCase().includes(q) || (d.tags||"").toLowerCase().includes(q)) &&
     (!diff || d.difficulty === diff) &&
     (!tag || (d.tags||"").split(",").map(function(t){return t.trim();}).includes(tag)) &&
-    (!selectedDate || d.date === selectedDate);
+    (!selectedDate || (d.history||[]).includes(selectedDate));
   });
   rows.sort(function(a,b){ const v = a[sortKey] > b[sortKey] ? 1 : -1; return sortAsc ? v : -v; });
   document.getElementById("count-line").textContent = rows.length + " of " + data.length;
