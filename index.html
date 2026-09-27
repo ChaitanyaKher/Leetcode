@@ -147,7 +147,7 @@ let sortKey = "num", sortAsc = true;
 let selectedDate = null;
 
 const dayCounts = {};
-data.forEach(function(d){ if (d.date) dayCounts[d.date] = (dayCounts[d.date]||0)+1; });
+data.forEach(function(d){ (d.history||[]).forEach(function(dt){ dayCounts[dt] = (dayCounts[dt]||0)+1; }); });
 
 function fmt(d){
   const y = d.getFullYear();
