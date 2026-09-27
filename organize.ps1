@@ -126,9 +126,19 @@ else {
   $readme | Set-Content "README.md"
 }
 
-# 4. Build tracker data for index.html
-$trackerData = @()
-foreach ($s in $allFiles) {
+# 4. Build tracker data for index.html (manual JSON construction - avoids PowerShell's array/JSON quirks)
+function ConvertTo-JsonStringSafe($s) {
+    if ($null -eq $s) { return '""' }
+    $escaped = [string]$s
+    $escaped = $escaped -replace '\\', '\\\\'
+    $escaped = $escaped -replace '"', '\"'
+    $escaped = $escaped -replace "`r", ''
+    $escaped = $escaped -replace "`n", '\n'
+    return '"' + $escaped + '"'
+}
+
+$jsonItems = @()
+foreach ($s in ($allFiles | Sort-Object Num)) {
     $meta = $tagsMap[$s.Slug]
     $tags = ""
     $difficulty = ""
@@ -142,33 +152,43 @@ foreach ($s in $allFiles) {
     }
 
     $rawHistory = $datesDb[$s.Slug]
-    $history = @()
+    $historyList = New-Object System.Collections.ArrayList
     if ($rawHistory -ne $null) {
-        if ($rawHistory -is [System.Array]) {
-            $history = @($rawHistory | Sort-Object)
-        } else {
-            $history = @($rawHistory.ToString())
+        foreach ($item in @($rawHistory)) {
+            [void]$historyList.Add([string]$item)
         }
     }
+    $historyList = $historyList | Sort-Object
 
     $latestDate = ""
-    if ($history.Count -gt 0) {
-        $latestDate = $history[$history.Count - 1]
+    if ($historyList.Count -gt 0) {
+        $latestDate = $historyList[$historyList.Count - 1]
     }
 
-    $trackerData += [PSCustomObject]@{
-        num = $s.Num
-        title = (Get-Culture).TextInfo.ToTitleCase($s.Title)
-        tags = $tags
-        difficulty = $difficulty
-        path = $s.Path
-        date = $latestDate
-        timesSolved = $history.Count
-        history = ,$history
-    }
+    $title = (Get-Culture).TextInfo.ToTitleCase(($s.Title))
+    $historyJsonParts = @($historyList | ForEach-Object { ConvertTo-JsonStringSafe $_ })
+    $historyJson = "[" + ($historyJsonParts -join ",") + "]"
+
+    $jsonItems += '{"num":' + $s.Num + `
+        ',"title":' + (ConvertTo-JsonStringSafe $title) + `
+        ',"tags":' + (ConvertTo-JsonStringSafe $tags) + `
+        ',"difficulty":' + (ConvertTo-JsonStringSafe $difficulty) + `
+        ',"path":' + (ConvertTo-JsonStringSafe $s.Path) + `
+        ',"date":' + (ConvertTo-JsonStringSafe $latestDate) + `
+        ',"timesSolved":' + $historyList.Count + `
+        ',"history":' + $historyJson + '}'
+}
+$dataJson = "[" + ($jsonItems -join ",") + "]"
+
+$trackerData = @()
+foreach ($s in $allFiles) {
+    $rawHistory = $datesDb[$s.Slug]
+    $count = 0
+    if ($rawHistory -ne $null) { $count = @($rawHistory).Count }
+    $trackerData += [PSCustomObject]@{ difficulty = if ($tagsMap[$s.Slug].difficulty) { $tagsMap[$s.Slug].difficulty } else { "" } }
 }
 
-$dataJson = if ($trackerData.Count -gt 0) { @($trackerData | Sort-Object num) | ConvertTo-Json -Compress } else { "[]" }
+
 $easyCount = ($trackerData | Where-Object { $_.difficulty -eq "Easy" }).Count
 $medCount = ($trackerData | Where-Object { $_.difficulty -eq "Medium" }).Count
 $hardCount = ($trackerData | Where-Object { $_.difficulty -eq "Hard" }).Count
