@@ -158,7 +158,7 @@ foreach ($s in ($allFiles | Sort-Object Num)) {
             [void]$historyList.Add([string]$item)
         }
     }
-    $historyList = $historyList | Sort-Object
+    $historyList = @($historyList | Sort-Object)
 
     $latestDate = ""
     if ($historyList.Count -gt 0) {
