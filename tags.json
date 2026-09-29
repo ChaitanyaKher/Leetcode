@@ -510,5 +510,9 @@
   "power-of-three": {
     "tags": "Math, Recursion",
     "difficulty": "Easy"
+  },
+  "power-of-two": {
+    "tags": "Math, Bit Manipulation, Recursion",
+    "difficulty": "Easy"
   }
 }
