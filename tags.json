@@ -518,5 +518,9 @@
   "power-of-four": {
     "tags": "Math, Bit Manipulation, Recursion",
     "difficulty": "Easy"
+  },
+  "climbing-stairs": {
+    "tags": "Math, Dynamic Programming, Memoization",
+    "difficulty": "Easy"
   }
 }
