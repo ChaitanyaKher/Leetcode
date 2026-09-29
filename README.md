@@ -1,4 +1,4 @@
-<!-- TOTAL-SOLVED -->134 problems solved<!-- /TOTAL-SOLVED -->
+<!-- TOTAL-SOLVED -->135 problems solved<!-- /TOTAL-SOLVED -->
 
 # LeetCode Solutions
 
@@ -70,7 +70,7 @@ Total solved: 29
 </details>
 
 <details>
-<summary>0201-0300 (12 solved)</summary>
+<summary>0201-0300 (13 solved)</summary>
 
 | # | Problem | Tags | Solution |
 |---|---------|------|----------|
@@ -78,6 +78,7 @@ Total solved: 29
 | 213 | House Robber Ii | Array, Dynamic Programming | [0201-0300/0213-house-robber-ii/0213-house-robber-ii.java](0201-0300/0213-house-robber-ii/0213-house-robber-ii.java) |
 | 215 | Kth Largest Element In An Array | Array, Divide and Conquer, Sorting, Heap (Priority Queue), Quickselect | [0201-0300/0215-kth-largest-element-in-an-array/0215-kth-largest-element-in-an-array.java](0201-0300/0215-kth-largest-element-in-an-array/0215-kth-largest-element-in-an-array.java) |
 | 217 | Contains Duplicate | Array, Hash Table, Sorting | [0201-0300/0217-contains-duplicate/0217-contains-duplicate.java](0201-0300/0217-contains-duplicate/0217-contains-duplicate.java) |
+| 219 | Contains Duplicate Ii |  | [0201-0300/0219-contains-duplicate-ii/0219-contains-duplicate-ii.java](0201-0300/0219-contains-duplicate-ii/0219-contains-duplicate-ii.java) |
 | 225 | Implement Stack Using Queues | Stack, Design, Queue | [0201-0300/0225-implement-stack-using-queues/0225-implement-stack-using-queues.java](0201-0300/0225-implement-stack-using-queues/0225-implement-stack-using-queues.java) |
 | 232 | Implement Queue Using Stacks | Stack, Design, Queue | [0201-0300/0232-implement-queue-using-stacks/0232-implement-queue-using-stacks.java](0201-0300/0232-implement-queue-using-stacks/0232-implement-queue-using-stacks.java) |
 | 236 | Lowest Common Ancestor Of A Binary Tree | Tree, Depth-First Search, Binary Tree, Binary Lifting, Lowest Common Ancestor | [0201-0300/0236-lowest-common-ancestor-of-a-binary-tree/0236-lowest-common-ancestor-of-a-binary-tree.java](0201-0300/0236-lowest-common-ancestor-of-a-binary-tree/0236-lowest-common-ancestor-of-a-binary-tree.java) |
@@ -419,6 +420,7 @@ Total solved: 29
 
 </details>
 <!-- SOLUTIONS-TABLE-END -->
+
 
 
 
