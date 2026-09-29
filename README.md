@@ -1,4 +1,4 @@
-<!-- TOTAL-SOLVED -->139 problems solved<!-- /TOTAL-SOLVED -->
+<!-- TOTAL-SOLVED -->140 problems solved<!-- /TOTAL-SOLVED -->
 
 # LeetCode Solutions
 
@@ -71,7 +71,7 @@ Total solved: 29
 </details>
 
 <details>
-<summary>0201-0300 (14 solved)</summary>
+<summary>0201-0300 (15 solved)</summary>
 
 | # | Problem | Tags | Solution |
 |---|---------|------|----------|
@@ -87,6 +87,7 @@ Total solved: 29
 | 238 | Product Of Array Except Self | Array, Prefix Sum | [0201-0300/0238-product-of-array-except-self/0238-product-of-array-except-self.java](0201-0300/0238-product-of-array-except-self/0238-product-of-array-except-self.java) |
 | 239 | Sliding Window Maximum | Array, Queue, Sliding Window, Heap (Priority Queue), Monotonic Queue, Range Minimum/Maximum Query | [0201-0300/0239-sliding-window-maximum/0239-sliding-window-maximum.java](0201-0300/0239-sliding-window-maximum/0239-sliding-window-maximum.java) |
 | 242 | Valid Anagram | Hash Table, String, Sorting | [0201-0300/0242-valid-anagram/0242-valid-anagram.java](0201-0300/0242-valid-anagram/0242-valid-anagram.java) |
+| 268 | Missing Number |  | [0201-0300/0268-missing-number/0268-missing-number.java](0201-0300/0268-missing-number/0268-missing-number.java) |
 | 278 | First Bad Version | Binary Search, Interactive | [0201-0300/0278-first-bad-version/0278-first-bad-version.java](0201-0300/0278-first-bad-version/0278-first-bad-version.java) |
 | 283 | Move Zeroes | Array, Two Pointers | [0201-0300/0283-move-zeroes/0283-move-zeroes.java](0201-0300/0283-move-zeroes/0283-move-zeroes.java) |
 
@@ -424,6 +425,7 @@ Total solved: 29
 
 </details>
 <!-- SOLUTIONS-TABLE-END -->
+
 
 
 
