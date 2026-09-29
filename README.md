@@ -189,7 +189,7 @@ Total solved: 29
 | # | Problem | Tags | Solution |
 |---|---------|------|----------|
 | 1168 | Duplicate Zeros | Array, Two Pointers | [1101-1200/1168-duplicate-zeros/1168-duplicate-zeros.java](1101-1200/1168-duplicate-zeros/1168-duplicate-zeros.java) |
-| 1190 | Reverse Substrings Between Each Pair Of Parentheses |  | [1101-1200/1190-reverse-substrings-between-each-pair-of-parentheses/1190-reverse-substrings-between-each-pair-of-parentheses.java](1101-1200/1190-reverse-substrings-between-each-pair-of-parentheses/1190-reverse-substrings-between-each-pair-of-parentheses.java) |
+| 1190 | Reverse Substrings Between Each Pair Of Parentheses | String, Stack, Bracket Sequences | [1101-1200/1190-reverse-substrings-between-each-pair-of-parentheses/1190-reverse-substrings-between-each-pair-of-parentheses.java](1101-1200/1190-reverse-substrings-between-each-pair-of-parentheses/1190-reverse-substrings-between-each-pair-of-parentheses.java) |
 
 </details>
 
@@ -419,6 +419,7 @@ Total solved: 29
 
 </details>
 <!-- SOLUTIONS-TABLE-END -->
+
 
 
 

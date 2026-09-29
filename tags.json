@@ -498,5 +498,9 @@
   "remove-duplicates-from-sorted-array": {
     "tags": "Array, Two Pointers",
     "difficulty": "Easy"
+  },
+  "reverse-substrings-between-each-pair-of-parentheses": {
+    "tags": "String, Stack, Bracket Sequences",
+    "difficulty": "Medium"
   }
 }
