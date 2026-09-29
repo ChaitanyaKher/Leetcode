@@ -1,4 +1,4 @@
-<!-- TOTAL-SOLVED -->136 problems solved<!-- /TOTAL-SOLVED -->
+<!-- TOTAL-SOLVED -->137 problems solved<!-- /TOTAL-SOLVED -->
 
 # LeetCode Solutions
 
@@ -70,7 +70,7 @@ Total solved: 29
 </details>
 
 <details>
-<summary>0201-0300 (13 solved)</summary>
+<summary>0201-0300 (14 solved)</summary>
 
 | # | Problem | Tags | Solution |
 |---|---------|------|----------|
@@ -80,6 +80,7 @@ Total solved: 29
 | 217 | Contains Duplicate | Array, Hash Table, Sorting | [0201-0300/0217-contains-duplicate/0217-contains-duplicate.java](0201-0300/0217-contains-duplicate/0217-contains-duplicate.java) |
 | 219 | Contains Duplicate Ii | Array, Hash Table, Sliding Window | [0201-0300/0219-contains-duplicate-ii/0219-contains-duplicate-ii.java](0201-0300/0219-contains-duplicate-ii/0219-contains-duplicate-ii.java) |
 | 225 | Implement Stack Using Queues | Stack, Design, Queue | [0201-0300/0225-implement-stack-using-queues/0225-implement-stack-using-queues.java](0201-0300/0225-implement-stack-using-queues/0225-implement-stack-using-queues.java) |
+| 231 | Power Of Two |  | [0201-0300/0231-power-of-two/0231-power-of-two.java](0201-0300/0231-power-of-two/0231-power-of-two.java) |
 | 232 | Implement Queue Using Stacks | Stack, Design, Queue | [0201-0300/0232-implement-queue-using-stacks/0232-implement-queue-using-stacks.java](0201-0300/0232-implement-queue-using-stacks/0232-implement-queue-using-stacks.java) |
 | 236 | Lowest Common Ancestor Of A Binary Tree | Tree, Depth-First Search, Binary Tree, Binary Lifting, Lowest Common Ancestor | [0201-0300/0236-lowest-common-ancestor-of-a-binary-tree/0236-lowest-common-ancestor-of-a-binary-tree.java](0201-0300/0236-lowest-common-ancestor-of-a-binary-tree/0236-lowest-common-ancestor-of-a-binary-tree.java) |
 | 238 | Product Of Array Except Self | Array, Prefix Sum | [0201-0300/0238-product-of-array-except-self/0238-product-of-array-except-self.java](0201-0300/0238-product-of-array-except-self/0238-product-of-array-except-self.java) |
@@ -95,7 +96,7 @@ Total solved: 29
 
 | # | Problem | Tags | Solution |
 |---|---------|------|----------|
-| 326 | Power Of Three |  | [0301-0400/0326-power-of-three/0326-power-of-three.java](0301-0400/0326-power-of-three/0326-power-of-three.java) |
+| 326 | Power Of Three | Math, Recursion | [0301-0400/0326-power-of-three/0326-power-of-three.java](0301-0400/0326-power-of-three/0326-power-of-three.java) |
 | 328 | Odd Even Linked List | Linked List | [0301-0400/0328-odd-even-linked-list/0328-odd-even-linked-list.java](0301-0400/0328-odd-even-linked-list/0328-odd-even-linked-list.java) |
 | 344 | Reverse String | Two Pointers, String | [0301-0400/0344-reverse-string/0344-reverse-string.java](0301-0400/0344-reverse-string/0344-reverse-string.java) |
 | 345 | Reverse Vowels Of A String | Two Pointers, String | [0301-0400/0345-reverse-vowels-of-a-string/0345-reverse-vowels-of-a-string.java](0301-0400/0345-reverse-vowels-of-a-string/0345-reverse-vowels-of-a-string.java) |
@@ -421,6 +422,7 @@ Total solved: 29
 
 </details>
 <!-- SOLUTIONS-TABLE-END -->
+
 
 
 

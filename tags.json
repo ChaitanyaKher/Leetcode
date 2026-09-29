@@ -506,5 +506,9 @@
   "contains-duplicate-ii": {
     "tags": "Array, Hash Table, Sliding Window",
     "difficulty": "Easy"
+  },
+  "power-of-three": {
+    "tags": "Math, Recursion",
+    "difficulty": "Easy"
   }
 }
