@@ -502,5 +502,9 @@
   "reverse-substrings-between-each-pair-of-parentheses": {
     "tags": "String, Stack, Bracket Sequences",
     "difficulty": "Medium"
+  },
+  "contains-duplicate-ii": {
+    "tags": "Array, Hash Table, Sliding Window",
+    "difficulty": "Easy"
   }
 }
