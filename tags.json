@@ -514,5 +514,9 @@
   "power-of-two": {
     "tags": "Math, Bit Manipulation, Recursion",
     "difficulty": "Easy"
+  },
+  "power-of-four": {
+    "tags": "Math, Bit Manipulation, Recursion",
+    "difficulty": "Easy"
   }
 }

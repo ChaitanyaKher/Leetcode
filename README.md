@@ -1,4 +1,4 @@
-<!-- TOTAL-SOLVED -->138 problems solved<!-- /TOTAL-SOLVED -->
+<!-- TOTAL-SOLVED -->139 problems solved<!-- /TOTAL-SOLVED -->
 
 # LeetCode Solutions
 
@@ -6,7 +6,7 @@ Total solved: 29
 
 <!-- SOLUTIONS-TABLE-START -->
 <details>
-<summary>0001-0100 (34 solved)</summary>
+<summary>0001-0100 (35 solved)</summary>
 
 | # | Problem | Tags | Solution |
 |---|---------|------|----------|
@@ -34,6 +34,7 @@ Total solved: 29
 | 63 | Unique Paths Ii | Array, Dynamic Programming, Matrix | [0001-0100/0063-unique-paths-ii/0063-unique-paths-ii.java](0001-0100/0063-unique-paths-ii/0063-unique-paths-ii.java) |
 | 66 | Plus One | Array, Math | [0001-0100/0066-plus-one/0066-plus-one.java](0001-0100/0066-plus-one/0066-plus-one.java) |
 | 67 | Add Binary | Math, String, Bit Manipulation, Simulation | [0001-0100/0067-add-binary/0067-add-binary.java](0001-0100/0067-add-binary/0067-add-binary.java) |
+| 70 | Climbing Stairs |  | [0001-0100/0070-climbing-stairs/0070-climbing-stairs.java](0001-0100/0070-climbing-stairs/0070-climbing-stairs.java) |
 | 73 | Set Matrix Zeroes | Array, Hash Table, Matrix | [0001-0100/0073-set-matrix-zeroes/0073-set-matrix-zeroes.java](0001-0100/0073-set-matrix-zeroes/0073-set-matrix-zeroes.java) |
 | 75 | Sort Colors | Array, Two Pointers, Sorting, Quicksort, Bubble Sort | [0001-0100/0075-sort-colors/0075-sort-colors.java](0001-0100/0075-sort-colors/0075-sort-colors.java) |
 | 76 | Minimum Window Substring | Hash Table, String, Sliding Window | [0001-0100/0076-minimum-window-substring/0076-minimum-window-substring.java](0001-0100/0076-minimum-window-substring/0076-minimum-window-substring.java) |
@@ -98,7 +99,7 @@ Total solved: 29
 |---|---------|------|----------|
 | 326 | Power Of Three | Math, Recursion | [0301-0400/0326-power-of-three/0326-power-of-three.java](0301-0400/0326-power-of-three/0326-power-of-three.java) |
 | 328 | Odd Even Linked List | Linked List | [0301-0400/0328-odd-even-linked-list/0328-odd-even-linked-list.java](0301-0400/0328-odd-even-linked-list/0328-odd-even-linked-list.java) |
-| 342 | Power Of Four |  | [0301-0400/0342-power-of-four/0342-power-of-four.java](0301-0400/0342-power-of-four/0342-power-of-four.java) |
+| 342 | Power Of Four | Math, Bit Manipulation, Recursion | [0301-0400/0342-power-of-four/0342-power-of-four.java](0301-0400/0342-power-of-four/0342-power-of-four.java) |
 | 344 | Reverse String | Two Pointers, String | [0301-0400/0344-reverse-string/0344-reverse-string.java](0301-0400/0344-reverse-string/0344-reverse-string.java) |
 | 345 | Reverse Vowels Of A String | Two Pointers, String | [0301-0400/0345-reverse-vowels-of-a-string/0345-reverse-vowels-of-a-string.java](0301-0400/0345-reverse-vowels-of-a-string/0345-reverse-vowels-of-a-string.java) |
 | 347 | Top K Frequent Elements | Array, Hash Table, Divide and Conquer, Sorting, Heap (Priority Queue), Bucket Sort, Counting, Quickselect | [0301-0400/0347-top-k-frequent-elements/0347-top-k-frequent-elements.java](0301-0400/0347-top-k-frequent-elements/0347-top-k-frequent-elements.java) |
@@ -423,6 +424,7 @@ Total solved: 29
 
 </details>
 <!-- SOLUTIONS-TABLE-END -->
+
 
 
 
