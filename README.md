@@ -1,4 +1,4 @@
-<!-- TOTAL-SOLVED -->140 problems solved<!-- /TOTAL-SOLVED -->
+<!-- TOTAL-SOLVED -->141 problems solved<!-- /TOTAL-SOLVED -->
 
 # LeetCode Solutions
 
@@ -87,7 +87,7 @@ Total solved: 29
 | 238 | Product Of Array Except Self | Array, Prefix Sum | [0201-0300/0238-product-of-array-except-self/0238-product-of-array-except-self.java](0201-0300/0238-product-of-array-except-self/0238-product-of-array-except-self.java) |
 | 239 | Sliding Window Maximum | Array, Queue, Sliding Window, Heap (Priority Queue), Monotonic Queue, Range Minimum/Maximum Query | [0201-0300/0239-sliding-window-maximum/0239-sliding-window-maximum.java](0201-0300/0239-sliding-window-maximum/0239-sliding-window-maximum.java) |
 | 242 | Valid Anagram | Hash Table, String, Sorting | [0201-0300/0242-valid-anagram/0242-valid-anagram.java](0201-0300/0242-valid-anagram/0242-valid-anagram.java) |
-| 268 | Missing Number |  | [0201-0300/0268-missing-number/0268-missing-number.java](0201-0300/0268-missing-number/0268-missing-number.java) |
+| 268 | Missing Number | Array, Hash Table, Math, Binary Search, Bit Manipulation, Sorting | [0201-0300/0268-missing-number/0268-missing-number.java](0201-0300/0268-missing-number/0268-missing-number.java) |
 | 278 | First Bad Version | Binary Search, Interactive | [0201-0300/0278-first-bad-version/0278-first-bad-version.java](0201-0300/0278-first-bad-version/0278-first-bad-version.java) |
 | 283 | Move Zeroes | Array, Two Pointers | [0201-0300/0283-move-zeroes/0283-move-zeroes.java](0201-0300/0283-move-zeroes/0283-move-zeroes.java) |
 
@@ -190,10 +190,11 @@ Total solved: 29
 </details>
 
 <details>
-<summary>1101-1200 (2 solved)</summary>
+<summary>1101-1200 (3 solved)</summary>
 
 | # | Problem | Tags | Solution |
 |---|---------|------|----------|
+| 1111 | Maximum Nesting Depth Of Two Valid Parentheses Strings |  | [1101-1200/1111-maximum-nesting-depth-of-two-valid-parentheses-strings/1111-maximum-nesting-depth-of-two-valid-parentheses-strings.java](1101-1200/1111-maximum-nesting-depth-of-two-valid-parentheses-strings/1111-maximum-nesting-depth-of-two-valid-parentheses-strings.java) |
 | 1168 | Duplicate Zeros | Array, Two Pointers | [1101-1200/1168-duplicate-zeros/1168-duplicate-zeros.java](1101-1200/1168-duplicate-zeros/1168-duplicate-zeros.java) |
 | 1190 | Reverse Substrings Between Each Pair Of Parentheses | String, Stack, Bracket Sequences | [1101-1200/1190-reverse-substrings-between-each-pair-of-parentheses/1190-reverse-substrings-between-each-pair-of-parentheses.java](1101-1200/1190-reverse-substrings-between-each-pair-of-parentheses/1190-reverse-substrings-between-each-pair-of-parentheses.java) |
 
@@ -425,6 +426,7 @@ Total solved: 29
 
 </details>
 <!-- SOLUTIONS-TABLE-END -->
+
 
 
 

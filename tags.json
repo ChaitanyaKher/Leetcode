@@ -522,5 +522,9 @@
   "climbing-stairs": {
     "tags": "Math, Dynamic Programming, Memoization",
     "difficulty": "Easy"
+  },
+  "missing-number": {
+    "tags": "Array, Hash Table, Math, Binary Search, Bit Manipulation, Sorting",
+    "difficulty": "Easy"
   }
 }
