@@ -526,5 +526,9 @@
   "missing-number": {
     "tags": "Array, Hash Table, Math, Binary Search, Bit Manipulation, Sorting",
     "difficulty": "Easy"
+  },
+  "maximum-nesting-depth-of-two-valid-parentheses-strings": {
+    "tags": "String, Stack, Bracket Sequences",
+    "difficulty": "Medium"
   }
 }
