@@ -195,5 +195,6 @@ $hardCount = ($trackerData | Where-Object { $_.difficulty -eq "Hard" }).Count
 
 # 5. Build index.html from template.html
 $template    = Get-Content "$PSScriptRoot\template.html" -Raw -Encoding UTF8
-$trackerHtml = $template.Replace('/*__DATA__*/[]', $dataJson)
+$sheets      = Get-Content "$PSScriptRoot\sheets.json" -Raw -Encoding UTF8
+$trackerHtml = $template.Replace('/*__DATA__*/[]', $dataJson).Replace('/*__SHEETS__*/[]', $sheets)
 Set-Content -Path "$PSScriptRoot\index.html" -Value $trackerHtml -Encoding UTF8
