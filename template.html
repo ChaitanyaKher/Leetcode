@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LeetCode Tracker</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#0f1215;--p:#171b1f;--p2:#1f252a;--ln:#2a3036;--tx:#e8eaed;--mu:#8d949c;--ac:#e3b341;--e:#5fbf8f;--m:#e0a93f;--h:#e0715a;--h1:#3a3020;--h2:#6b5528;--h3:#a5822f}
+@media(prefers-color-scheme:light){:root{color-scheme:light;--bg:#f6f4ef;--p:#fff;--p2:#efece5;--ln:#ddd8cc;--tx:#1c1f22;--mu:#666d74;--ac:#a86f0f;--e:#2a8559;--m:#a97614;--h:#c04d37;--h1:#f1deb0;--h2:#e6c168;--h3:#cf9a2e}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 Inter,system-ui,sans-serif}
+.w{max-width:1120px;margin:0 auto;padding:1.5rem 1.25rem 3rem}.mono,.n{font-family:"IBM Plex Mono",monospace}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:pointer}:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;border-bottom:1px solid var(--ln);margin-bottom:1.25rem}
+h1{font-size:1.05rem;margin:0;padding:.7rem 0}.tabs{display:flex;gap:.25rem}
+.tabs button{background:none;border:0;border-bottom:2px solid transparent;padding:.8rem .9rem;color:var(--mu);font-weight:500}
+.tabs button[aria-selected=true]{color:var(--tx);border-color:var(--ac)}
+.c{background:var(--p);border:1px solid var(--ln);border-radius:12px;padding:1rem 1.1rem}
+.c h2,.c h3{margin:0 0 .5rem;font-size:.74rem;font-weight:600;color:var(--mu);text-transform:uppercase;letter-spacing:.06em}
+.g{display:grid;gap:.75rem}.hero{grid-template-columns:1.5fr repeat(3,1fr);margin-bottom:.75rem}.two{grid-template-columns:1fr 1fr}.pg{grid-template-columns:repeat(auto-fill,minmax(320px,1fr));align-items:start}
+.big{font-size:2.4rem;font-weight:600;line-height:1.1}.st b{font-size:1.5rem;font-family:"IBM Plex Mono",monospace;display:block}.st small,.sub{color:var(--mu);font-size:.8rem}
+.bar{display:flex;height:8px;border-radius:9px;overflow:hidden;gap:2px;background:var(--p2);margin:.6rem 0 .4rem}.bar i{display:block}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:.3rem}
+.coach{margin-bottom:.75rem}.coach .c{border-left:3px solid var(--ac)}.coach p{margin:.2rem 0 .6rem;font-size:.9rem}
+.lk{display:flex;flex-wrap:wrap;gap:.4rem}.lk a,.lk button{background:var(--p2);border:1px solid var(--ln);border-radius:8px;padding:.25rem .6rem;font-size:.8rem}.lk a:hover,.lk button:hover{border-color:var(--ac);color:var(--ac)}
+.hs{overflow-x:auto}.hm{display:grid;grid-auto-flow:column;grid-template-rows:repeat(7,11px);gap:3px;width:max-content}
+.d{width:11px;height:11px;border-radius:3px;background:var(--p2);border:0;padding:0;display:block}.d[data-l="1"]{background:var(--h1)}.d[data-l="2"]{background:var(--h2)}.d[data-l="3"]{background:var(--h3)}.d[data-l="4"]{background:var(--ac)}
+button.d:hover,.d.sel{outline:2px solid var(--tx)}
+.bt{display:flex;justify-content:space-between;width:100%;position:relative;background:var(--p2);border:1px solid transparent;border-radius:6px;padding:.25rem .6rem;margin-bottom:.3rem;font-size:.82rem;overflow:hidden;text-align:left}
+.bt i{position:absolute;inset:0 auto 0 0;background:var(--ac);opacity:.18}.bt span,.bt b{position:relative;font-weight:400}.bt:hover,.bt.on{border-color:var(--ac)}
+details.c{padding:0}details summary{list-style:none;cursor:pointer;padding:.9rem 1.1rem}details summary::-webkit-details-marker{display:none}
+.ph{display:flex;justify-content:space-between;align-items:center;font-weight:600}.badge{font-size:.7rem;font-weight:500;padding:.1rem .5rem;border-radius:99px;border:1px solid currentColor}
+.Untouched{color:var(--h)}.Started{color:var(--m)}.Building{color:var(--ac)}.Solid{color:var(--e)}.Easy{color:var(--e)}.Medium{color:var(--m)}.Hard{color:var(--h)}.Unrated{color:var(--mu)}
+.pb{padding:0 1.1rem 1rem;font-size:.86rem}.pb h4{margin:.8rem 0 .2rem;font-size:.72rem;color:var(--mu);text-transform:uppercase;letter-spacing:.06em}.pb p{margin:0}
+.lad a,.lad span{display:flex;justify-content:space-between;padding:.2rem 0;border-bottom:1px solid var(--ln)}.lad a:hover{color:var(--ac)}.lad s{color:var(--mu)}
+.tools{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.6rem}.tools input,.tools select{font:inherit;font-size:.88rem;padding:.5rem .7rem;background:var(--p);color:var(--tx);border:1px solid var(--ln);border-radius:8px}.tools input{flex:1;min-width:180px}
+.seg{display:flex;border:1px solid var(--ln);border-radius:8px;overflow:hidden;background:var(--p)}.seg button{background:none;border:0;padding:.45rem .8rem;color:var(--mu);font-size:.85rem}.seg button+button{border-left:1px solid var(--ln)}.seg button[aria-pressed=true]{background:var(--p2);color:var(--tx)}
+.tog{background:var(--p);border:1px solid var(--ln);border-radius:8px;padding:.45rem .8rem;font-size:.85rem;color:var(--mu)}.tog[aria-pressed=true]{color:var(--ac);border-color:var(--ac)}
+.tw{border:1px solid var(--ln);border-radius:12px;background:var(--p);overflow:hidden;margin-top:.5rem}table{width:100%;border-collapse:collapse;font-size:.88rem}
+th{text-align:left;font-weight:500;font-size:.75rem;color:var(--mu);padding:.65rem .75rem;border-bottom:1px solid var(--ln);cursor:pointer;white-space:nowrap}th.on{color:var(--ac)}th[aria-sort=ascending]::after{content:" \2191"}th[aria-sort=descending]::after{content:" \2193"}
+td{padding:.6rem .75rem;border-bottom:1px solid var(--ln)}tbody tr{cursor:pointer}tbody tr:hover td{background:var(--p2)}tr:last-child td{border:0}
+.pill{font-size:.75rem;padding:.1rem .5rem;border-radius:99px;border:1px solid currentColor}.chip{background:var(--p2);border:1px solid var(--ln);border-radius:6px;padding:0 .4rem;font-size:.72rem;color:var(--mu);margin:0 .2rem .2rem 0}.chip:hover{color:var(--ac);border-color:var(--ac)}
+.due{color:var(--h)}.num{color:var(--mu)}
+#dr{position:fixed;top:0;right:0;bottom:0;width:min(580px,100vw);background:var(--p);border-left:1px solid var(--ln);transform:translateX(105%);transition:transform .2s;z-index:9;overflow-y:auto;padding:1.2rem}
+#dr.o{transform:none;box-shadow:-12px 0 40px rgba(0,0,0,.35)}#dr h2{margin:.2rem 0 .4rem;font-size:1.15rem;text-transform:none;letter-spacing:0;color:var(--tx)}
+#dr textarea{width:100%;min-height:120px;background:var(--p2);color:var(--tx);border:1px solid var(--ln);border-radius:8px;padding:.6rem;font:13px/1.5 "IBM Plex Mono",monospace;resize:vertical}
+pre{background:var(--p2);border:1px solid var(--ln);border-radius:8px;padding:.8rem;overflow:auto;font:12.5px/1.55 "IBM Plex Mono",monospace;max-height:48vh;margin:0}.k{color:var(--ac)}.s{color:var(--e)}.cm{color:var(--mu)}
+.x{float:right;background:none;border:1px solid var(--ln);border-radius:8px;padding:.2rem .6rem}.sec{margin-top:1rem}.sec>b{display:block;font-size:.72rem;color:var(--mu);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.35rem}
+@media(max-width:900px){.hero,.two{grid-template-columns:1fr 1fr}.big-c{grid-column:1/-1}}
+@media(max-width:700px){.hero,.two{grid-template-columns:1fr}.tw{border:0;background:none}thead{display:none}table,tbody,tr,td{display:block;width:100%}tr{background:var(--p);border:1px solid var(--ln);border-radius:10px;margin-bottom:.6rem;padding:.3rem .8rem}td{border:0;padding:.2rem 0;display:flex;justify-content:space-between;gap:1rem}td::before{content:attr(data-l);color:var(--mu);font-size:.75rem}}
+</style></head><body><div class="w">
+<div class="top"><h1>LeetCode Tracker</h1><div class="tabs" role="tablist"><button data-v="o">Overview</button><button data-v="p">Patterns</button><button data-v="t">Problems</button></div></div>
+<section id="vo"><div class="g hero"><div class="c big-c st"><small>Solved</small><div class="big n" id="tot"></div><div class="bar" id="bar"></div><div class="sub" id="leg"></div></div>
+<div class="c st"><small>Current streak</small><b id="cur"></b><small id="cn"></small></div><div class="c st"><small>Longest streak</small><b id="lng"></b><small>days</small></div><div class="c st"><small>Due for review</small><b id="duen"></b><small>spaced repetition</small></div></div>
+<div class="g two coach" id="coach"></div>
+<div class="g two"><div class="c"><h2>Activity, last year (click a day)</h2><div class="hs" id="hs"><div class="hm" id="hm"></div></div></div><div class="c"><h2>Top topics</h2><div id="tp"></div></div></div></section>
+<section id="vp" hidden><p class="sub" style="margin-top:0">Ordered by interview priority. Open a card for when to use the pattern, the core idea, common traps and a drill ladder (unsolved problems link to LeetCode).</p><div class="g pg" id="pats"></div></section>
+<section id="vt" hidden><div class="tools"><input id="q" type="search" placeholder="Search title or topic ( / )" aria-label="Search"><div class="seg" id="df"><button data-v="">All</button><button data-v="Easy">Easy</button><button data-v="Medium">Medium</button><button data-v="Hard">Hard</button></div><select id="tg" aria-label="Topic"><option value="">All topics</option></select><button class="tog" id="du">Due for review</button><button class="tog" id="cl" hidden>Clear</button></div>
+<div class="sub" id="ct"></div><div class="tw"><table><thead><tr><th data-k="num">#</th><th data-k="title">Problem</th><th data-k="diff">Difficulty</th><th>Topics</th><th data-k="times">Solved</th><th data-k="date">Last solved</th></tr></thead><tbody id="bd"></tbody></table></div></section>
+</div><aside id="dr" aria-label="Problem details"></aside>
+<script>
+const REPO="ChaitanyaKher/Leetcode",RAW="https://raw.githubusercontent.com/"+REPO+"/main/";
+const data=/*__DATA__*/[];
+const $=s=>document.querySelector(s),esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const dn=s=>{const p=s.split("-").map(Number);return Math.round(Date.UTC(p[0],p[1]-1,p[2])/864e5)},nw=new Date(),T=Math.round(Date.UTC(nw.getFullYear(),nw.getMonth(),nw.getDate())/864e5),iso=n=>new Date(n*864e5).toISOString().slice(0,10);
+let M={};try{M=JSON.parse(localStorage.getItem("lc.meta")||"{}")}catch(e){}
+const save=()=>{try{localStorage.setItem("lc.meta",JSON.stringify(M))}catch(e){}};
+const R={Easy:1,Medium:2,Hard:3};
+data.forEach(d=>{d.tl=(d.tags||"").split(",").map(t=>t.trim()).filter(Boolean);d.slug=d.path.split("/")[1].replace(/^\d+-/,"");d.dn=d.difficulty||"Unrated"});
+const last=d=>{const m=M[d.slug]||{};const x=[d.date,m.r].filter(Boolean).sort().pop();return x?T-dn(x):null};
+const IV=[14,45,90],dueR=d=>{const a=last(d);if(a==null)return 0;return a/IV[(M[d.slug]||{}).c==null?1:M[d.slug].c]};
+const sl=new Set(data.map(d=>d.slug));
+/* patterns: t=tags, n=target, w=when, i=idea, x=traps, l=ladder slug|title|diff */
+const P=[
+{n:"Arrays & Hashing",t:["Hash Table","Prefix Sum","Counting"],g:8,w:"Need O(1) lookup, counts, grouping, or 'have I seen this?'",i:"Trade memory for time: map value to index/count. For subarray sums keep a running prefix sum and a map of prefix to count, seeded with {0:1}.",x:"Forgetting the {0:1} seed; mutating a collection while iterating; using unsorted arrays as keys.",l:"contains-duplicate|Contains Duplicate|E,valid-anagram|Valid Anagram|E,group-anagrams|Group Anagrams|M,top-k-frequent-elements|Top K Frequent Elements|M,product-of-array-except-self|Product of Array Except Self|M,subarray-sum-equals-k|Subarray Sum Equals K|M,longest-consecutive-sequence|Longest Consecutive Sequence|M"},
+{n:"Two Pointers",t:["Two Pointers"],g:8,w:"Sorted input, pair/triple with a target, in-place compaction, palindromes.",i:"Move pointers inward based on a monotonic comparison. Sort first when order does not matter; skip duplicates after each match.",x:"l<r vs l<=r off-by-one; duplicate handling in k-sum; forgetting the sorted precondition.",l:"valid-palindrome|Valid Palindrome|E,two-sum-ii-input-array-is-sorted|Two Sum II|M,3sum-closest|3Sum Closest|M,4sum|4Sum|M,trapping-rain-water|Trapping Rain Water|H"},
+{n:"Sliding Window",t:["Sliding Window"],g:6,w:"Contiguous subarray/substring with 'longest', 'shortest' or 'at most K'.",i:"Expand right, shrink left while the window is invalid. Decide the invariant first, then track it with a map or counter.",x:"Negative numbers break shrinking (use prefix sums); updating the answer at the wrong moment.",l:"longest-repeating-character-replacement|Longest Repeating Character Replacement|M,permutation-in-string|Permutation in String|M,minimum-size-subarray-sum|Minimum Size Subarray Sum|M,fruit-into-baskets|Fruit Into Baskets|M,sliding-window-maximum|Sliding Window Maximum|H"},
+{n:"Binary Search",t:["Binary Search"],g:8,w:"Sorted or rotated data, or 'smallest X such that feasible' with a monotonic yes/no.",i:"Search on the answer: define feasible(x), find the first true. Use lo<hi and mid=lo+(hi-lo)/2; pick one bound convention and keep it.",x:"Infinite loops from mid rounding; mixed inclusive/exclusive bounds; unproven monotonicity.",l:"search-a-2d-matrix|Search a 2D Matrix|M,koko-eating-bananas|Koko Eating Bananas|M,find-minimum-in-rotated-sorted-array|Min in Rotated Sorted Array|M,capacity-to-ship-packages-within-d-days|Ship Packages Within D Days|M,median-of-two-sorted-arrays|Median of Two Sorted Arrays|H"},
+{n:"Stack & Monotonic Stack",t:["Stack","Monotonic Stack"],g:6,w:"Nesting/matching, 'next greater/smaller', undo, expression evaluation.",i:"Keep unresolved items on the stack; pop while the new element resolves them. Store indices when you need distances.",x:"Wrong monotonic direction; forgetting leftovers after the loop; storing values instead of indices.",l:"min-stack|Min Stack|M,evaluate-reverse-polish-notation|Evaluate RPN|M,daily-temperatures|Daily Temperatures|M,car-fleet|Car Fleet|M,largest-rectangle-in-histogram|Largest Rectangle in Histogram|H"},
+{n:"Linked Lists",t:["Linked List"],g:6,w:"Pointer rewiring, cycles, middle node, merging.",i:"A dummy head removes edge cases. Fast/slow pointers find the middle or a cycle. Reverse with prev/curr/next.",x:"Losing next before rewiring; leaving a stale tail that makes a cycle; nth-from-end off-by-one.",l:"reverse-linked-list|Reverse Linked List|E,linked-list-cycle|Linked List Cycle|E,remove-nth-node-from-end-of-list|Remove Nth Node From End|M,reorder-list|Reorder List|M,lru-cache|LRU Cache|M,merge-k-sorted-lists|Merge k Sorted Lists|H"},
+{n:"Trees",t:["Tree","Binary Tree","Binary Search Tree"],g:10,w:"Hierarchies, recursion on children, level-by-level processing.",i:"Decide what each call returns (height, bool, sum) and what it passes down (bounds, path). BFS with a queue for levels.",x:"Mixing return value with a global answer; validating a BST with only parent comparisons.",l:"maximum-depth-of-binary-tree|Maximum Depth|E,invert-binary-tree|Invert Binary Tree|E,binary-tree-level-order-traversal|Level Order Traversal|M,validate-binary-search-tree|Validate BST|M,lowest-common-ancestor-of-a-binary-tree|Lowest Common Ancestor|M,serialize-and-deserialize-binary-tree|Serialize/Deserialize Tree|H"},
+{n:"Graphs",t:["Graph","Union Find","Topological Sort","Shortest Path"],g:8,w:"Grids of islands, dependencies, connectivity, shortest unweighted path.",i:"Treat cells as nodes. BFS gives shortest paths in unweighted graphs, Kahn's algorithm gives ordering, union-find gives dynamic connectivity.",x:"Marking visited on pop instead of push; missing disconnected components; directed vs undirected cycle checks.",l:"number-of-islands|Number of Islands|M,clone-graph|Clone Graph|M,rotting-oranges|Rotting Oranges|M,course-schedule|Course Schedule|M,redundant-connection|Redundant Connection|M,word-ladder|Word Ladder|H"},
+{n:"Backtracking",t:["Backtracking"],g:6,w:"Generate all combinations, permutations or subsets; constraint search.",i:"Choose, explore, un-choose. Prune early; pass a start index to avoid reuse; sort and skip equal neighbours to dedupe.",x:"Adding the live list without copying; duplicates from repeated inputs; no pruning.",l:"subsets|Subsets|M,permutations|Permutations|M,combination-sum|Combination Sum|M,word-search|Word Search|M,palindrome-partitioning|Palindrome Partitioning|M,n-queens|N-Queens|H"},
+{n:"Dynamic Programming",t:["Dynamic Programming"],g:12,w:"Overlapping subproblems; 'count ways' or 'min/max cost'.",i:"Define the state, the transition and the base case. Write the brute-force recursion, memoise, then convert to bottom-up.",x:"Wrong loop direction (0/1 vs unbounded knapsack); missing base cases; state too large.",l:"house-robber|House Robber|M,coin-change|Coin Change|M,longest-increasing-subsequence|Longest Increasing Subsequence|M,longest-common-subsequence|Longest Common Subsequence|M,word-break|Word Break|M,partition-equal-subset-sum|Partition Equal Subset Sum|M,edit-distance|Edit Distance|H"},
+{n:"Heap / Priority Queue",t:["Heap (Priority Queue)"],g:5,w:"Top-K, streaming median, 'always take the next smallest/largest'.",i:"A size-K min-heap keeps the K largest. Two heaps split a stream around the median.",x:"Using a max-heap where a size-K min-heap is cheaper; comparator overflow.",l:"last-stone-weight|Last Stone Weight|E,kth-largest-element-in-an-array|Kth Largest Element|M,task-scheduler|Task Scheduler|M,find-median-from-data-stream|Find Median from Data Stream|H"},
+{n:"Greedy",t:["Greedy"],g:6,w:"A locally best choice is provably safe: scheduling, jumping, covering.",i:"Find the exchange argument that shows the local choice never hurts. Often sort first.",x:"Assuming greedy works without a proof or counterexample; wrong sort key.",l:"jump-game|Jump Game|M,jump-game-ii|Jump Game II|M,gas-station|Gas Station|M,partition-labels|Partition Labels|M,hand-of-straights|Hand of Straights|M"}];
+P.forEach((p,k)=>{p.k=k;p.it=data.filter(d=>d.tl.some(t=>p.t.includes(t)));p.c=p.it.length;p.hd=p.it.filter(d=>d.difficulty!=="Easy").length;
+ p.s=p.c==0?"Untouched":p.c<p.g/2?"Started":(p.c<p.g||p.hd<2)?"Building":"Solid";p.sc=Math.max(0,p.g-p.c)/p.g*(1+(P.length-k)/P.length);
+ p.L=p.l.split(",").map(x=>{const a=x.split("|");return{s:a[0],t:a[1],d:a[2]}});p.nx=p.L.filter(x=>!sl.has(x.s))});
+/* stats */
+const cn={};data.forEach(d=>(d.history||[]).forEach(x=>cn[x]=(cn[x]||0)+1));const ds=Object.keys(cn).map(dn).sort((a,b)=>a-b);
+let lg=0,r=0;ds.forEach((n,i)=>{r=i&&n-ds[i-1]===1?r+1:1;lg=Math.max(lg,r)});let cu=0;if(ds.length&&T-ds[ds.length-1]<=1){cu=1;for(let i=ds.length-1;i>0&&ds[i]-ds[i-1]===1;i--)cu++}
+const dc={Easy:0,Medium:0,Hard:0};data.forEach(d=>dc[d.difficulty]!=null&&dc[d.difficulty]++);const cl={Easy:"var(--e)",Medium:"var(--m)",Hard:"var(--h)"};
+const tc={};data.forEach(d=>d.tl.forEach(t=>tc[t]=(tc[t]||0)+1));const tops=Object.entries(tc).sort((a,b)=>b[1]-a[1]);
+/* state */
+const S={v:"o",q:"",df:"",tg:"",dt:"",du:false,k:"num",a:true};
+const lk=(s,t)=>'<a href="https://leetcode.com/problems/'+s+'/" target="_blank" rel="noopener">'+esc(t)+"</a>";
+function overview(){
+ const due=data.filter(d=>dueR(d)>=1).sort((a,b)=>dueR(b)-dueR(a)),tot=data.length;
+ $("#tot").textContent=tot;$("#cur").textContent=cu;$("#cn").textContent=cu?(T-ds[ds.length-1]?"solve today to keep it":"solved today"):"last: "+(ds.length?iso(ds[ds.length-1]):"never");$("#lng").textContent=lg;$("#duen").textContent=due.length;
+ $("#bar").innerHTML=Object.keys(dc).filter(k=>dc[k]).map(k=>'<i style="flex:'+dc[k]+';background:'+cl[k]+'"></i>').join("");
+ $("#leg").innerHTML=Object.keys(dc).map(k=>'<span style="margin-right:.9rem"><i class="dot" style="background:'+cl[k]+'"></i>'+dc[k]+" "+k.toLowerCase()+"</span>").join("");
+ const fp=P.slice().sort((a,b)=>b.sc-a.sc)[0],mp=Math.round(100*dc.Medium/tot),hp=Math.round(100*dc.Hard/tot),m30=ds.filter(n=>T-n<30).length;
+ const card=(h,p,l)=>'<div class="c"><h3>'+h+"</h3><p>"+p+'</p><div class="lk">'+l+"</div></div>";
+ let h=card("Focus pattern: "+fp.n,"You have "+fp.c+" of ~"+fp.g+" solved ("+fp.s.toLowerCase()+"). "+fp.i+" Do these next, in order:",fp.nx.slice(0,3).map(x=>lk(x.s,x.t+" ("+x.d+")")).join("")+'<button data-pat="'+fp.k+'">Open pattern guide</button>');
+ h+=card("Revisit queue",due.length?due.length+" solved problems are past their review interval (14d shaky, 45d default, 90d solid). Re-solve cold, then mark confidence in the panel. Most overdue:":"Nothing is due. Mark problems Shaky in their panel to get them back sooner.",due.slice(0,4).map(d=>'<button data-o="'+d.slug+'">'+esc(d.title)+"</button>").join(""));
+ h+=card("Difficulty mix",mp<50?"Only "+mp+"% of your solves are Medium and "+hp+"% Hard. Interviews are mostly Medium. For the next 10 problems aim for about 7 Medium, 2 Easy warm-ups and 1 Hard, and stop re-doing Easy ones.":"Good Medium share ("+mp+"%). Hard is at "+hp+"%: add one Hard every week or two to stretch.",'<button data-go="t" data-df="Medium">Browse Mediums</button>');
+ h+=card("Pace",m30+" active days in the last 30. "+(m30<12?"Consistency beats volume: a 30-minute daily slot (1 new problem plus 1 revisit on alternate days) builds retention faster than weekend binges.":"Strong rhythm. Keep one session a week for timed, no-hints mock solves."),'<button data-go="p">See all patterns</button>');
+ $("#coach").innerHTML=h;
+ const mx=Math.max(1,...Object.values(cn));let hm="";for(let n=T-52*7-new Date(T*864e5).getUTCDay();n<=T;n++){const k=iso(n),c=cn[k]||0;hm+=c?'<button class="d" data-l="'+Math.ceil(4*c/mx)+'" data-date="'+k+'" title="'+k+": "+c+'" aria-label="'+k+": "+c+' solved"></button>':'<i class="d" title="'+k+'"></i>'}
+ $("#hm").innerHTML=hm;$("#hs").scrollLeft=1e4;
+ $("#tp").innerHTML=tops.slice(0,8).map(t=>'<button class="bt" data-tag="'+esc(t[0])+'"><i style="width:'+Math.round(100*t[1]/tops[0][1])+'%"></i><span>'+esc(t[0])+"</span><b>"+t[1]+"</b></button>").join("");
+}
+function patterns(){$("#pats").innerHTML=P.map(p=>'<details class="c" id="pt'+p.k+'"'+(S.pat===p.k?" open":"")+"><summary><div class=ph><span>"+p.n+'</span><span class="badge '+p.s+'">'+p.s+'</span></div><div class="bar"><i style="width:'+Math.min(100,100*p.c/p.g)+'%;background:var(--ac)"></i></div><div class="sub">'+p.c+" solved, target "+p.g+" ("+p.hd+" Medium/Hard)</div></summary><div class=pb><h4>Reach for it when</h4><p>"+p.w+"</p><h4>Core idea</h4><p>"+p.i+"</p><h4>Common traps</h4><p>"+p.x+'</p><h4>Drill ladder (easy to hard)</h4><div class=lad>'+p.L.map(x=>sl.has(x.s)?"<span><s>"+esc(x.t)+"</s><span>done</span></span>":'<a href="https://leetcode.com/problems/'+x.s+'/" target="_blank" rel="noopener"><span>'+esc(x.t)+'</span><span class="'+{E:"Easy",M:"Medium",H:"Hard"}[x.d]+'">'+{E:"Easy",M:"Medium",H:"Hard"}[x.d]+"</span></a>").join("")+(p.hd<2&&p.c?'</div><p class=sub style="margin-top:.5rem">Mostly Easy so far: do the Mediums before counting this as solid.</p><div>':"")+"</div></div></details>").join("");
+ if(S.pat!=null){const e=$("#pt"+S.pat);e&&e.scrollIntoView({block:"center"});S.pat=null}}
+const rel=a=>a==null?"-":a<1?"today":a<30?a+"d ago":a<365?Math.round(a/30)+"mo ago":(a/365).toFixed(1)+"y ago";
+const V={num:d=>d.num,title:d=>d.title.toLowerCase(),diff:d=>R[d.difficulty]||9,times:d=>d.timesSolved||1,date:d=>d.date||""};
+let rows=[];
+function table(){const q=S.q.toLowerCase();rows=data.filter(d=>(!q||d.title.toLowerCase().includes(q)||d.tl.some(t=>t.toLowerCase().includes(q)))&&(!S.df||d.difficulty===S.df)&&(!S.tg||d.tl.includes(S.tg))&&(!S.dt||(d.history||[]).includes(S.dt))&&(!S.du||dueR(d)>=1));
+ const f=V[S.k];rows.sort((a,b)=>{const x=f(a),y=f(b);if(S.k==="date"&&(!x||!y)&&x!==y)return x?-1:1;return(x>y?1:x<y?-1:a.num-b.num)*(S.a?1:-1)});
+ $("#bd").innerHTML=rows.map(d=>{const a=last(d);return'<tr data-o="'+d.slug+'"><td data-l="#" class="num n">'+d.num+'</td><td data-l="Problem"><b style="font-weight:500">'+esc(d.title)+((M[d.slug]||{}).n?" \u270e":"")+'</b></td><td data-l="Difficulty"><span class="pill '+d.dn+'">'+d.dn+'</span></td><td data-l="Topics">'+d.tl.slice(0,3).map(t=>'<button class="chip" data-tag="'+esc(t)+'">'+esc(t)+"</button>").join("")+'</td><td data-l="Solved" class="n">'+(d.timesSolved||1)+'x</td><td data-l="Last" class="n'+(dueR(d)>=1?" due":"")+'">'+rel(a)+"</td></tr>"}).join("")||'<tr><td colspan=6 style="text-align:center;padding:2rem;color:var(--mu)">No matches</td></tr>';
+ const on=S.q||S.df||S.tg||S.dt||S.du;$("#cl").hidden=!on;$("#ct").textContent=rows.length+" of "+data.length+(S.dt?" solved on "+S.dt:"");
+ document.querySelectorAll("#df button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.v===S.df));$("#du").setAttribute("aria-pressed",S.du);$("#tg").value=S.tg;
+ document.querySelectorAll("th[data-k]").forEach(t=>{const o=t.dataset.k===S.k;t.classList.toggle("on",o);o?t.setAttribute("aria-sort",S.a?"ascending":"descending"):t.removeAttribute("aria-sort")})}
+function view(v){S.v=v;["o","p","t"].forEach(x=>{$("#v"+x).hidden=x!==v;document.querySelector('.tabs [data-v="'+x+'"]').setAttribute("aria-selected",x===v)});v==="p"&&patterns();v==="t"&&table();scrollTo(0,0)}
+/* drawer */
+const cache={};
+function hl(c){let o="",i=0,m;const re=/(\/\/.*|\/\*[\s\S]*?\*\/)|("(?:\\.|[^"\\])*")|\b(class|public|private|static|int|long|double|boolean|void|return|if|else|for|while|new|null|true|false|char|String|final|import|this|break|continue|var)\b/g;
+ while(m=re.exec(c)){o+=esc(c.slice(i,m.index))+'<span class="'+(m[1]?"cm":m[2]?"s":"k")+'">'+esc(m[0])+"</span>";i=re.lastIndex}return o+esc(c.slice(i))}
+function openP(slug){const d=data.find(x=>x.slug===slug);if(!d)return;const m=M[slug]=M[slug]||{},a=last(d),ps=P.filter(p=>d.tl.some(t=>p.t.includes(t)));
+ const tm={Easy:15,Medium:25,Hard:40}[d.difficulty]||25;
+ $("#dr").innerHTML='<button class="x" id="xc">Esc</button><div class="sub n">#'+d.num+'</div><h2>'+esc(d.title)+'</h2><span class="pill '+d.dn+'">'+d.dn+'</span> <span class="sub">solved '+(d.timesSolved||1)+"x, last "+rel(a)+'</span><div class="lk" style="margin-top:.6rem">'+lk(slug,"Open on LeetCode")+'<a href="https://github.com/'+REPO+"/blob/main/"+encodeURI(d.path)+'" target="_blank" rel="noopener">View on GitHub</a></div>'
+ +'<div class="sec"><b>Review it like an interview</b><div class="sub">Re-solve cold in '+tm+' min with no hints. Then say aloud: pattern, why it applies, time/space. '+(ps.length?"Patterns: "+ps.map(p=>'<a class="chip" href="#" data-pat="'+p.k+'">'+p.n+"</a>").join("")+" Idea: "+esc(ps[0].i):"")+'</div></div>'
+ +'<div class="sec"><b>Confidence (sets review interval)</b><div class="seg" id="cf" style="display:inline-flex">'+["Shaky 14d","OK 45d","Solid 90d"].map((t,i)=>'<button data-c="'+i+'" aria-pressed="'+((m.c==null?1:m.c)===i)+'">'+t+"</button>").join("")+'</div> <button class="tog" id="rv">Reviewed today</button></div>'
+ +'<div class="sec"><b>Notes (saved in this browser)</b><textarea id="nt" placeholder="Pattern:\nKey insight:\nComplexity:\nMistake I made:">'+esc(m.n||"")+'</textarea></div><div class="sec"><b>Solution</b><pre id="cd">Loading...</pre></div>';
+ $("#dr").classList.add("o");$("#dr").scrollTop=0;
+ $("#xc").onclick=closeP;$("#nt").oninput=e=>{m.n=e.target.value;save()};$("#rv").onclick=e=>{m.r=iso(T);save();e.target.textContent="Saved";table();overview()};
+ $("#cf").onclick=e=>{const b=e.target.closest("button");if(!b)return;m.c=+b.dataset.c;save();document.querySelectorAll("#cf button").forEach(x=>x.setAttribute("aria-pressed",x===b));overview();table()};
+ const put=t=>{$("#cd").innerHTML=hl(t)};if(cache[slug])put(cache[slug]);else fetch(RAW+encodeURI(d.path)).then(r=>{if(!r.ok)throw 0;return r.text()}).then(t=>{cache[slug]=t;put(t)}).catch(()=>{$("#cd").textContent="Could not load the file. Use the GitHub link above."})}
+const closeP=()=>$("#dr").classList.remove("o");
+/* events */
+document.addEventListener("click",e=>{const t=e.target,g=s=>t.closest(s);let b;
+ if(b=g("[data-pat]")){e.preventDefault();S.pat=+b.dataset.pat;closeP();view("p");return}
+ if(b=g("[data-go]")){S.df=b.dataset.df||"";view(b.dataset.go);return}
+ if(b=g(".chip[data-tag],.bt[data-tag]")){e.stopPropagation();S.tg=S.tg===b.dataset.tag?"":b.dataset.tag;view("t");return}
+ if(b=g("button.d[data-date]")){S.dt=S.dt===b.dataset.date?"":b.dataset.date;view("t");return}
+ if(b=g("[data-o]")){openP(b.dataset.o);return}
+ if(b=g(".tabs button")){view(b.dataset.v);return}
+ if(!g("#dr")&&$("#dr").classList.contains("o")&&!g("a"))closeP()});
+$("#q").oninput=e=>{S.q=e.target.value.trim();table()};$("#df").onclick=e=>{const b=e.target.closest("button");if(b){S.df=b.dataset.v;table()}};$("#tg").onchange=e=>{S.tg=e.target.value;table()};$("#du").onclick=()=>{S.du=!S.du;table()};
+$("#cl").onclick=()=>{Object.assign(S,{q:"",df:"",tg:"",dt:"",du:false});$("#q").value="";table()};
+document.querySelectorAll("th[data-k]").forEach(h=>{h.tabIndex=0;const go=()=>{S.k===h.dataset.k?S.a=!S.a:(S.k=h.dataset.k,S.a=!/date|times/.test(S.k));table()};h.onclick=go;h.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go()}}});
+$("#tg").innerHTML+=tops.slice().sort((a,b)=>a[0].localeCompare(b[0])).map(t=>'<option value="'+esc(t[0])+'">'+esc(t[0])+" ("+t[1]+")</option>").join("");
+document.addEventListener("keydown",e=>{const t=e.target.tagName;if(e.key==="Escape")closeP();else if(e.key==="/"&&t!=="INPUT"&&t!=="TEXTAREA"&&t!=="SELECT"){e.preventDefault();view("t");$("#q").focus()}});
+overview();view("o");
+</script></body></html>
