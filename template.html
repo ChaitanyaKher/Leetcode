@@ -67,13 +67,17 @@ body::before{content:"";position:fixed;inset:-20%;z-index:-1;pointer-events:none
 .it{display:flex;align-items:center;gap:.6rem;padding:.35rem .2rem;border-bottom:1px solid var(--ln);font-size:.86rem;cursor:pointer;transition:background .2s,transform .2s var(--ez)}.it:hover{background:var(--p2);transform:translateX(3px)}.it:last-child{border:0}
 .it input{accent-color:var(--ac2);width:16px;height:16px;flex:none}.it a,.it button{flex:1;background:none;border:0;padding:0;text-align:left;font-size:inherit}.it a:hover,.it button:hover{color:var(--ac2)}.it.dn a,.it.dn button{color:var(--mu);text-decoration:line-through}
 .it small{font-size:.7rem}.tag{font-size:.65rem;border:1px solid var(--ln);border-radius:6px;padding:0 .3rem;color:var(--mu)}
-</style></head><body><nav id="sb"><div class="br"><i></i><b>LeetCode<br><small>Tracker</small></b></div><div class="tabs" role="tablist"><button data-v="o"><u>&#9678;</u>Overview</button><button data-v="s"><u>&#9733;</u>Sheets</button><button data-v="p"><u>&#10022;</u>Patterns</button><button data-v="t"><u>&#9776;</u>Problems</button></div><div class="ft"><a href="https://github.com/ChaitanyaKher/Leetcode" target="_blank" rel="noopener">GitHub repo &rarr;</a><span><kbd>/</kbd> search &middot; <kbd>Esc</kbd> close</span></div></nav><main id="mn"><section id="vo"><div class="c nba" id="nba"></div><div class="g rings" id="rg"></div><div class="g hero"><div class="c big-c st"><small>Solved</small><div class="big n" id="tot"></div><div class="bar" id="bar"></div><div class="sub" id="leg"></div></div>
+.kb{outline:2px solid var(--ac2);outline-offset:-2px}tr.kb{outline:0}tr.kb td{background:var(--p2)}tr.kb td:first-child{box-shadow:inset 3px 0 var(--ac2)}
+#help{position:fixed;inset:0;z-index:20;display:grid;place-items:center;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);animation:up .25s var(--ez)}#help[hidden]{display:none}
+#help>div{width:min(640px,92vw);background:var(--bg);border:1px solid var(--ln);border-radius:20px;padding:1.3rem 1.5rem;box-shadow:0 30px 80px rgba(0,0,0,.5)}#help h2{margin:0 0 .8rem;font-size:1.1rem}
+#help dl{display:grid;grid-template-columns:auto 1fr;gap:.45rem 1rem;margin:0;font-size:.88rem}#help dt{white-space:nowrap}#help dd{margin:0;color:var(--mu)}
+</style></head><body><nav id="sb"><div class="br"><i></i><b>LeetCode<br><small>Tracker</small></b></div><div class="tabs" role="tablist"><button data-v="o"><u>&#9678;</u>Overview</button><button data-v="s"><u>&#9733;</u>Sheets</button><button data-v="p"><u>&#10022;</u>Patterns</button><button data-v="t"><u>&#9776;</u>Problems</button></div><div class="ft"><a href="https://github.com/ChaitanyaKher/Leetcode" target="_blank" rel="noopener">GitHub repo &rarr;</a><span><kbd>?</kbd> shortcuts &middot; <kbd>/</kbd> search</span></div></nav><main id="mn"><section id="vo"><div class="c nba" id="nba"></div><div class="g rings" id="rg"></div><div class="g hero"><div class="c big-c st"><small>Solved</small><div class="big n" id="tot"></div><div class="bar" id="bar"></div><div class="sub" id="leg"></div></div>
 <div class="c st"><small>Current streak</small><b id="cur"></b><small id="cn"></small></div><div class="c st"><small>Longest streak</small><b id="lng"></b><small>days</small></div><div class="c st"><small>Due for review</small><b id="duen"></b><small>spaced repetition</small></div></div>
 <div class="g two coach" id="coach"></div>
 <div class="g two"><div class="c"><h2>Activity, last year (click a day)</h2><div class="hs" id="hs"><div class="hm" id="hm"></div></div></div><div class="c"><h2>Top topics</h2><div id="tp"></div></div></div></section>
 <section id="vs" hidden><div id="sh-top"></div><div class="tools" style="margin-top:.9rem"><input id="sq" type="search" placeholder="Filter this sheet"><button class="tog" id="hd">Hide done</button></div><div class="gc" id="sh-g"></div></section><section id="vp" hidden><p class="sub" style="margin-top:0">Ordered by interview priority. Open a card for when to use the pattern, the core idea, common traps and a drill ladder (unsolved problems link to LeetCode).</p><div class="g pg" id="pats"></div></section>
 <section id="vt" hidden><div class="tools"><input id="q" type="search" placeholder="Search title or topic ( / )" aria-label="Search"><div class="seg" id="df"><button data-v="">All</button><button data-v="Easy">Easy</button><button data-v="Medium">Medium</button><button data-v="Hard">Hard</button></div><select id="tg" aria-label="Topic"><option value="">All topics</option></select><button class="tog" id="du">Due for review</button><button class="tog" id="cl" hidden>Clear</button></div>
-<div class="sub" id="ct"></div><div class="tw"><table><thead><tr><th data-k="num">#</th><th data-k="title">Problem</th><th data-k="diff">Difficulty</th><th>Topics</th><th data-k="times">Solved</th><th data-k="date">Last solved</th></tr></thead><tbody id="bd"></tbody></table></div></section></main><aside id="dr" aria-label="Problem details"></aside>
+<div class="sub" id="ct"></div><div class="tw"><table><thead><tr><th data-k="num">#</th><th data-k="title">Problem</th><th data-k="diff">Difficulty</th><th>Topics</th><th data-k="times">Solved</th><th data-k="date">Last solved</th></tr></thead><tbody id="bd"></tbody></table></div></section></main><div id="help" hidden onclick="this.hidden=true"><div><h2>Keyboard shortcuts</h2><dl><dt><kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd></dt><dd>Overview, Sheets, Patterns, Problems</dd><dt><kbd>j</kbd> <kbd>k</kbd> or <kbd>&darr;</kbd> <kbd>&uarr;</kbd></dt><dd>Move selection (switches problem when the panel is open)</dd><dt><kbd>g</kbd> <kbd>G</kbd></dt><dd>First / last item</dd><dt><kbd>Enter</kbd> or <kbd>o</kbd></dt><dd>Open (panel, link or pattern)</dd><dt><kbd>x</kbd> or <kbd>Space</kbd></dt><dd>Tick or untick a sheet item</dd><dt><kbd>h</kbd> <kbd>l</kbd></dt><dd>Previous / next sheet</dd><dt><kbd>r</kbd></dt><dd>Mark selected problem reviewed today</dd><dt><kbd>d</kbd> <kbd>f</kbd></dt><dd>Cycle difficulty / toggle due filter</dd><dt><kbd>/</kbd></dt><dd>Search</dd><dt><kbd>Esc</kbd></dt><dd>Close panel or this help</dd><dt><kbd>?</kbd></dt><dd>Toggle this help</dd></dl></div></div><aside id="dr" aria-label="Problem details"></aside>
 <script>
 const REPO="ChaitanyaKher/Leetcode",RAW="https://raw.githubusercontent.com/"+REPO+"/main/";
 const data=/*__DATA__*/[];
@@ -113,7 +117,7 @@ let lg=0,r=0;ds.forEach((n,i)=>{r=i&&n-ds[i-1]===1?r+1:1;lg=Math.max(lg,r)});let
 const dc={Easy:0,Medium:0,Hard:0};data.forEach(d=>dc[d.difficulty]!=null&&dc[d.difficulty]++);const cl={Easy:"var(--e)",Medium:"var(--m)",Hard:"var(--h)"};
 const tc={};data.forEach(d=>d.tl.forEach(t=>tc[t]=(tc[t]||0)+1));const tops=Object.entries(tc).sort((a,b)=>b[1]-a[1]);
 /* state */
-const S={sh:SH[0].id,sq:"",hd:false,v:"o",q:"",df:"",tg:"",dt:"",du:false,k:"num",a:true};
+const S={ki:-1,sh:SH[0].id,sq:"",hd:false,v:"o",q:"",df:"",tg:"",dt:"",du:false,k:"num",a:true};
 const lk=(s,t)=>'<a href="https://leetcode.com/problems/'+s+'/" target="_blank" rel="noopener">'+esc(t)+"</a>";
 const cnt=(e,n)=>{if(e._v===n)return;const f=e._v||0;e._v=n;if(matchMedia("(prefers-reduced-motion:reduce)").matches){e.textContent=n;return}let s=null;const st=t=>{s=s||t;const p=Math.min(1,(t-s)/700);e.textContent=Math.round(f+(n-f)*(1-Math.pow(1-p,3)));p<1&&requestAnimationFrame(st)};requestAnimationFrame(st)};
 function nba(fp,due){const td=ds.length&&T-ds[ds.length-1]===0,x=fp.nx[0],cta=(s,t)=>lk(s,t).replace("<a ",'<a class="cta" ');let h,l;
@@ -146,7 +150,7 @@ function table(){const q=S.q.toLowerCase();rows=data.filter(d=>(!q||d.title.toLo
  const on=S.q||S.df||S.tg||S.dt||S.du;$("#cl").hidden=!on;$("#ct").textContent=rows.length+" of "+data.length+(S.dt?" solved on "+S.dt:"");
  document.querySelectorAll("#df button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.v===S.df));$("#du").setAttribute("aria-pressed",S.du);$("#tg").value=S.tg;
  document.querySelectorAll("th[data-k]").forEach(t=>{const o=t.dataset.k===S.k;t.classList.toggle("on",o);o?t.setAttribute("aria-sort",S.a?"ascending":"descending"):t.removeAttribute("aria-sort")})}
-function view(v){S.v=v;["o","s","p","t"].forEach(x=>{$("#v"+x).hidden=x!==v;document.querySelector('.tabs [data-v="'+x+'"]').setAttribute("aria-selected",x===v)});v==="p"&&patterns();v==="t"&&table();v==="s"&&sheets();$("#mn").scrollTo({top:0})}
+function view(v){S.v=v;S.ki=-1;["o","s","p","t"].forEach(x=>{$("#v"+x).hidden=x!==v;document.querySelector('.tabs [data-v="'+x+'"]').setAttribute("aria-selected",x===v)});v==="p"&&patterns();v==="t"&&table();v==="s"&&sheets();$("#mn").scrollTo({top:0})}
 /* drawer */
 const cache={};
 function hl(c){let o="",i=0,m;const re=/(\/\/.*|\/\*[\s\S]*?\*\/)|("(?:\\.|[^"\\])*")|\b(class|public|private|static|int|long|double|boolean|void|return|if|else|for|while|new|null|true|false|char|String|final|import|this|break|continue|var)\b/g;
@@ -186,6 +190,24 @@ $("#q").oninput=e=>{S.q=e.target.value.trim();table()};$("#df").onclick=e=>{cons
 $("#cl").onclick=()=>{Object.assign(S,{q:"",df:"",tg:"",dt:"",du:false});$("#q").value="";table()};
 document.querySelectorAll("th[data-k]").forEach(h=>{h.tabIndex=0;const go=()=>{S.k===h.dataset.k?S.a=!S.a:(S.k=h.dataset.k,S.a=!/date|times/.test(S.k));table()};h.onclick=go;h.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go()}}});
 $("#tg").innerHTML+=tops.slice().sort((a,b)=>a[0].localeCompare(b[0])).map(t=>'<option value="'+esc(t[0])+'">'+esc(t[0])+" ("+t[1]+")</option>").join("");
-document.addEventListener("keydown",e=>{const t=e.target.tagName;if(e.key==="Escape")closeP();else if(e.key==="/"&&t!=="INPUT"&&t!=="TEXTAREA"&&t!=="SELECT"){e.preventDefault();view("t");$("#q").focus()}});
+document.addEventListener("keydown",e=>{const t=e.target.tagName;if(e.key==="Escape")closeP();else if(e.key==="/"&&t!=="INPUT"&&t!=="TEXTAREA"&&t!=="SELECT"){e.preventDefault();if(S.v==="s")$("#sq").focus();else{view("t");$("#q").focus()}}});
+const kbL=()=>S.v==="t"?[...document.querySelectorAll("#bd tr[data-o]")]:S.v==="s"?[...document.querySelectorAll("#sh-g .it")]:S.v==="p"?[...document.querySelectorAll("#pats details")]:[];
+function kbMark(n){const L=kbL();if(!L.length)return;S.ki=Math.max(0,Math.min(L.length-1,n));document.querySelectorAll(".kb").forEach(x=>x.classList.remove("kb"));const e=L[S.ki];e.classList.add("kb");e.scrollIntoView({block:"nearest"});if(S.v==="t"&&$("#dr").classList.contains("o"))openP(e.dataset.o)}
+document.addEventListener("keydown",e=>{const t=e.target.tagName,k=e.key;if(e.metaKey||e.ctrlKey||e.altKey)return;
+ if(k==="Escape"){$("#help").hidden=true;return}
+ if(t==="INPUT"||t==="TEXTAREA"||t==="SELECT")return;
+ const tb={1:"o",2:"s",3:"p",4:"t"};if(tb[k]){view(tb[k]);return}
+ if(k==="?"){$("#help").hidden=!$("#help").hidden;return}
+ if(k==="j"||k==="ArrowDown"){e.preventDefault();kbMark(S.ki+1);return}
+ if(k==="k"||k==="ArrowUp"){e.preventDefault();kbMark(S.ki<0?0:S.ki-1);return}
+ if(k==="g"){kbMark(0);return}if(k==="G"){kbMark(1e9);return}
+ const c=kbL()[S.ki];
+ if(k==="Enter"||k==="o"){if(!c)return;if(S.v==="t")openP(c.dataset.o);else if(S.v==="p")c.open=!c.open;else{const a=c.querySelector("a,button");if(a){a.tagName==="A"?window.open(a.href,"_blank","noopener"):a.click()}}return}
+ if((k==="x"||k===" ")&&S.v==="s"&&c){e.preventDefault();const b=c.querySelector("input:not(:disabled)");if(b){b.checked=!b.checked;b.dispatchEvent(new Event("change",{bubbles:true}));kbMark(S.ki)}return}
+ if(k==="r"&&S.v==="t"&&c){const m=M[c.dataset.o]=M[c.dataset.o]||{};m.r=iso(T);save();table();overview();kbMark(S.ki);return}
+ if((k==="h"||k==="l"||k==="ArrowLeft"||k==="ArrowRight")&&S.v==="s"){const i=SH.findIndex(x=>x.id===S.sh);S.sh=SH[(i+((k==="l"||k==="ArrowRight")?1:SH.length-1))%SH.length].id;sheets();return}
+ if(k==="d"&&S.v==="t"){const D=["","Easy","Medium","Hard"];S.df=D[(D.indexOf(S.df)+1)%4];table();return}
+ if(k==="f"&&S.v==="t"){S.du=!S.du;table()}
+});
 overview();view("o");
 </script></body></html>
