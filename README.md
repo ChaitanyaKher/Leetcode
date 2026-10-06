@@ -1,4 +1,4 @@
-<!-- TOTAL-SOLVED -->141 problems solved<!-- /TOTAL-SOLVED -->
+<!-- TOTAL-SOLVED -->142 problems solved<!-- /TOTAL-SOLVED -->
 
 # LeetCode Solutions
 
@@ -49,13 +49,14 @@ Total solved: 29
 </details>
 
 <details>
-<summary>0101-0200 (14 solved)</summary>
+<summary>0101-0200 (15 solved)</summary>
 
 | # | Problem | Tags | Solution |
 |---|---------|------|----------|
 | 121 | Best Time To Buy And Sell Stock | Array, Dynamic Programming | [0101-0200/0121-best-time-to-buy-and-sell-stock/0121-best-time-to-buy-and-sell-stock.java](0101-0200/0121-best-time-to-buy-and-sell-stock/0121-best-time-to-buy-and-sell-stock.java) |
 | 122 | Best Time To Buy And Sell Stock Ii | Array, Dynamic Programming, Greedy | [0101-0200/0122-best-time-to-buy-and-sell-stock-ii/0122-best-time-to-buy-and-sell-stock-ii.java](0101-0200/0122-best-time-to-buy-and-sell-stock-ii/0122-best-time-to-buy-and-sell-stock-ii.java) |
 | 124 | Binary Tree Maximum Path Sum | Dynamic Programming, Tree, Depth-First Search, Binary Tree, DP on Trees | [0101-0200/0124-binary-tree-maximum-path-sum/0124-binary-tree-maximum-path-sum.java](0101-0200/0124-binary-tree-maximum-path-sum/0124-binary-tree-maximum-path-sum.java) |
+| 125 | Valid Palindrome |  | [0101-0200/0125-valid-palindrome/0125-valid-palindrome.java](0101-0200/0125-valid-palindrome/0125-valid-palindrome.java) |
 | 128 | Longest Consecutive Sequence | Array, Hash Table, Union-Find | [0101-0200/0128-longest-consecutive-sequence/0128-longest-consecutive-sequence.java](0101-0200/0128-longest-consecutive-sequence/0128-longest-consecutive-sequence.java) |
 | 136 | Single Number | Array, Bit Manipulation | [0101-0200/0136-single-number/0136-single-number.java](0101-0200/0136-single-number/0136-single-number.java) |
 | 141 | Linked List Cycle | Hash Table, Linked List, Two Pointers, Floyd's Cycle Finding Algorithm | [0101-0200/0141-linked-list-cycle/0141-linked-list-cycle.java](0101-0200/0141-linked-list-cycle/0141-linked-list-cycle.java) |
@@ -426,6 +427,7 @@ Total solved: 29
 
 </details>
 <!-- SOLUTIONS-TABLE-END -->
+
 
 
 
