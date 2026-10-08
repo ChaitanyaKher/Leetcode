@@ -530,5 +530,9 @@
   "maximum-nesting-depth-of-two-valid-parentheses-strings": {
     "tags": "String, Stack, Bracket Sequences",
     "difficulty": "Medium"
+  },
+  "valid-palindrome": {
+    "tags": "Two Pointers, String",
+    "difficulty": "Easy"
   }
 }
