@@ -1,4 +1,4 @@
-<!-- TOTAL-SOLVED -->142 problems solved<!-- /TOTAL-SOLVED -->
+<!-- TOTAL-SOLVED -->143 problems solved<!-- /TOTAL-SOLVED -->
 
 # LeetCode Solutions
 
@@ -49,7 +49,7 @@ Total solved: 29
 </details>
 
 <details>
-<summary>0101-0200 (15 solved)</summary>
+<summary>0101-0200 (16 solved)</summary>
 
 | # | Problem | Tags | Solution |
 |---|---------|------|----------|
@@ -65,6 +65,7 @@ Total solved: 29
 | 146 | Lru Cache | Hash Table, Linked List, Design, Doubly-Linked List | [0101-0200/0146-lru-cache/0146-lru-cache.java](0101-0200/0146-lru-cache/0146-lru-cache.java) |
 | 150 | Evaluate Reverse Polish Notation | Array, Math, Stack | [0101-0200/0150-evaluate-reverse-polish-notation/0150-evaluate-reverse-polish-notation.java](0101-0200/0150-evaluate-reverse-polish-notation/0150-evaluate-reverse-polish-notation.java) |
 | 152 | Maximum Product Subarray | Array, Dynamic Programming | [0101-0200/0152-maximum-product-subarray/0152-maximum-product-subarray.java](0101-0200/0152-maximum-product-subarray/0152-maximum-product-subarray.java) |
+| 153 | Find Minimum In Rotated Sorted Array |  | [0101-0200/0153-find-minimum-in-rotated-sorted-array/0153-find-minimum-in-rotated-sorted-array.java](0101-0200/0153-find-minimum-in-rotated-sorted-array/0153-find-minimum-in-rotated-sorted-array.java) |
 | 167 | Two Sum Ii Input Array Is Sorted | Array, Two Pointers, Binary Search | [0101-0200/0167-two-sum-ii-input-array-is-sorted/0167-two-sum-ii-input-array-is-sorted.java](0101-0200/0167-two-sum-ii-input-array-is-sorted/0167-two-sum-ii-input-array-is-sorted.java) |
 | 189 | Rotate Array | Array, Math, Two Pointers | [0101-0200/0189-rotate-array/0189-rotate-array.java](0101-0200/0189-rotate-array/0189-rotate-array.java) |
 | 198 | House Robber | Array, Dynamic Programming | [0101-0200/0198-house-robber/0198-house-robber.java](0101-0200/0198-house-robber/0198-house-robber.java) |
@@ -427,6 +428,7 @@ Total solved: 29
 
 </details>
 <!-- SOLUTIONS-TABLE-END -->
+
 
 
 
