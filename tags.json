@@ -534,5 +534,9 @@
   "valid-palindrome": {
     "tags": "Two Pointers, String",
     "difficulty": "Easy"
+  },
+  "find-minimum-in-rotated-sorted-array": {
+    "tags": "Array, Binary Search",
+    "difficulty": "Medium"
   }
 }
