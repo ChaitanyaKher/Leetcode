@@ -538,5 +538,9 @@
   "find-minimum-in-rotated-sorted-array": {
     "tags": "Array, Binary Search",
     "difficulty": "Medium"
+  },
+  "sum-of-squares-of-special-elements": {
+    "tags": "Array, Enumeration",
+    "difficulty": "Easy"
   }
 }
