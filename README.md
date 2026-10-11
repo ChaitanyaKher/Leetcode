@@ -1,4 +1,4 @@
-<!-- TOTAL-SOLVED -->143 problems solved<!-- /TOTAL-SOLVED -->
+<!-- TOTAL-SOLVED -->144 problems solved<!-- /TOTAL-SOLVED -->
 
 # LeetCode Solutions
 
@@ -323,12 +323,13 @@ Total solved: 29
 </details>
 
 <details>
-<summary>2701-2800 (2 solved)</summary>
+<summary>2701-2800 (3 solved)</summary>
 
 | # | Problem | Tags | Solution |
 |---|---------|------|----------|
 | 2720 | Minimize The Maximum Difference Of Pairs | Array, Binary Search, Dynamic Programming, Greedy, Sorting | [2701-2800/2720-minimize-the-maximum-difference-of-pairs/2720-minimize-the-maximum-difference-of-pairs.java](2701-2800/2720-minimize-the-maximum-difference-of-pairs/2720-minimize-the-maximum-difference-of-pairs.java) |
 | 2724 | Convert An Array Into A 2D Array With Conditions | Array, Hash Table | [2701-2800/2724-convert-an-array-into-a-2d-array-with-conditions/2724-convert-an-array-into-a-2d-array-with-conditions.java](2701-2800/2724-convert-an-array-into-a-2d-array-with-conditions/2724-convert-an-array-into-a-2d-array-with-conditions.java) |
+| 2778 | Sum Of Squares Of Special Elements |  | [2701-2800/2778-sum-of-squares-of-special-elements/2778-sum-of-squares-of-special-elements.java](2701-2800/2778-sum-of-squares-of-special-elements/2778-sum-of-squares-of-special-elements.java) |
 
 </details>
 
@@ -428,6 +429,7 @@ Total solved: 29
 
 </details>
 <!-- SOLUTIONS-TABLE-END -->
+
 
 
 
