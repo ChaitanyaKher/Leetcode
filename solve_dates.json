@@ -1,255 +1,79 @@
 {
-  "coin-change-ii": [
-    "2023-08-11"
-  ],
-  "missing-number": [
+  "contains-duplicate-ii": [
     "2026-09-29"
-  ],
-  "convert-an-array-into-a-2d-array-with-conditions": [
-    "2024-01-02"
-  ],
-  "rotate-string": [
-    "2024-02-25"
-  ],
-  "balance-a-binary-search-tree": [
-    "2026-02-09"
   ],
   "power-of-four": [
     "2026-09-29"
   ],
-  "sort-colors": [
-    "2026-06-23"
-  ],
-  "climbing-stairs": [
-    "2026-09-29"
-  ],
-  "binary-tree-maximum-path-sum": [
-    "2026-09-08"
-  ],
-  "find-greatest-common-divisor-of-array": [
-    "2021-10-24"
-  ],
-  "find-pivot-index": [
-    "2023-08-12"
-  ],
   "assign-cookies": [
     "2024-01-01"
   ],
-  "minimum-number-of-operations-to-make-array-empty": [
-    "2024-01-04"
+  "backspace-string-compare": [
+    "2025-12-20"
+  ],
+  "house-robber": [
+    "2025-07-17"
+  ],
+  "palindrome-number": [
+    "2022-10-08"
+  ],
+  "balance-a-binary-search-tree": [
+    "2026-02-09"
+  ],
+  "repeated-substring-pattern": [
+    "2023-08-21"
+  ],
+  "length-of-last-word": [
+    "2023-07-20"
   ],
   "design-hashset": [
     "2026-04-19"
+  ],
+  "rotate-array": [
+    "2026-06-25"
+  ],
+  "search-insert-position": [
+    "2023-02-20"
+  ],
+  "sum-of-squares-of-special-elements": [
+    "2026-10-11"
+  ],
+  "coin-change-ii": [
+    "2023-08-11"
+  ],
+  "sliding-window-maximum": [
+    "2023-08-16"
   ],
   "search-in-rotated-sorted-array": [
     "2023-08-09",
     "2026-10-04"
   ],
-  "lru-cache": [
-    "2026-06-16"
+  "count-subarrays-with-majority-element-i": [
+    "2026-06-25"
+  ],
+  "climbing-stairs": [
+    "2026-09-29"
   ],
   "house-robber-ii": [
     "2026-09-24"
   ],
-  "longest-balanced-subarray-i": [
-    "2026-02-10"
+  "product-of-array-except-self": [
+    "2026-08-24"
   ],
-  "merge-two-sorted-lists": [
-    "2025-07-17"
+  "binary-tree-level-order-traversal": [
+    "2026-11-26"
   ],
-  "find-minimum-in-rotated-sorted-array": [
-    "2026-10-09"
-  ],
-  "search-in-rotated-sorted-array-ii": [
-    "2023-08-10"
-  ],
-  "maximum-number-of-vowels-in-a-substring-of-given-length": [
-    "2026-01-29"
-  ],
-  "group-anagrams": [
-    "2026-06-16"
+  "binary-search": [
+    "2026-09-22"
   ],
   "duplicate-zeros": [
     "2022-05-08"
   ],
-  "binary-tree-preorder-traversal": [
-    "2023-08-09"
-  ],
-  "sum-of-squares-of-special-elements": [
-    "2026-10-11"
-  ],
-  "reverse-string": [
-    "2026-02-02"
-  ],
-  "valid-anagram": [
-    "2026-08-27"
-  ],
-  "baseball-game": [
-    "2026-01-27"
-  ],
-  "odd-even-linked-list": [
-    "2022-12-06"
-  ],
-  "check-if-there-is-a-valid-partition-for-the-array": [
-    "2023-08-13"
-  ],
-  "trionic-array-i": [
-    "2026-02-03"
-  ],
   "plus-one": [
     "2026-07-08"
   ],
-  "repeated-substring-pattern": [
-    "2023-08-21"
-  ],
-  "count-collisions-on-a-road": [
-    "2025-12-04"
-  ],
-  "naming-a-company": [
-    "2023-02-09"
-  ],
-  "contains-duplicate": [
-    "2026-08-10"
-  ],
-  "maximize-happiness-of-selected-children": [
-    "2025-12-25"
-  ],
-  "implement-stack-using-queues": [
-    "2022-05-05"
-  ],
-  "smallest-palindromic-rearrangement-i": [
-    "2026-07-28"
-  ],
-  "remove-covered-intervals": [
-    "2022-02-20"
-  ],
-  "maximal-network-rank": [
-    "2023-08-18"
-  ],
-  "valid-parentheses": [
-    "2026-09-19",
-    "2026-09-27"
-  ],
-  "product-of-array-except-self": [
-    "2026-08-24"
-  ],
-  "remove-all-adjacent-duplicates-in-string-ii": [
-    "2022-05-06"
-  ],
-  "concatenation-of-array": [
-    "2025-05-02"
-  ],
-  "power-of-two": [
-    "2026-09-29"
-  ],
-  "count-subarrays-with-majority-element-i": [
-    "2026-06-25"
-  ],
-  "find-first-and-last-position-of-element-in-sorted-array": [
-    "2026-08-18"
-  ],
-  "search-insert-position": [
-    "2023-02-20"
-  ],
-  "binary-tree-postorder-traversal": [
-    "2023-08-09"
-  ],
-  "backspace-string-compare": [
-    "2025-12-20"
-  ],
-  "two-sum-ii-input-array-is-sorted": [
-    "2022-02-22",
-    "2026-10-10"
-  ],
-  "maximum-nesting-depth-of-two-valid-parentheses-strings": [
-    "2026-09-30"
-  ],
-  "restore-ip-addresses": [
-    "2026-09-08"
-  ],
-  "container-with-most-water": [
-    "2026-08-26"
-  ],
-  "01-matrix": [
-    "2023-08-17"
-  ],
-  "best-time-to-buy-and-sell-stock-ii": [
-    "2026-08-10"
-  ],
-  "k-diff-pairs-in-an-array": [
-    "2023-08-12"
-  ],
-  "contains-duplicate-ii": [
-    "2026-09-29"
-  ],
-  "max-consecutive-ones": [
-    "2022-05-07"
-  ],
-  "minimize-the-maximum-difference-of-pairs": [
-    "2023-08-09"
-  ],
-  "longest-consecutive-sequence": [
-    "2026-08-31"
-  ],
-  "remove-duplicates-from-sorted-array-ii": [
-    "2024-02-19"
-  ],
   "maximum-product-subarray": [
     "2026-08-26"
-  ],
-  "consecutive-characters": [
-    "2022-05-07"
-  ],
-  "sequential-digits": [
-    "2026-07-13"
-  ],
-  "valid-word": [
-    "2025-07-15"
-  ],
-  "reverse-vowels-of-a-string": [
-    "2026-02-03"
-  ],
-  "same-tree": [
-    "2026-08-18"
-  ],
-  "sliding-window-maximum": [
-    "2023-08-16"
-  ],
-  "remove-duplicates-from-sorted-array": [
-    "2026-09-26"
-  ],
-  "maximum-average-subarray-i": [
-    "2026-09-16"
-  ],
-  "design-hashmap": [
-    "2026-04-19"
-  ],
-  "check-if-array-is-sorted-and-rotated": [
-    "2026-08-24"
-  ],
-  "longest-common-prefix": [
-    "2023-08-15"
-  ],
-  "evaluate-reverse-polish-notation": [
-    "2026-01-06"
-  ],
-  "valid-palindrome": [
-    "2026-10-06"
-  ],
-  "find-numbers-with-even-number-of-digits": [
-    "2022-05-07"
-  ],
-  "add-two-numbers": [
-    "2022-09-25"
-  ],
-  "first-bad-version": [
-    "2022-02-20"
-  ],
-  "power-of-three": [
-    "2026-09-29"
-  ],
-  "top-k-frequent-elements": [
-    "2026-07-06"
   ],
   "best-time-to-buy-and-sell-stock": [
     "2026-04-12",
@@ -258,146 +82,329 @@
   "special-array-with-x-elements-greater-than-or-equal-x": [
     "2021-10-24"
   ],
-  "move-zeroes": [
-    "2026-01-29"
-  ],
-  "ransom-note": [
-    "2026-02-17"
-  ],
   "find-k-pairs-with-smallest-sums": [
     "2026-09-24"
   ],
-  "lowest-common-ancestor-of-a-binary-tree": [
-    "2026-07-14"
-  ],
-  "spiral-matrix": [
-    "2026-06-18"
-  ],
-  "house-robber": [
-    "2025-07-17"
-  ],
-  "longest-substring-without-repeating-characters": [
-    "2023-07-23"
-  ],
-  "binary-search": [
-    "2026-09-22"
-  ],
-  "redistribute-characters-to-make-all-strings-equal": [
-    "2024-01-02"
+  "longest-balanced-subarray-i": [
+    "2026-02-10"
   ],
   "merge-sorted-array": [
     "2022-12-06"
   ],
-  "two-sum": [
-    "2026-05-27",
-    "2026-10-08"
+  "contains-duplicate": [
+    "2026-08-10"
+  ],
+  "maximum-nesting-depth-of-two-valid-parentheses-strings": [
+    "2026-09-30"
+  ],
+  "valid-palindrome": [
+    "2026-10-06"
+  ],
+  "restore-ip-addresses": [
+    "2026-09-08"
+  ],
+  "sort-colors": [
+    "2026-06-23"
+  ],
+  "longest-common-prefix": [
+    "2023-08-15"
+  ],
+  "binary-tree-maximum-path-sum": [
+    "2026-09-08"
   ],
   "merge-intervals": [
     "2026-07-01"
   ],
-  "partition-list": [
-    "2023-08-15"
+  "kth-largest-element-in-an-array": [
+    "2023-08-14"
   ],
-  "roman-to-integer": [
-    "2023-07-19"
+  "sequential-digits": [
+    "2026-07-13"
   ],
-  "rotate-array": [
-    "2026-06-25"
+  "longest-consecutive-sequence": [
+    "2026-08-31"
   ],
-  "check-if-n-and-its-double-exist": [
-    "2024-12-07"
+  "remove-duplicates-from-sorted-array-ii": [
+    "2024-02-19"
   ],
-  "rank-transform-of-an-array": [
-    "2026-07-12"
+  "odd-even-linked-list": [
+    "2022-12-06"
   ],
-  "maximum-product-of-two-elements-in-an-array": [
-    "2026-07-27"
+  "reverse-vowels-of-a-string": [
+    "2026-02-03"
   ],
-  "squares-of-a-sorted-array": [
-    "2022-05-07"
+  "power-of-two": [
+    "2026-09-29"
   ],
-  "palindrome-number": [
-    "2022-10-08"
+  "group-anagrams": [
+    "2026-06-16"
+  ],
+  "lru-cache": [
+    "2026-06-16"
   ],
   "3sum": [
     "2026-08-31"
   ],
-  "set-matrix-zeroes": [
-    "2026-09-23"
+  "search-in-rotated-sorted-array-ii": [
+    "2023-08-10"
   ],
-  "single-number": [
-    "2024-01-14"
+  "best-time-to-buy-and-sell-stock-ii": [
+    "2026-08-10"
   ],
-  "reverse-substrings-between-each-pair-of-parentheses": [
-    "2026-09-28"
+  "find-first-and-last-position-of-element-in-sorted-array": [
+    "2026-08-18"
   ],
-  "keep-multiplying-found-values-by-two": [
-    "2025-07-08"
+  "maximum-number-of-vowels-in-a-substring-of-given-length": [
+    "2026-01-29"
   ],
-  "linked-list-cycle": [
-    "2026-01-26"
-  ],
-  "letter-combinations-of-a-phone-number": [
-    "2022-05-09"
-  ],
-  "relative-ranks": [
-    "2026-07-24"
-  ],
-  "lemonade-change": [
-    "2025-07-08"
-  ],
-  "find-the-safest-path-in-a-grid": [
-    "2026-07-01"
-  ],
-  "binary-tree-inorder-traversal": [
-    "2023-08-09"
-  ],
-  "remove-element": [
-    "2022-09-25"
-  ],
-  "process-string-with-special-operations-i": [
-    "2025-07-15"
+  "maximize-happiness-of-selected-children": [
+    "2025-12-25"
   ],
   "reverse-linked-list": [
     "2026-04-01"
   ],
-  "find-the-maximum-length-of-valid-subsequence-ii": [
-    "2025-07-17"
+  "same-tree": [
+    "2026-08-18"
   ],
-  "number-of-intersecting-interval-pairs-i": [
-    "2026-09-23"
+  "reverse-substrings-between-each-pair-of-parentheses": [
+    "2026-09-28"
   ],
-  "reshape-the-matrix": [
-    "2022-05-05"
+  "missing-number": [
+    "2026-09-29"
   ],
-  "shortest-distance-to-target-string-in-a-circular-array": [
-    "2026-04-15"
+  "minimize-the-maximum-difference-of-pairs": [
+    "2023-08-09"
   ],
-  "implement-queue-using-stacks": [
-    "2026-01-07"
+  "consecutive-characters": [
+    "2022-05-07"
   ],
-  "add-binary": [
-    "2026-02-15"
+  "k-diff-pairs-in-an-array": [
+    "2023-08-12"
   ],
-  "length-of-last-word": [
-    "2023-07-20"
+  "remove-duplicates-from-sorted-array": [
+    "2026-09-26"
   ],
-  "kth-largest-element-in-an-array": [
-    "2023-08-14"
+  "power-of-three": [
+    "2026-09-29"
   ],
-  "number-of-laser-beams-in-a-bank": [
-    "2024-01-03"
+  "maximum-average-subarray-i": [
+    "2026-09-16"
+  ],
+  "01-matrix": [
+    "2023-08-17"
+  ],
+  "transpose-matrix": [
+    "2025-07-22"
   ],
   "unique-paths-ii": [
     "2023-08-12"
   ],
+  "smallest-palindromic-rearrangement-i": [
+    "2026-07-28"
+  ],
+  "find-numbers-with-even-number-of-digits": [
+    "2022-05-07"
+  ],
+  "count-collisions-on-a-road": [
+    "2025-12-04"
+  ],
+  "max-consecutive-ones": [
+    "2022-05-07"
+  ],
+  "concatenation-of-array": [
+    "2025-05-02"
+  ],
+  "check-if-n-and-its-double-exist": [
+    "2024-12-07"
+  ],
+  "keep-multiplying-found-values-by-two": [
+    "2025-07-08"
+  ],
+  "naming-a-company": [
+    "2023-02-09"
+  ],
+  "number-of-laser-beams-in-a-bank": [
+    "2024-01-03"
+  ],
+  "spiral-matrix": [
+    "2026-06-18"
+  ],
+  "rotate-string": [
+    "2024-02-25"
+  ],
+  "longest-substring-without-repeating-characters": [
+    "2023-07-23"
+  ],
+  "ransom-note": [
+    "2026-02-17"
+  ],
+  "valid-word": [
+    "2025-07-15"
+  ],
+  "find-pivot-index": [
+    "2023-08-12"
+  ],
+  "move-zeroes": [
+    "2026-01-29"
+  ],
+  "single-number": [
+    "2024-01-14"
+  ],
+  "check-if-there-is-a-valid-partition-for-the-array": [
+    "2023-08-13"
+  ],
+  "maximal-network-rank": [
+    "2023-08-18"
+  ],
+  "two-sum": [
+    "2026-05-27",
+    "2026-10-08",
+    "2026-11-26"
+  ],
+  "shortest-distance-to-target-string-in-a-circular-array": [
+    "2026-04-15"
+  ],
+  "valid-anagram": [
+    "2026-08-27"
+  ],
+  "process-string-with-special-operations-i": [
+    "2025-07-15"
+  ],
+  "convert-an-array-into-a-2d-array-with-conditions": [
+    "2024-01-02"
+  ],
+  "binary-tree-inorder-traversal": [
+    "2023-08-09"
+  ],
+  "first-bad-version": [
+    "2022-02-20"
+  ],
+  "trionic-array-i": [
+    "2026-02-03"
+  ],
+  "container-with-most-water": [
+    "2026-08-26"
+  ],
+  "find-the-maximum-length-of-valid-subsequence-ii": [
+    "2025-07-17"
+  ],
+  "roman-to-integer": [
+    "2023-07-19"
+  ],
+  "maximum-product-of-two-elements-in-an-array": [
+    "2026-07-27"
+  ],
+  "set-matrix-zeroes": [
+    "2026-09-23"
+  ],
+  "partition-list": [
+    "2023-08-15"
+  ],
+  "lowest-common-ancestor-of-a-binary-tree": [
+    "2026-07-14"
+  ],
+  "letter-combinations-of-a-phone-number": [
+    "2022-05-09"
+  ],
   "middle-of-the-linked-list": [
     "2022-12-05"
+  ],
+  "find-minimum-in-rotated-sorted-array": [
+    "2026-10-09"
+  ],
+  "remove-all-adjacent-duplicates-in-string-ii": [
+    "2022-05-06"
+  ],
+  "top-k-frequent-elements": [
+    "2026-07-06"
+  ],
+  "add-two-numbers": [
+    "2022-09-25"
+  ],
+  "two-sum-ii-input-array-is-sorted": [
+    "2022-02-22",
+    "2026-10-10"
+  ],
+  "implement-stack-using-queues": [
+    "2022-05-05"
+  ],
+  "evaluate-reverse-polish-notation": [
+    "2026-01-06"
+  ],
+  "binary-tree-postorder-traversal": [
+    "2023-08-09"
+  ],
+  "merge-two-sorted-lists": [
+    "2025-07-17"
+  ],
+  "find-the-safest-path-in-a-grid": [
+    "2026-07-01"
+  ],
+  "find-greatest-common-divisor-of-array": [
+    "2021-10-24"
+  ],
+  "sum-of-two-integers": [
+    "2026-11-26"
+  ],
+  "lemonade-change": [
+    "2025-07-08"
+  ],
+  "check-if-array-is-sorted-and-rotated": [
+    "2026-08-24"
+  ],
+  "number-of-intersecting-interval-pairs-i": [
+    "2026-09-23"
+  ],
+  "redistribute-characters-to-make-all-strings-equal": [
+    "2024-01-02"
+  ],
+  "squares-of-a-sorted-array": [
+    "2022-05-07"
+  ],
+  "relative-ranks": [
+    "2026-07-24"
+  ],
+  "implement-queue-using-stacks": [
+    "2026-01-07"
+  ],
+  "remove-element": [
+    "2022-09-25"
   ],
   "maximum-subarray": [
     "2026-08-20"
   ],
-  "transpose-matrix": [
-    "2025-07-22"
+  "minimum-number-of-operations-to-make-array-empty": [
+    "2024-01-04"
+  ],
+  "reshape-the-matrix": [
+    "2022-05-05"
+  ],
+  "reverse-string": [
+    "2026-02-02"
+  ],
+  "rank-transform-of-an-array": [
+    "2026-07-12"
+  ],
+  "design-hashmap": [
+    "2026-04-19"
+  ],
+  "linked-list-cycle": [
+    "2026-01-26"
+  ],
+  "remove-covered-intervals": [
+    "2022-02-20"
+  ],
+  "binary-tree-preorder-traversal": [
+    "2023-08-09"
+  ],
+  "add-binary": [
+    "2026-02-15"
+  ],
+  "valid-parentheses": [
+    "2026-09-19",
+    "2026-09-27"
+  ],
+  "baseball-game": [
+    "2026-01-27"
   ]
 }
